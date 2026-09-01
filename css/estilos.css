@@ -1,0 +1,10 @@
+@import url(menu.css);
+
+* {
+    /* limpiar margenes */
+    margin: 0;
+    /* margen interior */
+    padding: 0;
+    /* tipo de Fuente */
+    font: Roboto;
+}
