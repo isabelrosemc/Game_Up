@@ -1,0 +1,106 @@
+/* ==========================================================================
+   TARJETAS DE CATEGORÍAS Y PRODUCTOS
+   ========================================================================== */
+
+/* Grid de Categorías Gamer (4 Columnas) */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.category-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.category-card:hover {
+    border-color: var(--color-azul);
+}
+
+.category-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 0.8rem auto;
+}
+
+.category-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.category-card p {
+    font-size: 0.75rem;
+    color: var(--color-texto-secundario);
+}
+
+/* Grid de Productos Destacados (3 Columnas) */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.product-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.product-img {
+    height: 180px;
+    margin-bottom: 1rem;
+}
+
+.product-category {
+    font-size: 0.7rem;
+    color: var(--color-texto-secundario);
+    text-transform: uppercase;
+}
+
+.product-title {
+    font-size: 0.95rem;
+    margin: 0.3rem 0;
+}
+
+.product-rating {
+    color: var(--color-verde);
+    font-size: 0.75rem;
+    margin-bottom: 0.8rem;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.product-price {
+    font-family: var(--fuente-titulos);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.btn-add {
+    background-color: var(--color-azul);
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: var(--fuente-titulos);
+    font-size: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-add:hover {
+    background-color: var(--color-verde);
+    color: #000000;
+}

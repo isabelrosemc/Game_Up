@@ -1,10 +1,9 @@
-@import url(menu.css);
+/* ==========================================================================
+   HOJA DE ESTILOS PRINCIPAL - LEVEL-UP GAMER
+   ========================================================================== */
 
-* {
-    /* limpiar margenes */
-    margin: 0;
-    /* margen interior */
-    padding: 0;
-    /* tipo de Fuente */
-    font: Roboto;
-}
+/* Importación de módulos CSS */
+@import url('base.css');
+@import url('header-footer.css');
+@import url('home.css');
+@import url('tarjetas-producto.css');

@@ -1,39 +1,262 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamer Up</title>
+    <title>Level-Up Gamer - Home</title>
+    <!-- Referencia única a la hoja de estilo principal unificada -->
     <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
 
-    <header> <h1>Tienda Gamer Up</h1> </header>
-    
-    <nav>
-        <ul>
-            <h1>LEVEL-UP GAMER</h1>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href=""></a>Catálogo</li>
-            <li><a href=""></a>Galeria</li>
-            <li><a href=""></a>Quiénes Somos</li>
-            <li><a href=""></a>Contacto</li>
-            <li><a href=""></a>Carrito</li>
-            <li><a href=""></a>Login</li>
-        </ul>
-    </nav>
+    <!-- BARRA SUPERIOR DE ADMINISTRACIÓN / NAVEGACIÓN RÁPIDA -->
+    <div class="top-admin-bar">
+        <span>Navegación</span>
+        <div class="top-admin-links">
+            <a href="../admin/usuarios.html" class="top-link">Dashboard Usuarios</a>
+            <a href="../admin/index.html" class="top-link">Admin Dashboard</a>
+            <a href="../admin/productos.html" class="top-link">Admin Productos</a>
+            <a href="index.html" class="top-link active">Home</a>
+            <a href="catalogo-productos.html" class="top-link">Catálogo</a>
+            <a href="carrito.html" class="top-link">Carrito</a>
+            <a href="#" class="top-link">Tablas (001)</a>
+        </div>
+    </div>
 
-    <main>
+    <!-- CABECERA Y MENU DE NAVEGACION PRINCIPAL -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA PLANETA CHILE</span>
+                </a>
+            </div>
 
-        <section>
-            <h1>ELEVA TU JUEGO AL SIGUIENTE NIVEL</h1>
-            <p>Encuentra periféricos profesionales, computadores de alto rendimiento y equipamiento gaming con despacho a todo Chile y acumulación de Puntos LevelUp en cada pedido.</p>
+            <nav class="main-nav">
+                <ul class="main-nav-list">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="catalogo-productos.html">Catálogo</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="nosotros.html">Nuestra Causa</a></li>
+                    <li><a href="contacto.html">Soporte</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="carrito.html" class="cart-icon">🛒</a>
+                <a href="login.html" class="user-icon">👤</a>
+                <div class="points-badge">3.450 PTS - Mi Cuenta</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL DEL HOME -->
+    <main class="main-container">
+
+        <!-- BANNER HERO PRINCIPAL -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <span class="section-tag">EQUIPAMIENTO & HARDWARE GAMER CHILE</span>
+                <h1 class="hero-title">ELEVA TU JUEGO AL <span>SIGUIENTE NIVEL</span></h1>
+                <p class="hero-description">Encuentra periféricos profesionales, computadores de alto rendimiento y equipamiento gaming con despacho a todo Chile y acumulación de Puntos LevelUp en cada pedido.</p>
+                <a href="catalogo-productos.html" class="btn-primary">COMPRA AHORA →</a>
+            </div>
+            <div class="hero-media">
+                <div class="placeholder-img">IMG</div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE CATEGORÍAS (GRID 4x2) -->
+        <section class="categories-section">
+            <span class="section-tag">EXPLORA POR CATEGORÍA</span>
+            <div class="section-header-flex">
+                <h2 class="main-section-title">CATEGORÍAS GAMER</h2>
+                <a href="catalogo-productos.html" class="view-all-link">Ver todas →</a>
+            </div>
+
+            <div class="categories-grid">
+                <!-- Categoría 1 -->
+                <div class="category-card">
+                    <div class="placeholder-img category-icon">IMG</div>
+                    <h3>Juegos de Mesa</h3>
+                    <p>Estrategia y rol</p>
+                </div>
+                <!-- Categoría 2 -->
+                <div class="category-card">
+                    <div class="placeholder-img category-icon">IMG</div>
+                    <h3>Accesorios</h3>
+                    <p>Headsets y micrófonos</p>
+                </div>
+                <!-- Categoría 3 -->
+                <div class="category-card">
+                    <div class="placeholder-img category-icon">IMG</div>
+                    <h3>Consolas</h3>
+                    <p>PlayStation, Xbox, Switch</p>
+                </div>
+                <!-- Categoría 4 -->
+                <div class="category-card">
+                    <div class="placeholder-img category-icon">IMG</div>
+                    <h3>Computadoras Gamers</h3>
+                    <p>Rigs armados y Laptops</p>
+                </div>
+                <!-- Categoría 5 -->
+                <div class="category-card">
+                    <div class="placeholder-img category-icon">IMG</div>
+                    <h3>Sillas Gamers</h3>
+                    <p>Ergonomía profesional</p>
+                </div>
+                <!-- Categoría 6 -->
+                <div class="category-card">
+                    <div class="placeholder-img category-icon">IMG</div>
+                    <h3>Mouse</h3>
+                    <p>Sensores ópticos top tier</p>
+                </div>
+                <!-- Categoría 7 -->
+                <div class="category-card">
+                    <div class="placeholder-img category-icon">IMG</div>
+                    <h3>Mousepad</h3>
+                    <p>Superficies speed & control</p>
+                </div>
+                <!-- Categoría 8 -->
+                <div class="category-card">
+                    <div class="placeholder-img category-icon">IMG</div>
+                    <h3>Poleras y Polerones Personalizados</h3>
+                    <p>Merch oficial de escuadras</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANNER DE MISIÓN -->
+        <section class="banner-card">
+            <div class="placeholder-img banner-icon" style="width: 60px; height: 60px; min-height: auto;">IMG</div>
+            <div>
+                <span class="section-tag">NUESTRO PROPÓSITO</span>
+                <h2>MISIÓN LEVEL-UP GAMER</h2>
+                <p>Nuestra misión es democratizar el acceso a la tecnología y el equipamiento esport de alta calidad en Chile, impulsando el talento de los jugadores locales y transformando cada compra en oportunidades de aprendizaje tecnológico para escuelas y centros juveniles.</p>
+            </div>
+        </section>
+
+        <!-- BANNER DE IMPACTO COMUNITARIO -->
+        <section class="banner-card impact-banner">
+            <div class="placeholder-img" style="height: 220px;">IMG</div>
+            <div>
+                <span class="section-tag">CAUSA SOCIAL</span>
+                <h2>IMPACTO COMUNITARIO</h2>
+                <p>A través de nuestro programa solidario, destinamos el 2% de cada venta al acondicionamiento y donación de computadores para laboratorios en escuelas públicas. Cada partida y cada compra construyen un futuro digital más justo.</p>
+                <a href="nosotros.html" class="btn-primary" style="margin-top: 1rem;">CONOCER MÁS →</a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE PRODUCTOS DESTACADOS -->
+        <section class="featured-section">
+            <span class="section-tag">SELECCIÓN ESPECIAL</span>
+            <div class="section-header-flex">
+                <h2 class="main-section-title">PRODUCTOS DESTACADOS</h2>
+                <a href="catalogo-productos.html" class="view-all-link">Ver catálogo completo →</a>
+            </div>
+
+            <div class="products-grid">
+                <!-- Producto 1 -->
+                <article class="product-card">
+                    <div class="placeholder-img product-img">IMG</div>
+                    <span class="product-category">ACCESORIOS / HyperX</span>
+                    <h3 class="product-title">Teclado Mecánico RGB Pro-X 60%</h3>
+                    <div class="product-rating">★★★★☆ (147)</div>
+                    <div class="product-footer">
+                        <span class="product-price">$64.990</span>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="product-card">
+                    <div class="placeholder-img product-img">IMG</div>
+                    <span class="product-category">MOUSE / Logitech G</span>
+                    <h3 class="product-title">Mouse Gamer Ultralight 25K DPI Superlight</h3>
+                    <div class="product-rating">★★★★★ (119)</div>
+                    <div class="product-footer">
+                        <span class="product-price">$49.990</span>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="product-card">
+                    <div class="placeholder-img product-img">IMG</div>
+                    <span class="product-category">ACCESORIOS / Gamer</span>
+                    <h3 class="product-title">Audífonos Gaming 7.1 Surround Inalámbricos</h3>
+                    <div class="product-rating">★★★★☆ (86)</div>
+                    <div class="product-footer">
+                        <span class="product-price">$99.990</span>
+                        <button class="btn-add">Agregar</button>
+                    </div>
+                </article>
+            </div>
         </section>
 
     </main>
 
-    <footer>
-        <p>&copy; 2023 Tienda Gamer Up. Todos los derechos reservados.</p>
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <!-- Columna 1: Info Marca -->
+            <div class="footer-col">
+                <div class="logo">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA PLANETA CHILE</span>
+                </div>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-top: 0.8rem;">
+                    La plataforma definitiva para el gamer competitivo y casual. Equipamiento de alto rendimiento, torneos comunitarios y apoyo a causas sociales a través del gaming.
+                </p>
+                <div class="social-tags">
+                    <span class="social-tag">TWITCH</span>
+                    <span class="social-tag">DISCORD</span>
+                    <span class="social-tag">YOUTUBE</span>
+                    <span class="social-tag">INSTAGRAM</span>
+                    <span class="social-tag">TIKTOK</span>
+                </div>
+            </div>
+
+            <!-- Columna 2: Enlaces Rápidos -->
+            <div class="footer-col">
+                <h4>ENLACES RÁPIDOS</h4>
+                <ul>
+                    <li><a href="catalogo-productos.html">Catálogo de Productos</a></li>
+                    <li><a href="blog.html">Blog y Guías Gamer</a></li>
+                    <li><a href="#">Eventos y Torneos</a></li>
+                    <li><a href="nosotros.html">Nuestra Causa Social</a></li>
+                    <li><a href="contacto.html">Soporte y Garantías</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Contacto -->
+            <div class="footer-col">
+                <h4>CONTACTO</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    📍 Av. Providencia 1234, Oficina 601, Santiago, Chile
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    📞 +56 9 8765 4321 (Atención Gamer)
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                    ✉️ contacto@levelupgamer.cl
+                </p>
+            </div>
+
+            <!-- Columna 4: Programa de Puntos -->
+            <div class="footer-col">
+                <h4>PUNTOS LEVEL-UP</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                    Acumula <strong>Puntos LevelUp</strong> con cada compra, registro a torneos y participación en la causa solidaria.
+                </p>
+                <div class="points-info-box">
+                    Recompensa actual: <span>100 CLP = 1 PTS</span><br>
+                    Canjea por descuentos directos en tienda o donaciones.
+                </div>
+            </div>
+        </div>
     </footer>
 
 </body>

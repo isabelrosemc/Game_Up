@@ -1,0 +1,88 @@
+/* ==========================================================================
+   VARIABLES GLOBALES, FUENTES Y REINICIO (BASE)
+   ========================================================================== */
+
+/* Importación de fuentes oficiales desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    /* Paleta de Colores Según Especificaciones */
+    --color-fondo: #000000;         /* Negro puro */
+    --color-tarjeta: #080808;       /* Gris ultrarosco para contenedores */
+    --color-borde: #181818;         /* Líneas divisorias sutiles */
+    --color-azul: #1E90FF;          /* Azul Eléctrico */
+    --color-verde: #39FF14;         /* Verde Neón */
+    --color-texto-principal: #FFFFFF;/* Blanco para texto principal */
+    --color-texto-secundario: #D3D3D3;/* Gris Claro para secundario */
+
+    /* Tipografías Oficiales */
+    --fuente-titulos: 'Orbitron', sans-serif; /* Futurista */
+    --fuente-cuerpo: 'Roboto', sans-serif;    /* General */
+}
+
+/* Reinicio Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    line-height: 1.6;
+}
+
+/* Encabezados generales */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fuente-titulos);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+a {
+    color: var(--color-azul);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-verde);
+}
+
+/* Contenedor central de la página */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Títulos y Subtítulos de Secciones */
+.section-tag {
+    color: var(--color-verde);
+    font-size: 0.75rem;
+    font-family: var(--fuente-titulos);
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.main-section-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-texto-principal);
+}
+
+/* Cajas contenedoras de imagen "IMG" */
+.placeholder-img {
+    background-color: #121212;
+    border: 1px dashed #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #555555;
+    font-family: var(--fuente-titulos);
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+}

@@ -1,0 +1,160 @@
+/* ==========================================================================
+   CABECERA, NAVEGACIÓN Y PIE DE PÁGINA (HEADER & FOOTER)
+   ========================================================================== */
+
+/* Barra Superior de Pruebas / Administrador */
+.top-admin-bar {
+    background-color: #030303;
+    border-bottom: 1px solid var(--color-borde);
+    padding: 0.4rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.top-admin-links {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.top-link {
+    background-color: #121212;
+    color: var(--color-texto-secundario);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--color-borde);
+}
+
+.top-link.active {
+    background-color: var(--color-azul);
+    color: #FFFFFF;
+}
+
+/* Header Principal */
+.main-header {
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid var(--color-borde);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--color-texto-principal);
+}
+
+.logo-subtext {
+    display: block;
+    font-size: 0.6rem;
+    color: var(--color-azul);
+}
+
+/* Menú de Navegación Nav */
+.main-nav-list {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.main-nav-list a {
+    color: var(--color-texto-principal);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.main-nav-list a.active {
+    color: var(--color-azul);
+}
+
+/* Acciones del Header (Puntos / Carrito) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.points-badge {
+    background-color: #052300;
+    color: var(--color-verde);
+    border: 1px solid var(--color-verde);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-family: var(--fuente-titulos);
+    font-size: 0.75rem;
+}
+
+/* Pie de Página (Footer) */
+.main-footer {
+    background-color: #040404;
+    border-top: 1px solid var(--color-borde);
+    padding: 3rem 2rem 1rem 2rem;
+    font-size: 0.85rem;
+}
+
+.footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.2fr 1.5fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-col h4 {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    color: var(--color-texto-principal);
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-col a {
+    color: var(--color-texto-secundario);
+}
+
+.social-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.social-tag {
+    background-color: #101010;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-secundario);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+    font-family: var(--fuente-titulos);
+}
+
+.points-info-box {
+    background-color: #0a0a0a;
+    border: 1px solid var(--color-borde);
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.points-info-box span {
+    color: var(--color-verde);
+    font-weight: bold;
+}
