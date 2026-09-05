@@ -1,8 +1,281 @@
 /* ==========================================================================
-   ESTILOS DE BLOG Y NOTICIAS (EDITORIAL)
+   CONTENIDO EDITORIAL (PÁGINAS SIMPLES: NOSOTROS, BLOG, DETALLE BLOG)
+   Reutiliza variables y clases base ya definidas en estilos.css
+   (--color-fondo, --color-tarjeta, --color-borde, --color-azul, --color-verde,
+   .main-container, .section-tag, .main-section-title, .placeholder-img, .banner-card)
+
+   Este archivo une el trabajo de ambos integrantes:
+   - Bloques de "Nosotros" (historia, misión/visión, valores, equipo, cifras)
+   - Bloques de "Blog y Noticias" (listado tipo Caso Curioso, mockup Figura 6)
+   No hay clases repetidas entre ambos bloques, así que conviven sin conflicto.
    ========================================================================== */
 
-/* Contenedor del título central "NOTICIAS IMPORTANTE" */
+/* --- Cabecera interna de página (usada en Nosotros, Blog, Contacto, etc.) --- */
+.page-header {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 3rem auto;
+    padding-top: 1rem;
+}
+
+.page-header .section-tag {
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2.1rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    color: var(--color-texto-secundario);
+    font-size: 0.95rem;
+}
+
+/* --- Bloque editorial genérico: imagen + texto en fila, alternable --- */
+/* Usado en Nosotros (historia, misión/visión). Para tarjetas de noticias/blog
+   ver más abajo ".news-card", pensada específicamente para ese listado. */
+.editorial-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Variante con la imagen a la derecha (por defecto ya la tenemos a la izquierda
+   en el DOM); esta clase invierte el orden visual */
+.editorial-block.reverse .editorial-media {
+    order: 2;
+}
+
+.editorial-block.reverse .editorial-content {
+    order: 1;
+}
+
+.editorial-media .placeholder-img {
+    min-height: 260px;
+    border-radius: 6px;
+}
+
+/* Cuando .placeholder-img se usa en una <img> real (fotos de historia, misión/
+   visión, valores o impacto comunitario), object-fit hace que la imagen rellene
+   la caja recortando lo que sobre, sin estirarse ni deformarse. Cubre:
+   - .editorial-media img (historia, misión y visión)
+   - .value-icon img (íconos de valores: comunidad, calidad, innovación)
+   - .banner-card img (impacto comunitario) */
+.editorial-media img.placeholder-img,
+.value-card img.placeholder-img,
+.banner-card img.placeholder-img {
+    object-fit: cover;
+    display: block;
+}
+
+.editorial-content h2 {
+    font-size: 1.5rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.9rem;
+}
+
+.editorial-content h3 {
+    font-size: 1.1rem;
+    color: var(--color-azul);
+    margin: 1.2rem 0 0.5rem 0;
+}
+
+.editorial-content p {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+}
+
+.editorial-content ul {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    padding-left: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.editorial-content ul li {
+    margin-bottom: 0.4rem;
+}
+
+/* --- Valores / Misión / Visión: tarjetas pequeñas en grid --- */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+}
+
+.value-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.value-card .value-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem auto;
+    min-height: auto;
+    border-radius: 50%;
+}
+
+.value-card h3 {
+    font-size: 1rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.6rem;
+}
+
+.value-card p {
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+}
+
+/* --- Estadísticas / cifras destacadas --- */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+    margin: 2.5rem 0;
+    padding: 2rem 1rem;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+}
+
+.stat-item .stat-number {
+    display: block;
+    font-family: var(--fuente-titulos);
+    font-size: 1.8rem;
+    color: var(--color-verde);
+    margin-bottom: 0.3rem;
+}
+
+.stat-item .stat-label {
+    color: var(--color-texto-secundario);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Equipo / Desarrolladores (grid de tarjetas de persona) --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0 2.5rem 0;
+}
+
+.team-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.team-card:hover {
+    border-color: var(--color-azul);
+}
+
+.team-card .placeholder-img {
+    width: 96px;
+    height: 96px;
+    min-height: auto;
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+}
+
+/* Cuando .placeholder-img se usa en una <img> real (foto de un integrante),
+   object-fit hace que la foto rellene el círculo sin deformarse, recortando
+   lo que sobre en vez de estirar la imagen. */
+.team-card img.placeholder-img {
+    object-fit: cover;
+    display: block;
+}
+
+.team-card h3 {
+    font-size: 0.95rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.2rem;
+}
+
+.team-card .team-role {
+    display: block;
+    color: var(--color-azul);
+    font-size: 0.75rem;
+    font-family: var(--fuente-titulos);
+    margin-bottom: 0.7rem;
+}
+
+.team-card p {
+    color: var(--color-texto-secundario);
+    font-size: 0.8rem;
+}
+
+/* --- Grid de artículos / noticias (portadas compactas, 2 o más por fila) --- */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.article-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card .placeholder-img {
+    min-height: 180px;
+}
+
+.article-card .article-body {
+    padding: 1.2rem;
+}
+
+.article-card .article-tag {
+    color: var(--color-verde);
+    font-size: 0.7rem;
+    font-family: var(--fuente-titulos);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.article-card h3 {
+    font-size: 1.05rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.6rem;
+}
+
+.article-card p {
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+
+/* ==========================================================================
+   ESTILOS DE BLOG Y NOTICIAS (EDITORIAL)
+   (Caso Curioso #1, Caso Curioso #2)
+   ========================================================================== */
+
+/* Contenedor del título central "NOTICIAS IMPORTANTES" */
 .blog-header {
     text-align: center;
     margin-bottom: 2rem;
@@ -64,4 +337,40 @@
 .news-media {
     height: 100%;
     min-height: 220px;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE (Nosotros + Blog/Noticias unificado)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .editorial-block {
+        grid-template-columns: 1fr;
+    }
+
+    .editorial-block.reverse .editorial-media,
+    .editorial-block.reverse .editorial-content {
+        order: initial;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .article-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-card {
+        grid-template-columns: 1fr;
+    }
+
+    .news-media {
+        min-height: 180px;
+        order: -1;
+    }
 }
