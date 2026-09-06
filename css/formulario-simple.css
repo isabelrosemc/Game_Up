@@ -1,0 +1,212 @@
+/* ==========================================================================
+   FORMULARIO SIMPLE (LOGIN, REGISTRO, RECUPERAR CONTRASEÑA)
+   Reutiliza variables y clases base ya definidas en base.css
+   (--color-fondo, --color-tarjeta, --color-borde, --color-azul, --color-verde,
+   --color-texto-principal, --color-texto-secundario, --fuente-titulos,
+   --fuente-cuerpo, .main-container, .section-tag)
+   ========================================================================== */
+
+/* --- Contenedor centrado de la página de autenticación --- */
+.auth-section {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+}
+
+/* --- Encabezado: etiqueta + título + descripción --- */
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Etiqueta tipo "[ LEVEL-UP GAMER · AUTENTICACIÓN ]" */
+.auth-tag {
+    display: inline-block;
+    color: var(--color-azul);
+    font-family: var(--fuente-titulos);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    padding: 0.4rem 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.auth-header h1 {
+    font-size: 2rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.8rem;
+}
+
+.auth-header p {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+}
+
+/* --- Tarjeta que contiene el formulario --- */
+.form-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+/* --- Grupo de campo: label + input --- */
+.form-group {
+    margin-bottom: 1.3rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Fila del label cuando lleva un link a la derecha (ej. "¿Olvidaste tu contraseña?") */
+.form-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.form-label-row label {
+    margin-bottom: 0;
+}
+
+.form-label-row a {
+    font-size: 0.8rem;
+}
+
+/* --- Input con ícono incrustado --- */
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon .input-icon {
+    position: absolute;
+    left: 0.9rem;
+    color: var(--color-texto-secundario);
+    font-size: 0.95rem;
+    pointer-events: none;
+    display: flex;
+}
+
+.input-with-icon input {
+    width: 100%;
+    background-color: #0d0d0d;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    padding: 0.75rem 1rem 0.75rem 2.6rem;
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.input-with-icon input::placeholder {
+    color: #666666;
+}
+
+.input-with-icon input:focus {
+    outline: none;
+    border-color: var(--color-azul);
+}
+
+/* Botón "ojo" para mostrar/ocultar contraseña */
+.input-toggle-visibility {
+    position: absolute;
+    right: 0.9rem;
+    background: none;
+    border: none;
+    color: var(--color-texto-secundario);
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: flex;
+    padding: 0;
+}
+
+.input-toggle-visibility:hover {
+    color: var(--color-texto-principal);
+}
+
+/* --- Checkbox "Recordar mi sesión" --- */
+.form-checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-checkbox-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-azul);
+    cursor: pointer;
+}
+
+.form-checkbox-row label {
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+/* --- Botón principal del formulario --- */
+.btn-form-primary {
+    width: 100%;
+    background-color: var(--color-azul);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    font-family: var(--fuente-cuerpo);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-form-primary:hover {
+    background-color: #1670cc;
+}
+
+/* --- Separador y texto inferior de la tarjeta --- */
+.form-divider {
+    border: none;
+    border-top: 1px solid var(--color-borde);
+    margin: 1.5rem 0 1.2rem 0;
+}
+
+.form-footer-text {
+    text-align: center;
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+}
+
+.form-footer-text a {
+    font-weight: 500;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+    .auth-section {
+        padding: 2rem 1rem;
+    }
+
+    .form-card {
+        padding: 1.5rem;
+    }
+
+    .auth-header h1 {
+        font-size: 1.6rem;
+    }
+}
