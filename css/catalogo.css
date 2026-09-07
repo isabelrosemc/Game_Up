@@ -1,0 +1,321 @@
+/* ==========================================================================
+   VISTA CATÁLOGO DE PRODUCTOS (R.5 - Mostrar Catálogo de Productos)
+   Estilos propios de tienda/catalogo-productos.html
+   ========================================================================== */
+
+/* Encabezado de la sección: título + contador de resultados */
+.catalog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.catalog-results-count {
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario);
+}
+
+.catalog-results-count strong {
+    color: var(--color-verde);
+    font-family: var(--fuente-titulos);
+}
+
+/* Barra de herramientas: buscador + filtro de categoría + orden */
+.catalog-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.search-group {
+    position: relative;
+    flex: 1 1 260px;
+}
+
+.search-group input[type="search"] {
+    width: 100%;
+    background-color: #050505;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    padding: 0.6rem 2.2rem 0.6rem 0.9rem;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.search-group input[type="search"]:focus {
+    outline: none;
+    border-color: var(--color-azul);
+}
+
+.search-group .search-icon {
+    position: absolute;
+    right: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-texto-secundario);
+    pointer-events: none;
+    font-size: 0.9rem;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 0 1 auto;
+}
+
+.filter-group label {
+    font-size: 0.75rem;
+    color: var(--color-texto-secundario);
+    font-family: var(--fuente-titulos);
+    white-space: nowrap;
+}
+
+.filter-group select {
+    background-color: #050505;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.85rem;
+    padding: 0.55rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: var(--color-azul);
+}
+
+.btn-clear-filters {
+    background-color: transparent;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-secundario);
+    font-family: var(--fuente-titulos);
+    font-size: 0.7rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-clear-filters:hover {
+    border-color: var(--color-azul);
+    color: var(--color-azul);
+}
+
+/* Chips de categoría rápida (complementa el select en pantallas grandes) */
+.category-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.chip {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-secundario);
+    font-size: 0.75rem;
+    font-family: var(--fuente-titulos);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chip:hover {
+    border-color: var(--color-azul);
+    color: var(--color-texto-principal);
+}
+
+.chip.active {
+    background-color: var(--color-azul);
+    border-color: var(--color-azul);
+    color: #FFFFFF;
+}
+
+/* Enlace que envuelve la tarjeta de producto: hereda todo, sin subrayado */
+.product-card-link {
+    display: block;
+    color: inherit;
+}
+
+.product-card-link:hover {
+    color: inherit;
+}
+
+.product-card-link:hover .product-card {
+    border-color: var(--color-azul);
+}
+
+.product-card-link .product-title {
+    color: var(--color-texto-principal);
+}
+
+/* Grid del catálogo: 4 columnas en escritorio, igual que el mockup (Figura 8) */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Etiqueta de stock crítico / agotado sobre la tarjeta */
+.stock-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-family: var(--fuente-titulos);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    margin-bottom: 0.4rem;
+}
+
+.stock-badge.low {
+    background-color: #2a1d00;
+    color: #FFA500;
+    border: 1px solid #FFA500;
+}
+
+.stock-badge.out {
+    background-color: #2a0000;
+    color: #FF4C4C;
+    border: 1px solid #FF4C4C;
+}
+
+.btn-add:disabled {
+    background-color: #333333;
+    color: #777777;
+    cursor: not-allowed;
+}
+
+.btn-add:disabled:hover {
+    background-color: #333333;
+    color: #777777;
+}
+
+/* Mensaje cuando no hay resultados para la búsqueda/filtro */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--color-texto-secundario);
+}
+
+.no-results p:first-child {
+    font-family: var(--fuente-titulos);
+    color: var(--color-texto-principal);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0 3rem 0;
+}
+
+.pagination button {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-secundario);
+    font-family: var(--fuente-titulos);
+    font-size: 0.8rem;
+    min-width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+    border-color: var(--color-azul);
+    color: var(--color-texto-principal);
+}
+
+.pagination button.active {
+    background-color: var(--color-azul);
+    border-color: var(--color-azul);
+    color: #FFFFFF;
+}
+
+.pagination button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Toast de confirmación al añadir un producto al carrito */
+.toast {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-verde);
+    color: var(--color-texto-principal);
+    padding: 0.8rem 1.2rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transform: translateY(1rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 200;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast strong {
+    color: var(--color-verde);
+}
+
+/* Responsivo (R.20 - diseño responsivo obligatorio) */
+@media (max-width: 992px) {
+    .catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .catalog-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        justify-content: space-between;
+    }
+
+    .filter-group select {
+        flex: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+}

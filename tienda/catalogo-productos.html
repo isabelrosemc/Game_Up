@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | Level-Up Gamer</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/tarjetas-producto.css">
+    <link rel="stylesheet" href="../css/catalogo.css">
+</head>
+<body>
+
+    <!-- CABECERA Y MENU DE NAVEGACION PRINCIPAL -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA GAMER</span>
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="main-nav-list">
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="catalogo-productos.html" class="active">Catálogo</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <span class="points-badge">✦ 0 pts</span>
+                <a href="carrito.html" aria-label="Ver carrito de compras">
+                    🛒 Carrito (<span data-cart-count>0</span>)
+                </a>
+                <a href="login.html">Iniciar sesión</a>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+    <main class="main-container">
+
+        <section aria-labelledby="titulo-catalogo">
+            <span class="section-tag">TIENDA / CATÁLOGO</span>
+            <div class="catalog-header">
+                <h1 id="titulo-catalogo" class="main-section-title">Productos</h1>
+                <p id="contador-resultados" class="catalog-results-count"></p>
+            </div>
+
+            <!-- Barra de búsqueda y filtros (R.5: filtrar y buscar productos) -->
+            <div class="catalog-toolbar">
+                <div class="search-group">
+                    <label for="buscador-productos" class="sr-only">Buscar productos</label>
+                    <input
+                        type="search"
+                        id="buscador-productos"
+                        name="buscador-productos"
+                        placeholder="Buscar producto por nombre...">
+                    <span class="search-icon" aria-hidden="true">🔍</span>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filtro-categoria">Categoría</label>
+                    <select id="filtro-categoria" name="filtro-categoria">
+                        <option value="">Todas</option>
+                        <!-- Las opciones se generan dinámicamente desde productos.js -->
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filtro-orden">Ordenar por</label>
+                    <select id="filtro-orden" name="filtro-orden">
+                        <option value="">Relevancia</option>
+                        <option value="precio-asc">Precio: menor a mayor</option>
+                        <option value="precio-desc">Precio: mayor a menor</option>
+                        <option value="nombre-az">Nombre: A-Z</option>
+                    </select>
+                </div>
+
+                <button type="button" id="btn-limpiar-filtros" class="btn-clear-filters">Limpiar filtros</button>
+            </div>
+
+            <!-- Chips de acceso rápido por categoría -->
+            <div id="category-chips" class="category-chips"></div>
+
+            <!-- Grid de productos (se renderiza dinámicamente vía JavaScript, R.6) -->
+            <div id="catalog-grid" class="catalog-grid" aria-live="polite"></div>
+
+            <!-- Paginación -->
+            <nav id="paginacion" class="pagination" aria-label="Paginación de resultados"></nav>
+        </section>
+
+    </main>
+
+    <!-- Notificación flotante al añadir un producto al carrito -->
+    <div id="toast-carrito" class="toast" role="status" aria-live="polite"></div>
+
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <!-- Columna 1: Info Marca -->
+            <div class="footer-col">
+                <div class="logo">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA GAMER</span>
+                </div>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-top: 0.8rem;">
+                    La plataforma definitiva para el gamer competitivo y casual. Equipamiento de alto rendimiento, torneos comunitarios y apoyo a causas sociales a través del gaming.
+                </p>
+                <div class="social-tags">
+                    <span class="social-tag">TWITCH</span>
+                    <span class="social-tag">DISCORD</span>
+                    <span class="social-tag">YOUTUBE</span>
+                    <span class="social-tag">INSTAGRAM</span>
+                    <span class="social-tag">TIKTOK</span>
+                </div>
+            </div>
+
+            <!-- Columna 2: Enlaces Rápidos -->
+            <div class="footer-col">
+                <h4>ENLACES RÁPIDOS</h4>
+                <ul>
+                    <li><a href="catalogo-productos.html">Catálogo de Productos</a></li>
+                    <li><a href="blog.html">Blog y Guías Gamer</a></li>
+                    <li><a href="#">Eventos y Torneos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Contacto -->
+            <div class="footer-col">
+                <h4>CONTACTO</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    📍 Av. Providencia 1234, Oficina 601, Santiago, Chile
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    📞 +56 9 8765 4321 (Atención Gamer)
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                    ✉️ contacto@levelupgamer.cl
+                </p>
+            </div>
+
+            <!-- Columna 4: Programa de Puntos -->
+            <div class="footer-col">
+                <h4>PUNTOS LEVEL-UP</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                    Acumula <strong>Puntos LevelUp</strong> con cada compra, registro a torneos y participación en la causa solidaria.
+                </p>
+                <div class="points-info-box">
+                    Recompensa actual: <span>100 CLP = 1 PTS</span><br>
+                    Canjea por descuentos directos en tienda o donaciones.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== SCRIPTS ===================== -->
+    <script src="../js/productos.js"></script>
+    <script src="../js/carrito.js"></script>
+    <script src="../js/catalogo.js"></script>
+</body>
+</html>
