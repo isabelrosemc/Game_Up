@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level-Up Gamer - Iniciar Sesión</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/formulario-simple.css">
+</head>
+<body>
+
+    <!-- CABECERA Y MENU DE NAVEGACION PRINCIPAL -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA GAMER</span>
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="main-nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="catalogo-productos.html">Catálogo</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="carrito.html" class="cart-icon">🛒</a>
+                <a href="login.html" class="user-icon">👤</a>
+                <a href="login.html" class="header-login-btn">→ Iniciar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL DEL LOGIN -->
+    <main class="auth-section">
+
+        <div class="auth-header">
+            <span class="auth-tag">[ LEVEL-UP GAMER · AUTENTICACIÓN ]</span>
+            <h1>INICIAR SESIÓN</h1>
+            <p>Ingresa con tus credenciales para acceder a tu cuenta gamer.</p>
+        </div>
+
+        <form class="form-card">
+
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <div class="input-with-icon">
+                    <span class="input-icon">✉️</span>
+                    <input type="email" id="email" name="email" placeholder="matias.gamer@duoc.cl o admin@levelupgamer.cl" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-label-row">
+                    <label for="password">Contraseña</label>
+                    <a href="recuperar-password.html">¿Olvidaste tu contraseña?</a>
+                </div>
+                <div class="input-with-icon">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="password" name="password" placeholder="••••••••••••" required>
+                    <button type="button" class="input-toggle-visibility" aria-label="Mostrar contraseña">👁️</button>
+                </div>
+            </div>
+
+            <div class="form-checkbox-row">
+                <input type="checkbox" id="recordar" name="recordar" checked>
+                <label for="recordar">Recordar mi sesión en este dispositivo</label>
+            </div>
+
+            <button type="submit" class="btn-form-primary">Iniciar sesión →</button>
+
+            <hr class="form-divider">
+
+            <p class="form-footer-text">¿No tienes cuenta? <a href="registro.html">Regístrate</a></p>
+
+        </form>
+
+    </main>
+
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <!-- Columna 1: Info Marca -->
+            <div class="footer-col">
+                <div class="logo">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA GAMER</span>
+                </div>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-top: 0.8rem;">
+                    La plataforma definitiva para el gamer competitivo y casual. Equipamiento de alto rendimiento, torneos comunitarios y apoyo a causas sociales a través del gaming.
+                </p>
+                <div class="social-tags">
+                    <span class="social-tag">TWITCH</span>
+                    <span class="social-tag">DISCORD</span>
+                    <span class="social-tag">YOUTUBE</span>
+                    <span class="social-tag">INSTAGRAM</span>
+                    <span class="social-tag">TIKTOK</span>
+                </div>
+            </div>
+
+            <!-- Columna 2: Enlaces Rápidos -->
+            <div class="footer-col">
+                <h4>ENLACES RÁPIDOS</h4>
+                <ul>
+                    <li><a href="catalogo-productos.html">Catálogo de Productos</a></li>
+                    <li><a href="blog.html">Blog y Guías Gamer</a></li>
+                    <li><a href="#">Eventos y Torneos</a></li>
+                    <li><a href="nosotros.html">Nuestra Causa Social</a></li>
+                    <li><a href="contacto.html">Soporte y Garantías</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Contacto -->
+            <div class="footer-col">
+                <h4>CONTACTO</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    📍 Av. Providencia 1234, Oficina 601, Santiago, Chile
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    📞 +56 9 8765 4321 (Atención Gamer)
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                    ✉️ contacto@levelupgamer.cl
+                </p>
+            </div>
+
+            <!-- Columna 4: Programa de Puntos -->
+            <div class="footer-col">
+                <h4>PUNTOS LEVEL-UP</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                    Acumula <strong>Puntos LevelUp</strong> con cada compra, registro a torneos y participación en la causa solidaria.
+                </p>
+                <div class="points-info-box">
+                    Recompensa actual: <span>100 CLP = 1 PTS</span><br>
+                    Canjea por descuentos directos en tienda o donaciones.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
