@@ -195,7 +195,24 @@
 .form-footer-text a {
     font-weight: 500;
 }
+/* --- Select de formularios --- */
+.form-group select {
+    width: 100%;
+    background-color: #0d0d0d;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
 
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-azul);
+}
 /* --- Responsive --- */
 @media (max-width: 600px) {
     .auth-section {

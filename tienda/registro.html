@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registro | Level-Up Gamer</title>
+
+    <!-- Estilos generales del proyecto -->
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <!-- Estilos para formularios -->
+    <link rel="stylesheet" href="../css/formulario-simple.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Tienda Gamer Up</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo-productos.html">Catálogo</a></li>
+            <li><a href="nosotros.html">Quiénes Somos</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="carrito.html">Carrito</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-container">
+
+        <section class="auth-section">
+
+            <div class="auth-header">
+
+                <span class="auth-tag">
+                    [ LEVEL-UP GAMER · REGISTRO ]
+                </span>
+
+                <h1>Crear cuenta</h1>
+
+                <p>
+                    Regístrate para realizar compras y acceder a nuestros productos.
+                </p>
+
+            </div>
+
+            <form class="form-card">
+
+                <div class="form-group">
+                    <label for="run">RUN</label>
+
+                    <div class="input-with-icon">
+                        <input
+                            type="text"
+                            id="run"
+                            name="run"
+                            placeholder="12345678-9">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+
+                    <div class="input-with-icon">
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Ingresa tu nombre">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellidos">Apellidos</label>
+
+                    <div class="input-with-icon">
+                        <input
+                            type="text"
+                            id="apellidos"
+                            name="apellidos"
+                            placeholder="Ingresa tus apellidos">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo electrónico</label>
+
+                    <div class="input-with-icon">
+                        <input
+                            type="email"
+                            id="correo"
+                            name="correo"
+                            placeholder="correo@ejemplo.com">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+
+                    <div class="input-with-icon">
+                        <input
+                            type="date"
+                            id="fechaNacimiento"
+                            name="fechaNacimiento">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="region">Región</label>
+
+                    <select id="region" name="region">
+                        <option value="">Seleccione una región</option>
+                        <option value="metropolitana">
+                            Región Metropolitana
+                        </option>
+                        <option value="valparaiso">
+                            Región de Valparaíso
+                        </option>
+                        <option value="biobio">
+                            Región del Biobío
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="comuna">Comuna</label>
+
+                    <div class="input-with-icon">
+                        <input
+                            type="text"
+                            id="comuna"
+                            name="comuna"
+                            placeholder="Ingresa tu comuna">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">Dirección</label>
+
+                    <div class="input-with-icon">
+                        <input
+                            type="text"
+                            id="direccion"
+                            name="direccion"
+                            placeholder="Ingresa tu dirección">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-form-primary">
+                    Registrarse
+                </button>
+
+                <hr class="form-divider">
+
+                <p class="form-footer-text">
+                    ¿Ya tienes una cuenta?
+                    <a href="login.html">Iniciar sesión</a>
+                </p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            &copy; 2026 Level-Up Gamer.
+            Todos los derechos reservados.
+        </p>
+    </footer>
+
+    <script src="../js/registro.js"></script>
+    
+</body>
+
+</html>
