@@ -1,68 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Contacto | Level-Up Gamer</title>
-
+    <title>Level-Up Gamer - Blog</title>
+    <!-- Referencia única al CSS unificado -->
     <link rel="stylesheet" href="../css/estilos.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Tienda Gamer Up</h1>
-    </header>
-
-    <nav>
-        <ul>
-
-            <li>
+        <!-- CABECERA Y MENU DE NAVEGACION PRINCIPAL -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
                 <a href="index.html">
-                    Inicio
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA GAMER</span>
                 </a>
-            </li>
+            </div>
 
-            <li>
-                <a href="catalogo-productos.html">
-                    Catálogo
-                </a>
-            </li>
+            <nav class="main-nav">
+                <ul class="main-nav-list">
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="catalogo-productos.html">Catálogo</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html" class="active">Contacto</a></li>
+                </ul>
+            </nav>
 
-            <li>
-                <a href="#">
-                    Galería
-                </a>
-            </li>
-
-            <li>
-                <a href="nosotros.html">
-                    Quiénes Somos
-                </a>
-            </li>
-
-            <li>
-                <a href="contacto.html">
-                    Contacto
-                </a>
-            </li>
-
-            <li>
-                <a href="carrito.html">
-                    Carrito
-                </a>
-            </li>
-
-            <li>
-                <a href="login.html">
-                    Login
-                </a>
-            </li>
-
-        </ul>
-    </nav>
+            <div class="header-actions">
+                <a href="carrito.html" class="cart-icon">🛒</a>
+                <a href="login.html" class="user-icon">👤</a>
+                <div class="points-badge">3.450 PTS - Mi Cuenta</div>
+            </div>
+        </div>
+    </header>
 
     <main>
 
@@ -143,13 +118,65 @@
 
     </main>
 
-    <footer>
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <!-- Columna 1: Info Marca -->
+            <div class="footer-col">
+                <div class="logo">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA PLANETA CHILE</span>
+                </div>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-top: 0.8rem;">
+                    La plataforma definitiva para el gamer competitivo y casual. Equipamiento de alto rendimiento, torneos comunitarios y apoyo a causas sociales a través del gaming.
+                </p>
+                <div class="social-tags">
+                    <span class="social-tag">TWITCH</span>
+                    <span class="social-tag">DISCORD</span>
+                    <span class="social-tag">YOUTUBE</span>
+                    <span class="social-tag">INSTAGRAM</span>
+                    <span class="social-tag">TIKTOK</span>
+                </div>
+            </div>
 
-        <p>
-            &copy; 2026 Level-Up Gamer.
-            Todos los derechos reservados.
-        </p>
+            <!-- Columna 2: Enlaces Rápidos -->
+            <div class="footer-col">
+                <h4>ENLACES RÁPIDOS</h4>
+                <ul>
+                    <li><a href="catalogo-productos.html">Catálogo de Productos</a></li>
+                    <li><a href="blog.html">Blog y Guías Gamer</a></li>
+                    <li><a href="#">Eventos y Torneos</a></li>
+                    <li><a href="nosotros.html">Nuestra Causa Social</a></li>
+                    <li><a href="contacto.html">Soporte y Garantías</a></li>
+                </ul>
+            </div>
 
+            <!-- Columna 3: Contacto -->
+            <div class="footer-col">
+                <h4>CONTACTO</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    📍 Av. Providencia 1234, Oficina 601, Santiago, Chile
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    📞 +56 9 8765 4321 (Atención Gamer)
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                    ✉️ contacto@levelupgamer.cl
+                </p>
+            </div>
+
+            <!-- Columna 4: Programa de Puntos -->
+            <div class="footer-col">
+                <h4>PUNTOS LEVEL-UP</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                    Acumula <strong>Puntos LevelUp</strong> con cada compra, registro a torneos y participación en la causa solidaria.
+                </p>
+                <div class="points-info-box">
+                    Recompensa actual: <span>100 CLP = 1 PTS</span><br>
+                    Canjea por descuentos directos en tienda o donaciones.
+                </div>
+            </div>
+        </div>
     </footer>
 
 </body>
