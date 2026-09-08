@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level-Up Gamer - Contacto</title>
-    <!-- Referencia única al CSS unificado -->
-    <link rel="stylesheet" href="../css/estilos.css">
+
+    <title>Contacto | Level-Up Gamer</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/formulario-simple.css">
+    <link rel="stylesheet" href="../css/formulario-validacion.css">
 </head>
 
 <body>
 
-        <!-- CABECERA Y MENU DE NAVEGACION PRINCIPAL -->
+    <!-- CABECERA Y MENU DE NAVEGACION PRINCIPAL -->
     <header class="main-header">
         <div class="header-container">
             <div class="logo">
@@ -25,8 +30,8 @@
                     <li><a href="index.html" >Home</a></li>
                     <li><a href="catalogo-productos.html">Catálogo</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="#">Eventos</a></li>
-                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="nosotros.html" >Nosotros</a></li>
                     <li><a href="contacto.html" class="active">Contacto</a></li>
                 </ul>
             </nav>
@@ -34,85 +39,89 @@
             <div class="header-actions">
                 <a href="carrito.html" class="cart-icon">🛒</a>
                 <a href="login.html" class="user-icon">👤</a>
-                <div class="points-badge">3.450 PTS - Mi Cuenta</div>
+                <div class="points-badge">0 PTS - Mi Cuenta</div>
             </div>
         </div>
     </header>
 
     <main>
 
-        <section>
+        <section class="auth-section">
 
-            <h1>Contáctanos</h1>
+            <div class="auth-header">
+                <span class="auth-tag">[ LEVEL-UP GAMER · SOPORTE ]</span>
+                <h1>Contáctanos</h1>
+                <p>
+                    ¿Tienes alguna duda o necesitas ayuda?
+                    Completa el formulario y nos pondremos en contacto contigo.
+                </p>
+            </div>
 
-            <p>
-                ¿Tienes alguna duda o necesitas ayuda?
-                Completa el formulario y nos pondremos
-                en contacto contigo.
-            </p>
+            <div class="form-card">
 
-            <form novalidate>
+                <div id="form-success" class="success-message" style="display: none;"></div>
 
-                <label for="nombre">
-                    Nombre:
-                </label>
+                <form novalidate>
 
-                <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    required
-                >
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Tu nombre completo"
+                            maxlength="100"
+                            required
+                        >
+                        <span id="error-nombre" class="error-message"></span>
+                    </div>
 
-                <br><br>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico</label>
+                        <input
+                            type="email"
+                            id="correo"
+                            name="correo"
+                            placeholder="tucorreo@dominio.cl"
+                            maxlength="100"
+                            required
+                        >
+                        <span id="error-correo" class="error-message"></span>
+                    </div>
 
-                <label for="correo">
-                    Correo electrónico:
-                </label>
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input
+                            type="text"
+                            id="asunto"
+                            name="asunto"
+                            placeholder="¿Sobre qué quieres escribirnos?"
+                            maxlength="100"
+                            required
+                        >
+                        <span id="error-asunto" class="error-message"></span>
+                    </div>
 
-                <input
-                    type="email"
-                    id="correo"
-                    name="correo"
-                    required
-                >
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea
+                            id="mensaje"
+                            name="mensaje"
+                            rows="6"
+                            placeholder="Cuéntanos en qué podemos ayudarte"
+                            maxlength="500"
+                            required
+                        ></textarea>
+                        <span id="error-mensaje" class="error-message"></span>
+                    </div>
 
-                <br><br>
+                    <button type="submit" class="btn-form-primary">
+                        Enviar mensaje
+                    </button>
 
-                <label for="asunto">
-                    Asunto:
-                </label>
+                </form>
 
-                <input
-                    type="text"
-                    id="asunto"
-                    name="asunto"
-                    required
-                >
-
-                <br><br>
-
-                <label for="mensaje">
-                    Mensaje:
-                </label>
-
-                <br>
-
-                <textarea
-                    id="mensaje"
-                    name="mensaje"
-                    rows="6"
-                    cols="40"
-                    required
-                ></textarea>
-
-                <br><br>
-
-                <button type="submit">
-                    Enviar mensaje
-                </button>
-
-            </form>
+            </div>
 
         </section>
 
@@ -125,7 +134,7 @@
             <div class="footer-col">
                 <div class="logo">
                     <span class="logo-text">LEVEL-UP GAMER</span>
-                    <span class="logo-subtext">TIENDA PLANETA CHILE</span>
+                    <span class="logo-subtext">TIENDA GAMER</span>
                 </div>
                 <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-top: 0.8rem;">
                     La plataforma definitiva para el gamer competitivo y casual. Equipamiento de alto rendimiento, torneos comunitarios y apoyo a causas sociales a través del gaming.
@@ -145,9 +154,9 @@
                 <ul>
                     <li><a href="catalogo-productos.html">Catálogo de Productos</a></li>
                     <li><a href="blog.html">Blog y Guías Gamer</a></li>
-                    <li><a href="#">Eventos y Torneos</a></li>
-                    <li><a href="nosotros.html">Nuestra Causa Social</a></li>
-                    <li><a href="contacto.html">Soporte y Garantías</a></li>
+                    <li><a href="eventos.html">Eventos y Torneos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </div>
 
@@ -155,13 +164,13 @@
             <div class="footer-col">
                 <h4>CONTACTO</h4>
                 <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
-                    📍 Av. Providencia 1234, Oficina 601, Santiago, Chile
+                     Av. Providencia 1234, Oficina 601, Santiago, Chile
                 </p>
                 <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
-                    📞 +56 9 8765 4321 (Atención Gamer)
+                     +56 9 8765 4321 (Atención Gamer)
                 </p>
                 <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
-                    ✉️ contacto@levelupgamer.cl
+                     contacto@levelupgamer.cl
                 </p>
             </div>
 

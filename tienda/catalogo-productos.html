@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../css/catalogo.css">
 </head>
 <body>
-
     <!-- CABECERA Y MENU DE NAVEGACION PRINCIPAL -->
     <header class="main-header">
         <div class="header-container">
@@ -27,20 +26,17 @@
                     <li><a href="index.html" >Home</a></li>
                     <li><a href="catalogo-productos.html" class="active">Catálogo</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="#">Eventos</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
                     <li><a href="nosotros.html">Nosotros</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
 
             <div class="header-actions">
-                <span class="points-badge">✦ 0 pts</span>
-                <a href="carrito.html" aria-label="Ver carrito de compras">
-                    🛒 Carrito (<span data-cart-count>0</span>)
-                </a>
-                <a href="login.html">Iniciar sesión</a>
+                <a href="carrito.html" class="cart-icon">🛒</a>
+                <a href="login.html"  class="user-icon">👤</a>
+                <div class="points-badge">0 PTS - Mi Cuenta</div>
             </div>
-        </div>
         </div>
     </header>
 
@@ -49,58 +45,178 @@
 
         <section aria-labelledby="titulo-catalogo">
             <span class="section-tag">TIENDA / CATÁLOGO</span>
-            <div class="catalog-header">
-                <h1 id="titulo-catalogo" class="main-section-title">Productos</h1>
-                <p id="contador-resultados" class="catalog-results-count"></p>
-            </div>
+            <h1 id="titulo-catalogo" class="main-section-title">Productos</h1>
 
-            <!-- Barra de búsqueda y filtros (R.5: filtrar y buscar productos) -->
-            <div class="catalog-toolbar">
+            <!-- Formulario de búsqueda y filtro (solo estructura, sin lógica aún) -->
+            <form class="catalog-toolbar" action="#" method="get">
                 <div class="search-group">
                     <label for="buscador-productos" class="sr-only">Buscar productos</label>
                     <input
                         type="search"
                         id="buscador-productos"
-                        name="buscador-productos"
+                        name="buscar"
                         placeholder="Buscar producto por nombre...">
-                    <span class="search-icon" aria-hidden="true">🔍</span>
                 </div>
 
                 <div class="filter-group">
                     <label for="filtro-categoria">Categoría</label>
-                    <select id="filtro-categoria" name="filtro-categoria">
+                    <select id="filtro-categoria" name="categoria">
                         <option value="">Todas</option>
-                        <!-- Las opciones se generan dinámicamente desde productos.js -->
+                        <option value="juegos-de-mesa">Juegos de Mesa</option>
+                        <option value="accesorios">Accesorios</option>
+                        <option value="consolas">Consolas</option>
+                        <option value="computadores-gamers">Computadores Gamers</option>
+                        <option value="sillas-gamers">Sillas Gamers</option>
+                        <option value="mouse">Mouse</option>
+                        <option value="mousepad">Mousepad</option>
+                        <option value="poleras-personalizadas">Poleras Personalizadas</option>
+                        <option value="polerones-gamers">Polerones Gamers Personalizados</option>
+                        <option value="servicio-tecnico">Servicio Técnico</option>
                     </select>
                 </div>
 
-                <div class="filter-group">
-                    <label for="filtro-orden">Ordenar por</label>
-                    <select id="filtro-orden" name="filtro-orden">
-                        <option value="">Relevancia</option>
-                        <option value="precio-asc">Precio: menor a mayor</option>
-                        <option value="precio-desc">Precio: mayor a menor</option>
-                        <option value="nombre-az">Nombre: A-Z</option>
-                    </select>
-                </div>
+                <button type="submit" class="btn-add">Buscar</button>
+            </form>
 
-                <button type="button" id="btn-limpiar-filtros" class="btn-clear-filters">Limpiar filtros</button>
+            <!-- Grid de productos -->
+            <div class="catalog-grid">
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/catan.jpg" alt="Caja del juego de mesa Catan">
+                    <span class="product-category">Juegos de Mesa</span>
+                    <h3 class="product-title">Catan</h3>
+                    <p class="product-rating">★★★★★</p>
+                    <div class="product-footer">
+                        <span class="product-price">$29.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/carcassonne.jpg" alt="Caja del juego de mesa Carcassonne">
+                    <span class="product-category">Juegos de Mesa</span>
+                    <h3 class="product-title">Carcassonne</h3>
+                    <p class="product-rating">★★★★☆</p>
+                    <div class="product-footer">
+                        <span class="product-price">$24.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/control-xbox.jpg" alt="Controlador inalámbrico Xbox Series X">
+                    <span class="product-category">Accesorios</span>
+                    <h3 class="product-title">Controlador Inalámbrico Xbox Series X</h3>
+                    <p class="product-rating">★★★★★</p>
+                    <div class="product-footer">
+                        <span class="product-price">$59.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/auris-hyperx.jpg" alt="Audífonos HyperX Cloud II">
+                    <span class="product-category">Accesorios</span>
+                    <h3 class="product-title">Auriculares Gamer HyperX Cloud II</h3>
+                    <p class="product-rating">★★★★☆</p>
+                    <div class="product-footer">
+                        <span class="product-price">$79.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/play5.jpg" alt="Consola PlayStation 5">
+                    <span class="product-category">Consolas</span>
+                    <h3 class="product-title">PlayStation 5</h3>
+                    <p class="product-rating">★★★★★</p>
+                    <div class="product-footer">
+                        <span class="product-price">$549.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/pc-asus.jpg" alt="PC Gamer ASUS ROG Strix">
+                    <span class="product-category">Computadores Gamers</span>
+                    <h3 class="product-title">PC Gamer ASUS ROG Strix</h3>
+                    <p class="product-rating">★★★★★</p>
+                    <div class="product-footer">
+                        <span class="product-price">$1.299.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/silla.jpg" alt="Silla Gamer Secretlab Titan">
+                    <span class="product-category">Sillas Gamers</span>
+                    <h3 class="product-title">Silla Gamer Secretlab Titan</h3>
+                    <p class="product-rating">★★★★☆</p>
+                    <div class="product-footer">
+                        <span class="product-price">$349.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/mouse.jpg" alt="Mouse Gamer Logitech G502 HERO">
+                    <span class="product-category">Mouse</span>
+                    <h3 class="product-title">Mouse Gamer Logitech G502 HERO</h3>
+                    <p class="product-rating">★★★★★</p>
+                    <div class="product-footer">
+                        <span class="product-price">$49.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/mousepad.jpg" alt="Mousepad Razer Goliathus Extended Chroma">
+                    <span class="product-category">Mousepad</span>
+                    <h3 class="product-title">Mousepad Razer Goliathus Extended Chroma</h3>
+                    <p class="product-rating">★★★★☆</p>
+                    <div class="product-footer">
+                        <span class="product-price">$29.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/polera.jpg" alt="Polera Gamer Personalizada Level-Up">
+                    <span class="product-category">Poleras Personalizadas</span>
+                    <h3 class="product-title">Polera Gamer Personalizada 'Level-Up'</h3>
+                    <p class="product-rating">★★★★★</p>
+                    <div class="product-footer">
+                        <span class="product-price">$14.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/poleron.jpg" alt="Polerón Gamer Personalizado Level-Up">
+                    <span class="product-category">Polerones Gamers Personalizados</span>
+                    <h3 class="product-title">Polerón Gamer Personalizado 'Level-Up'</h3>
+                    <p class="product-rating">★★★★☆</p>
+                    <div class="product-footer">
+                        <span class="product-price">$24.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-img" src="../img/img-productos/mantencion.jpg" alt="Servicio técnico de mantención para PC Gamer">
+                    <span class="product-category">Servicio Técnico</span>
+                    <h3 class="product-title">Mantención y Limpieza de PC Gamer</h3>
+                    <p class="product-rating">★★★★★</p>
+                    <div class="product-footer">
+                        <span class="product-price">$19.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
             </div>
-
-            <!-- Chips de acceso rápido por categoría -->
-            <div id="category-chips" class="category-chips"></div>
-
-            <!-- Grid de productos (se renderiza dinámicamente vía JavaScript, R.6) -->
-            <div id="catalog-grid" class="catalog-grid" aria-live="polite"></div>
-
-            <!-- Paginación -->
-            <nav id="paginacion" class="pagination" aria-label="Paginación de resultados"></nav>
         </section>
 
     </main>
-
-    <!-- Notificación flotante al añadir un producto al carrito -->
-    <div id="toast-carrito" class="toast" role="status" aria-live="polite"></div>
 
     <!-- PIE DE PÁGINA (FOOTER) -->
     <footer class="main-footer">
@@ -129,7 +245,7 @@
                 <ul>
                     <li><a href="catalogo-productos.html">Catálogo de Productos</a></li>
                     <li><a href="blog.html">Blog y Guías Gamer</a></li>
-                    <li><a href="#">Eventos y Torneos</a></li>
+                    <li><a href="eventos.html">Eventos y Torneos</a></li>
                     <li><a href="nosotros.html">Nosotros</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
@@ -139,13 +255,13 @@
             <div class="footer-col">
                 <h4>CONTACTO</h4>
                 <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
-                    📍 Av. Providencia 1234, Oficina 601, Santiago, Chile
+                     Av. Providencia 1234, Oficina 601, Santiago, Chile
                 </p>
                 <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
-                    📞 +56 9 8765 4321 (Atención Gamer)
+                     +56 9 8765 4321 (Atención Gamer)
                 </p>
                 <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
-                    ✉️ contacto@levelupgamer.cl
+                     contacto@levelupgamer.cl
                 </p>
             </div>
 
@@ -163,9 +279,5 @@
         </div>
     </footer>
 
-    <!-- ===================== SCRIPTS ===================== -->
-    <script src="../js/productos.js"></script>
-    <script src="../js/carrito.js"></script>
-    <script src="../js/catalogo.js"></script>
 </body>
 </html>
