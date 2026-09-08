@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo | Level-Up Gamer</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/panel-admin.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+
+        <!-- Menú vertical: navegación entre los mantenedores disponibles -->
+        <aside class="admin-sidebar">
+            <div>
+                <div class="admin-sidebar__marca">
+                    <img src="../img/img-index/logo1.png" alt="Logo Level-Up Gamer">
+                    
+                </div>
+
+                <nav class="admin-nav" aria-label="Navegación administrativa">
+                    <ul>
+                        <li>
+                            <a href="index.html" class="activo">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="productos.html">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>
+                                Productos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="usuarios.html">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1c0-3 3-5 7-5s7 2 7 5v1"/><path d="M16 4a4 4 0 010 8"/><path d="M22 21v-1c0-2.5-2-4.3-5-4.9"/></svg>
+                                Usuarios
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="admin-sidebar__pie">
+                <nav class="admin-nav" aria-label="Cuenta">
+                    <ul>
+                        <li>
+                            <a href="perfil.html">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+                                Perfil
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../login.html">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+                                Cerrar sesión
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="admin-contenido">
+            <header class="admin-topbar">
+                <h1>¡Hola, Administrador!</h1>
+                <button class="admin-topbar__notificacion" type="button" aria-label="Notificaciones">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+                </button>
+            </header>
+
+            <section class="admin-paneles" aria-label="Resumen">
+                <div class="admin-panel">
+                    <h2 class="admin-panel__titulo">Resumen rápido</h2>
+                    <div class="admin-resumen" id="admin-resumen"></div>
+                </div>
+
+                <div class="admin-panel">
+                    <h2 class="admin-panel__titulo">Alertas de stock crítico</h2>
+                    <ul class="admin-alertas__lista" id="admin-alertas-lista"></ul>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script src="../js/productos.js"></script>
+    <script src="../js/usuarios.js"></script>
+    <script src="../js/dashboard-admin.js"></script>
+</body>
+</html>

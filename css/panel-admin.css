@@ -1,0 +1,298 @@
+/* ==========================================================================
+   PANEL ADMINISTRATIVO — LEVEL-UP GAMER
+   Depende de base.css (variables de color, tipografías y reinicio).
+   ========================================================================== */
+
+:root {
+    --sidebar-ancho: 240px;
+}
+
+/* Estructura general: sidebar fijo + contenido */
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --------------------------------------------------------------------
+   MENÚ VERTICAL (SIDEBAR)
+   -------------------------------------------------------------------- */
+.admin-sidebar {
+    width: var(--sidebar-ancho);
+    flex-shrink: 0;
+    background-color: var(--color-tarjeta);
+    border-right: 1px solid var(--color-borde);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem 0.5rem;
+}
+
+.admin-sidebar__marca {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.admin-sidebar__marca img {
+    width: 100%;
+    max-width: 250px;
+    height: 100px;
+    object-fit: contain;
+    mix-blend-mode: lighten;
+}
+
+.admin-sidebar__marca span {
+    font-family: var(--fuente-titulos);
+    font-size: 0.85rem;
+    color: var(--color-texto-principal);
+}
+
+.admin-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.admin-nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 6px;
+    color: var(--color-texto-secundario);
+    font-size: 0.95rem;
+}
+
+.admin-nav a svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.admin-nav a:hover {
+    color: var(--color-texto-principal);
+    background-color: #101010;
+}
+
+.admin-nav a.activo {
+    color: var(--color-azul);
+    background-color: rgba(30, 144, 255, 0.12);
+    border-left: 3px solid var(--color-azul);
+    padding-left: calc(0.75rem - 3px);
+}
+
+.admin-sidebar__pie {
+    border-top: 1px solid var(--color-borde);
+    padding-top: 1rem;
+}
+
+/* --------------------------------------------------------------------
+   CONTENIDO PRINCIPAL
+   -------------------------------------------------------------------- */
+.admin-contenido {
+    flex: 1;
+    padding: 2rem;
+    min-width: 0;
+}
+
+.admin-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.admin-topbar h1 {
+    font-size: 1.4rem;
+}
+
+.admin-topbar__notificacion {
+    background: none;
+    border: 1px solid var(--color-borde);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--color-texto-principal);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-topbar__notificacion:hover {
+    border-color: var(--color-verde);
+    color: var(--color-verde);
+}
+
+.admin-topbar__notificacion svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Paneles de contenido (marcadores de posición para futuras vistas) */
+.admin-paneles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.admin-panel {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.admin-panel__titulo {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+/* Resumen rápido (conteos) */
+.admin-resumen {
+    display: flex;
+    gap: 1rem;
+}
+
+.admin-resumen__item {
+    flex: 1;
+    background-color: #101010;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    padding: 1.1rem;
+}
+
+.admin-resumen__valor {
+    display: block;
+    font-family: var(--fuente-titulos);
+    font-size: 1.8rem;
+    color: var(--color-azul);
+}
+
+.admin-resumen__etiqueta {
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario);
+}
+
+/* Alertas de stock crítico */
+.admin-alertas__lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.admin-alertas__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #101010;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+}
+
+.admin-alertas__nombre {
+    color: var(--color-texto-principal);
+    font-size: 0.9rem;
+}
+
+.admin-alertas__nombre span {
+    color: var(--color-texto-secundario);
+    font-size: 0.8rem;
+}
+
+.admin-alertas__stock {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #ff4d4d;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.admin-alertas__stock span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ff4d4d;
+}
+
+.admin-alertas__vacio {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------
+   BOTONES (compartidos entre listados y formularios del panel)
+   -------------------------------------------------------------------- */
+.boton {
+    display: inline-block;
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--color-borde);
+    cursor: pointer;
+    background: none;
+    color: var(--color-texto-secundario);
+}
+
+.boton:hover {
+    color: var(--color-texto-principal);
+    border-color: var(--color-texto-secundario);
+}
+
+.boton-primario {
+    background-color: var(--color-azul);
+    border-color: var(--color-azul);
+    color: #000000;
+    font-weight: 700;
+}
+
+.boton-primario:hover {
+    background-color: var(--color-verde);
+    border-color: var(--color-verde);
+    color: #000000;
+}
+
+/* --------------------------------------------------------------------
+   RESPONSIVO
+   -------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .admin-layout {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+    }
+
+    .admin-sidebar__marca {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        padding: 0.5rem 1rem;
+    }
+
+    .admin-nav ul {
+        flex-direction: row;
+    }
+
+    .admin-sidebar__pie {
+        display: none;
+    }
+
+    .admin-contenido {
+        padding: 1.25rem;
+    }
+}

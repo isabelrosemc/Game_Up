@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios | Panel Administrativo Level-Up Gamer</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/panel-admin.css">
+    <link rel="stylesheet" href="../css/lista-admin.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+
+        <!-- Menú vertical -->
+        <aside class="admin-sidebar">
+            <div>
+                <div class="admin-sidebar__marca">
+                    <img src="../img/img-index/logo1.png" alt="Logo Level-Up Gamer">
+                    
+                </div>
+
+                <nav class="admin-nav" aria-label="Navegación administrativa">
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="productos.html">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>
+                                Productos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="usuarios.html" class="activo">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1c0-3 3-5 7-5s7 2 7 5v1"/><path d="M16 4a4 4 0 010 8"/><path d="M22 21v-1c0-2.5-2-4.3-5-4.9"/></svg>
+                                Usuarios
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="admin-sidebar__pie">
+                <nav class="admin-nav" aria-label="Cuenta">
+                    <ul>
+                        <li>
+                            <a href="perfil.html">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+                                Perfil
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../login.html">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+                                Cerrar sesión
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="admin-contenido">
+            <header class="admin-topbar">
+                <h1>Usuarios</h1>
+                <div class="lista-admin__topbar-acciones">
+                    <a href="usuario-form.html" class="boton boton-primario">+ Nuevo usuario</a>
+                </div>
+            </header>
+
+            <section class="lista-admin__contenedor">
+                <table class="tabla-admin">
+                    <thead>
+                        <tr>
+                            <th>RUN</th>
+                            <th>Nombre completo</th>
+                            <th>Correo</th>
+                            <th>Tipo de usuario</th>
+                            <th>Comuna / Región</th>
+                            <th>Edad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-tabla-usuarios">
+                        <!-- Filas generadas dinámicamente desde USUARIOS (usuarios.js) -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+    </div>
+
+    <script src="../js/usuarios.js"></script>
+    <script src="../js/lista-usuarios.js"></script>
+</body>
+</html>
