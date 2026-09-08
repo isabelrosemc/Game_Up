@@ -1,75 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Detalle Blog | Level-Up Gamer</title>
-
-    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Level-Up Gamer - Los 10 videojuegos más populares en Chile durante 2025</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/editorial.css">
 </head>
-
 <body>
+    <!-- CABECERA Y MENU DE NAVEGACION PRINCIPAL -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA GAMER</span>
+                </a>
+            </div>
 
-    <header>
-        <h1>Tienda Gamer Up</h1>
+            <nav class="main-nav">
+                <ul class="main-nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="catalogo-productos.html">Catálogo</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="carrito.html" class="cart-icon">🛒</a>
+                <a href="login.html" class="user-icon">👤</a>
+                <div class="points-badge">0 PTS - Mi Cuenta</div>
+            </div>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="catalogo-productos.html">Catálogo</a></li>
-            <li><a href="nosotros.html">Quiénes Somos</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="carrito.html">Carrito</a></li>
-        </ul>
-    </nav>
+    <!-- CONTENEDOR PRINCIPAL DEL DETALLE DE BLOG -->
+    <main class="main-container">
 
-    <main>
+        <div class="page-header">
+            <span class="section-tag">BLOG · NOTICIAS DEL MUNDO GAMER</span>
+            <h1>Los 10 videojuegos más populares en Chile durante 2025</h1>
+            <p>Movistar GameClub, el centro especializado en gaming de Movistar Chile, entregó el ranking de los favoritos entre sus más de 1,2 millones de visitantes a lo largo del país.</p>
+        </div>
 
-        <article>
+        <!-- IMAGEN + TEXTO INTRODUCTORIO -->
+        <section class="editorial-block">
+            <div class="editorial-media">
+                <img class="placeholder-img" src="../img/img-blog/movistar.jpg" alt="Movistar GameClub">
+            </div>
+            <div class="editorial-content">
+                <h2>La industria gamer sigue en ascenso</h2>
+                <p>El gaming continúa consolidándose como una de las principales industrias de entretenimiento digital en Chile y el mundo, impulsado por el avance de una mejor conectividad, comunidades online, propuesta gaming y la variedad y crecimiento en los perfiles de jugadores. En este escenario, Movistar GameClub, el principal espacio gaming del país, dio a conocer el ranking de los videojuegos más populares de sus usuarios, entre los que destacan los shooters (FPS), battle royale, deportivos y de pelea.</p>
+                <p>Durante 2025 Movistar GameClub registró un crecimiento anual del 22%, con un total de 1.258.000 visitas presenciales, revelando un creciente interés no sólo en videojuegos sino en el ecosistema integral para gamers propuesto por Movistar Chile, que combina espacios físicos, "clubes", ubicados en centros comerciales con servicios digitales, eventos, torneos, equipamiento gamer, servicio técnico especializado Doctor GameClub, entre otros contenidos.</p>
+                <p>El ranking fue elaborado a partir del análisis de la actividad registrada en los diversos centros presentes a lo largo de Chile durante 2025, considerando variables como cantidad de partidas y horas de cada juego.</p>
+            </div>
+        </section>
 
-            <h1>Los videojuegos competitivos siguen creciendo</h1>
+        <!-- RANKING -->
+        <section>
+            <h2 style="margin-bottom: 1rem;">Ranking de videojuegos más populares en Movistar GameClub</h2>
+            <ol class="ranking-list">
+                <li>Fortnite <span class="porcentaje">24,88% participación</span></li>
+                <li>Valorant <span class="porcentaje">21,95% participación</span></li>
+                <li>Roblox <span class="porcentaje">14,31% participación</span></li>
+                <li>League of Legends <span class="porcentaje">12,18% participación</span></li>
+                <li>Call of Duty Warzone <span class="porcentaje">8,11% participación</span></li>
+                <li>Counter Strike 2 <span class="porcentaje">6,85% participación</span></li>
+                <li>Fall Guys <span class="porcentaje">3,53% participación</span></li>
+                <li>Marvel Rivals <span class="porcentaje">2,63% participación</span></li>
+                <li>Rocket League <span class="porcentaje">2,29% participación</span></li>
+                <li>Overwatch 2 <span class="porcentaje">1,88% participación</span></li>
+            </ol>
+        </section>
 
-            <img
-                src="img/blog1.jpg"
-                alt="Competencia de videojuegos"
-                width="500"
-            >
-
-            <p>
-                Los videojuegos competitivos han crecido mucho en los últimos años.
-                Cada vez existen más torneos, equipos profesionales y jugadores
-                que participan en competencias nacionales e internacionales.
-            </p>
-
-            <p>
-                También ha aumentado el interés por periféricos gamer,
-                computadores de alto rendimiento y accesorios que permiten
-                mejorar la experiencia de juego.
-            </p>
-
-            <p>
-                En Level-Up Gamer buscamos ofrecer productos pensados para
-                jugadores que quieran mejorar su equipamiento y disfrutar
-                al máximo de sus videojuegos favoritos.
-            </p>
-
-            <a href="blog.html">Volver al blog</a>
-
-        </article>
+        <!-- CÓMO LLEGAR -->
+        <section class="editorial-block reverse">
+            <div class="editorial-media map-frame">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d208.26148679680446!2d-70.67825836760203!3d-33.366267520853576!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c70051e1745d%3A0xc40b91bd4d41710a!2sGameClub%20%E2%80%94%20Mallplaza%20Norte!5e0!3m2!1ses-419!2scl!4v1788860995922!5m2!1ses-419!2scl"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <div class="editorial-content">
+                <h2>Cómo llegar a Movistar GameClub Mallplaza Norte</h2>
+                <p class="direccion-info">📍 <span><strong>Dirección:</strong> Mallplaza Norte, Av. Américo Vespucio 1737, Huechuraba, Región Metropolitana.</span></p>
+                <p class="direccion-info">🕒 <span><strong>Horario:</strong> Todos los días de 10:00 a 22:00 hrs.</span></p>
+                <p>Movistar GameClub se encuentra en el nivel de tiendas de Mallplaza Norte, cerca del patio de comidas. Puedes llegar en Transantiago (múltiples recorridos con parada frente al mall), en auto por Américo Vespucio con estacionamiento propio del centro comercial, o en bicicleta gracias a los bicicleteros disponibles en el acceso principal.</p>
+            </div>
+        </section>
 
     </main>
 
-    <footer>
-        <p>
-            &copy; 2026 Level-Up Gamer.
-            Todos los derechos reservados.
-        </p>
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <!-- Columna 1: Info Marca -->
+            <div class="footer-col">
+                <div class="logo">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA GAMER</span>
+                </div>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-top: 0.8rem;">
+                    La plataforma definitiva para el gamer competitivo y casual. Equipamiento de alto rendimiento, torneos comunitarios y apoyo a causas sociales a través del gaming.
+                </p>
+                <div class="social-tags">
+                    <span class="social-tag">TWITCH</span>
+                    <span class="social-tag">DISCORD</span>
+                    <span class="social-tag">YOUTUBE</span>
+                    <span class="social-tag">INSTAGRAM</span>
+                    <span class="social-tag">TIKTOK</span>
+                </div>
+            </div>
+
+            <!-- Columna 2: Enlaces Rápidos -->
+            <div class="footer-col">
+                <h4>ENLACES RÁPIDOS</h4>
+                <ul>
+                    <li><a href="catalogo-productos.html">Catálogo de Productos</a></li>
+                    <li><a href="blog.html">Blog y Guías Gamer</a></li>
+                    <li><a href="eventos.html">Eventos y Torneos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Contacto -->
+            <div class="footer-col">
+                <h4>CONTACTO</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                     Av. Providencia 1234, Oficina 601, Santiago, Chile
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                     +56 9 8765 4321 (Atención Gamer)
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                     contacto@levelupgamer.cl
+                </p>
+            </div>
+
+            <!-- Columna 4: Programa de Puntos -->
+            <div class="footer-col">
+                <h4>PUNTOS LEVEL-UP</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                    Acumula <strong>Puntos LevelUp</strong> con cada compra, registro a torneos y participación en la causa solidaria.
+                </p>
+                <div class="points-info-box">
+                    Recompensa actual: <span>100 CLP = 1 PTS</span><br>
+                    Canjea por descuentos directos en tienda o donaciones.
+                </div>
+            </div>
+        </div>
     </footer>
 
 </body>
-
 </html>

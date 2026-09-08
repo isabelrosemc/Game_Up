@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carrito | Level-Up Gamer</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/carrito-checkout.css">
+</head>
+<body>
+
+    <!-- CABECERA Y MENU DE NAVEGACION PRINCIPAL -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA GAMER</span>
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="main-nav-list">
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="catalogo-productos.html">Catálogo</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="carrito.html" class="cart-icon">🛒</a>
+                <a href="login.html" class="user-icon">👤</a>
+                <div class="points-badge">0 PTS - Mi Cuenta</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main-container">
+
+        <p class="breadcrumb">
+            <a href="index.html">Home</a> / <span class="actual">Mi carrito de compras</span>
+        </p>
+
+        <span class="section-tag">COMPRAS</span>
+        <h1 class="main-section-title">Mi carrito de compras</h1>
+
+        <div class="carrito-layout">
+
+            <!-- Lista de productos -->
+            <section class="carrito-lista" aria-label="Productos en el carrito">
+
+                <article class="carrito-item">
+                    <div class="placeholder-img carrito-item-img">IMG</div>
+                    <div class="carrito-item-info">
+                        <h3>Controlador Inalámbrico Xbox Series X</h3>
+                        <p>Botones mapeables y respuesta táctil mejorada. Compatible con consolas Xbox y PC.</p>
+                        <span class="item-categoria">Accesorios</span>
+                    </div>
+                    <div class="cantidad-selector">
+                        <button class="cantidad-btn" type="button" aria-label="Disminuir cantidad">−</button>
+                        <span class="cantidad-valor">1</span>
+                        <button class="cantidad-btn" type="button" aria-label="Aumentar cantidad">+</button>
+                    </div>
+                    <div class="carrito-item-precio">
+                        $ 59.990
+                        <span class="precio-unitario">precio unitario</span>
+                    </div>
+                    <button class="btn-eliminar" type="button">Eliminar</button>
+                </article>
+
+                <article class="carrito-item">
+                    <div class="placeholder-img carrito-item-img">IMG</div>
+                    <div class="carrito-item-info">
+                        <h3>Mouse Gamer Logitech G502 HERO</h3>
+                        <p>Sensor de alta precisión y botones personalizables para un control preciso.</p>
+                        <span class="item-categoria">Mouse</span>
+                    </div>
+                    <div class="cantidad-selector">
+                        <button class="cantidad-btn" type="button" aria-label="Disminuir cantidad">−</button>
+                        <span class="cantidad-valor">1</span>
+                        <button class="cantidad-btn" type="button" aria-label="Aumentar cantidad">+</button>
+                    </div>
+                    <div class="carrito-item-precio">
+                        $ 49.990
+                        <span class="precio-unitario">precio unitario</span>
+                    </div>
+                    <button class="btn-eliminar" type="button">Eliminar</button>
+                </article>
+
+                <article class="carrito-item">
+                    <div class="placeholder-img carrito-item-img">IMG</div>
+                    <div class="carrito-item-info">
+                        <h3>Mousepad Razer Goliathus Extended Chroma</h3>
+                        <p>Área de juego amplia con iluminación RGB personalizable.</p>
+                        <span class="item-categoria">Mousepad</span>
+                    </div>
+                    <div class="cantidad-selector">
+                        <button class="cantidad-btn" type="button" aria-label="Disminuir cantidad">−</button>
+                        <span class="cantidad-valor">1</span>
+                        <button class="cantidad-btn" type="button" aria-label="Aumentar cantidad">+</button>
+                    </div>
+                    <div class="carrito-item-precio">
+                        $ 29.990
+                        <span class="precio-unitario">precio unitario</span>
+                    </div>
+                    <button class="btn-eliminar" type="button">Eliminar</button>
+                </article>
+
+                <!-- Estado vacío de referencia (oculto por defecto, se activa cuando el carrito no tiene productos)
+                <div class="carrito-vacio">
+                    <p>Tu carrito está vacío. ¡Explora nuestros productos y súmate a la comunidad Level-Up!</p>
+                    <a href="productos.html" class="btn-primario">Ver productos</a>
+                </div>
+                -->
+
+            </section>
+
+            <!-- Resumen y checkout -->
+            <aside class="resumen-panel" aria-label="Resumen de compra">
+                <h2>Resumen del pedido</h2>
+
+                <div class="resumen-linea">
+                    <span>Subtotal (3 productos)</span>
+                    <span>$ 139.970</span>
+                </div>
+                <div class="resumen-linea">
+                    <span>Envío</span>
+                    <span>Calculado en el pago</span>
+                </div>
+                <div class="resumen-linea descuento">
+                    <span>Descuento Duoc (20%)</span>
+                    <span>− $ 27.994</span>
+                </div>
+
+                <hr class="resumen-divisor">
+
+                <div class="resumen-total">
+                    <span>Total</span>
+                    <span class="monto-total">$ 111.976</span>
+                </div>
+
+                <form action="#" class="cupon-form">
+                    <div class="cupon-grupo">
+                        <label for="cupon" class="visually-hidden">Cupón de descuento</label>
+                        <input type="text" id="cupon" name="cupon" placeholder="Ingresa el cupón de descuento">
+                        <button type="submit" class="btn-secundario">Aplicar</button>
+                    </div>
+                </form>
+
+                <a href="checkout.html" class="btn-primario btn-pagar">Ir a pagar</a>
+
+                <div class="metodos-pago">
+                    <span class="metodo-pago-tag">WEBPAY</span>
+                    <span class="metodo-pago-tag">VISA</span>
+                    <span class="metodo-pago-tag">MASTERCARD</span>
+                    <span class="metodo-pago-tag">PUNTOS LEVELUP</span>
+                </div>
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <!-- Columna 1: Info Marca -->
+            <div class="footer-col">
+                <div class="logo">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA GAMER</span>
+                </div>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-top: 0.8rem;">
+                    La plataforma definitiva para el gamer competitivo y casual. Equipamiento de alto rendimiento, torneos comunitarios y apoyo a causas sociales a través del gaming.
+                </p>
+                <div class="social-tags">
+                    <span class="social-tag">TWITCH</span>
+                    <span class="social-tag">DISCORD</span>
+                    <span class="social-tag">YOUTUBE</span>
+                    <span class="social-tag">INSTAGRAM</span>
+                    <span class="social-tag">TIKTOK</span>
+                </div>
+            </div>
+
+            <!-- Columna 2: Enlaces Rápidos -->
+            <div class="footer-col">
+                <h4>ENLACES RÁPIDOS</h4>
+                <ul>
+                    <li><a href="catalogo-productos.html">Catálogo de Productos</a></li>
+                    <li><a href="blog.html">Blog y Guías Gamer</a></li>
+                    <li><a href="eventos.html">Eventos y Torneos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Contacto -->
+            <div class="footer-col">
+                <h4>CONTACTO</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                     Av. Providencia 1234, Oficina 601, Santiago, Chile
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                     +56 9 8765 4321 (Atención Gamer)
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                     contacto@levelupgamer.cl
+                </p>
+            </div>
+
+            <!-- Columna 4: Programa de Puntos -->
+            <div class="footer-col">
+                <h4>PUNTOS LEVEL-UP</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                    Acumula <strong>Puntos LevelUp</strong> con cada compra, registro a torneos y participación en la causa solidaria.
+                </p>
+                <div class="points-info-box">
+                    Recompensa actual: <span>100 CLP = 1 PTS</span><br>
+                    Canjea por descuentos directos en tienda o donaciones.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
