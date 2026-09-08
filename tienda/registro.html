@@ -49,8 +49,9 @@
 
             </div>
 
-            <form class="form-card">
+            <form class="form-card" novalidate>
 
+                <!-- RUN -->
                 <div class="form-group">
                     <label for="run">RUN</label>
 
@@ -59,10 +60,12 @@
                             type="text"
                             id="run"
                             name="run"
-                            placeholder="12345678-9">
+                            placeholder="19011022K"
+                            maxlength="9">
                     </div>
                 </div>
 
+                <!-- NOMBRE -->
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
 
@@ -71,10 +74,12 @@
                             type="text"
                             id="nombre"
                             name="nombre"
-                            placeholder="Ingresa tu nombre">
+                            placeholder="Ingresa tu nombre"
+                            maxlength="50">
                     </div>
                 </div>
 
+                <!-- APELLIDOS -->
                 <div class="form-group">
                     <label for="apellidos">Apellidos</label>
 
@@ -83,10 +88,12 @@
                             type="text"
                             id="apellidos"
                             name="apellidos"
-                            placeholder="Ingresa tus apellidos">
+                            placeholder="Ingresa tus apellidos"
+                            maxlength="100">
                     </div>
                 </div>
 
+                <!-- CORREO -->
                 <div class="form-group">
                     <label for="correo">Correo electrónico</label>
 
@@ -95,10 +102,12 @@
                             type="email"
                             id="correo"
                             name="correo"
-                            placeholder="correo@ejemplo.com">
+                            placeholder="correo@duoc.cl"
+                            maxlength="100">
                     </div>
                 </div>
 
+                <!-- FECHA DE NACIMIENTO -->
                 <div class="form-group">
                     <label for="fechaNacimiento">Fecha de nacimiento</label>
 
@@ -110,35 +119,25 @@
                     </div>
                 </div>
 
+                <!-- REGIÓN -->
                 <div class="form-group">
                     <label for="region">Región</label>
 
                     <select id="region" name="region">
                         <option value="">Seleccione una región</option>
-                        <option value="metropolitana">
-                            Región Metropolitana
-                        </option>
-                        <option value="valparaiso">
-                            Región de Valparaíso
-                        </option>
-                        <option value="biobio">
-                            Región del Biobío
-                        </option>
                     </select>
                 </div>
 
+                <!-- COMUNA -->
                 <div class="form-group">
                     <label for="comuna">Comuna</label>
 
-                    <div class="input-with-icon">
-                        <input
-                            type="text"
-                            id="comuna"
-                            name="comuna"
-                            placeholder="Ingresa tu comuna">
-                    </div>
+                    <select id="comuna" name="comuna" disabled>
+                        <option value="">Seleccione una comuna</option>
+                    </select>
                 </div>
 
+                <!-- DIRECCIÓN -->
                 <div class="form-group">
                     <label for="direccion">Dirección</label>
 
@@ -147,7 +146,8 @@
                             type="text"
                             id="direccion"
                             name="direccion"
-                            placeholder="Ingresa tu dirección">
+                            placeholder="Ingresa tu dirección"
+                            maxlength="300">
                     </div>
                 </div>
 
@@ -176,7 +176,7 @@
     </footer>
 
     <script src="../js/registro.js"></script>
-    
+
 </body>
 
 </html>

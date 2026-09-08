@@ -213,6 +213,12 @@
     outline: none;
     border-color: var(--color-azul);
 }
+
+.form-group select option {
+    background-color: #0d0d0d;
+    color: white;
+}
+
 /* --- Responsive --- */
 @media (max-width: 600px) {
     .auth-section {
