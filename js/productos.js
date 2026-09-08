@@ -18,7 +18,7 @@ const PRODUCTOS = [
         stock: 25,
         stockCritico: 5,
         fabricante: "Catan Studio",
-        imagen: null
+        imagen: "../img/img-productos/catan.jpg"
     },
     {
         codigo: "JM002",
@@ -29,7 +29,7 @@ const PRODUCTOS = [
         stock: 18,
         stockCritico: 5,
         fabricante: "Hans im Glück",
-        imagen: null
+        imagen: "../img/img-productos/carcassonne.jpg"
     },
     {
         codigo: "AC001",
@@ -40,7 +40,7 @@ const PRODUCTOS = [
         stock: 40,
         stockCritico: 8,
         fabricante: "Microsoft",
-        imagen: null
+        imagen: "../img/img-productos/control-xbox.jpg"
     },
     {
         codigo: "AC002",
@@ -51,7 +51,7 @@ const PRODUCTOS = [
         stock: 30,
         stockCritico: 6,
         fabricante: "HyperX",
-        imagen: null
+        imagen: "../img/img-productos/auris-hyperx.jpg"
     },
     {
         codigo: "CO001",
@@ -62,7 +62,7 @@ const PRODUCTOS = [
         stock: 10,
         stockCritico: 3,
         fabricante: "Sony",
-        imagen: null
+        imagen: "../img/img-productos/play5.jpg"
     },
     {
         codigo: "CG001",
@@ -73,7 +73,7 @@ const PRODUCTOS = [
         stock: 6,
         stockCritico: 2,
         fabricante: "ASUS",
-        imagen: null
+        imagen: "../img/img-productos/pc-asus.jpg"
     },
     {
         codigo: "SG001",
@@ -84,7 +84,7 @@ const PRODUCTOS = [
         stock: 12,
         stockCritico: 3,
         fabricante: "Secretlab",
-        imagen: null
+        imagen: "../img/img-productos/silla.jpg"
     },
     {
         codigo: "MS001",
@@ -95,7 +95,7 @@ const PRODUCTOS = [
         stock: 35,
         stockCritico: 8,
         fabricante: "Logitech",
-        imagen: null
+        imagen: "../img/img-productos/mouse.jpg"
     },
     {
         codigo: "MP001",
@@ -106,7 +106,7 @@ const PRODUCTOS = [
         stock: 22,
         stockCritico: 5,
         fabricante: "Razer",
-        imagen: null
+        imagen: "../img/img-productos/mousepad.jpg"
     },
     {
         codigo: "PP001",
@@ -117,7 +117,7 @@ const PRODUCTOS = [
         stock: 50,
         stockCritico: 10,
         fabricante: "Level-Up Gamer",
-        imagen: null
+        imagen: "../img/img-productos/polera.jpg"
     },
     {
         codigo: "PG001",
@@ -128,7 +128,7 @@ const PRODUCTOS = [
         stock: 28,
         stockCritico: 6,
         fabricante: "Level-Up Gamer",
-        imagen: null
+        imagen: "../img/img-productos/poleron.jpg"
     },
     {
         codigo: "ST001",
@@ -139,7 +139,7 @@ const PRODUCTOS = [
         stock: 999,
         stockCritico: 0,
         fabricante: "Level-Up Gamer",
-        imagen: null
+        imagen: "../img/img-productos/mantencion.jpg"
     }
 ];
 

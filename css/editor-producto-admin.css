@@ -1,0 +1,199 @@
+/* ==========================================================================
+   EDITOR DE PRODUCTO — PANEL ADMINISTRATIVO
+   Depende de base.css y panel-admin.css
+   ========================================================================== */
+
+.editor-producto {
+    max-width: 900px;
+}
+
+.editor-producto__volver {
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    font-size: 0.9rem;
+}
+
+.editor-producto__form {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 2rem;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.editor-producto__campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 1.5rem;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.campo--ancho {
+    grid-column: 1 / -1;
+}
+
+.campo label {
+    font-size: 0.85rem;
+    color: var(--color-texto-secundario);
+}
+
+.campo .obligatorio {
+    color: var(--color-verde);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    background-color: #101010;
+    border: 1px solid var(--color-borde);
+    border-radius: 5px;
+    padding: 0.65rem 0.75rem;
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.95rem;
+}
+
+.campo textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--color-azul);
+}
+
+.campo input.campo--error,
+.campo select.campo--error,
+.campo textarea.campo--error {
+    border-color: #ff4d4d;
+}
+
+.campo__error {
+    min-height: 1.1rem;
+    font-size: 0.78rem;
+    color: #ff4d4d;
+}
+
+.campo__ayuda {
+    font-size: 0.75rem;
+    color: #777777;
+}
+
+/* Bloque de imagen (sin funcionalidad de carga aún) */
+.editor-producto__imagen {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.editor-producto__imagen label {
+    font-size: 0.85rem;
+    color: var(--color-texto-secundario);
+}
+
+.editor-producto__imagen .placeholder-img {
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Acciones del formulario */
+.editor-producto__acciones {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-borde);
+}
+
+.boton {
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--color-borde);
+    cursor: pointer;
+    background: none;
+    color: var(--color-texto-secundario);
+}
+
+.boton:hover {
+    color: var(--color-texto-principal);
+    border-color: var(--color-texto-secundario);
+}
+
+.boton-primario {
+    background-color: var(--color-azul);
+    border-color: var(--color-azul);
+    color: #000000;
+    font-weight: 700;
+}
+
+.boton-primario:hover {
+    background-color: var(--color-verde);
+    border-color: var(--color-verde);
+    color: #000000;
+}
+
+/* Toast de confirmación */
+.toast {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-verde);
+    color: var(--color-texto-principal);
+    padding: 0.9rem 1.25rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transform: translateY(1rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.toast.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast svg {
+    width: 18px;
+    height: 18px;
+    color: var(--color-verde);
+    flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+    .editor-producto__form {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-producto__campos {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-producto__imagen .placeholder-img {
+        min-height: 160px;
+        aspect-ratio: auto;
+    }
+}
