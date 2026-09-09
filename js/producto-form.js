@@ -1,154 +1,175 @@
 /* ==========================================================================
    PRODUCTO-FORM.JS
-   Validaciones en tiempo real (R.22) y almacenamiento temporal en
-   localStorage (R.16). No conecta aún con un backend ni con el listado.
+   Validación del formulario "Nuevo Producto" y guardado en localStorage.
    ========================================================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
-    const CLAVE_LOCALSTORAGE = "levelup_productos_creados";
+const PRODUCTOS_ADMIN_STORAGE_KEY = "levelupgamer_productos_admin";
 
+document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("form-producto");
-    const selectCategoria = document.getElementById("categoria");
     const toast = document.getElementById("toast-exito");
 
-    const campos = {
-        codigo: document.getElementById("codigo"),
-        nombre: document.getElementById("nombre"),
-        categoria: selectCategoria,
-        precio: document.getElementById("precio"),
-        stock: document.getElementById("stock"),
-        stockCritico: document.getElementById("stockCritico"),
-        descripcion: document.getElementById("descripcion")
-    };
+    const campoCodigo = document.getElementById("codigo");
+    const campoCategoria = document.getElementById("categoria");
+    const campoNombre = document.getElementById("nombre");
+    const campoPrecio = document.getElementById("precio");
+    const campoStock = document.getElementById("stock");
+    const campoStockCritico = document.getElementById("stockCritico");
+    const campoDescripcion = document.getElementById("descripcion");
 
-    /* --------------------------------------------------------------
-       Poblar el select de categorías desde productos.js
-       -------------------------------------------------------------- */
-    if (typeof obtenerCategorias === "function") {
-        obtenerCategorias().forEach(function (categoria) {
-            const opcion = document.createElement("option");
-            opcion.value = categoria;
-            opcion.textContent = categoria;
-            selectCategoria.appendChild(opcion);
-        });
-    }
-
-    /* --------------------------------------------------------------
-       Reglas de validación (R.16)
-       -------------------------------------------------------------- */
-    const validadores = {
-        codigo: function (valor) {
-            valor = valor.trim();
-            if (!valor) return "El código es obligatorio.";
-            if (valor.length < 3) return "Debe tener al menos 3 caracteres.";
-            return "";
-        },
-        nombre: function (valor) {
-            valor = valor.trim();
-            if (!valor) return "El nombre es obligatorio.";
-            if (valor.length > 100) return "Máximo 100 caracteres.";
-            return "";
-        },
-        categoria: function (valor) {
-            if (!valor) return "Selecciona una categoría.";
-            return "";
-        },
-        precio: function (valor) {
-            if (valor === "") return "El precio es obligatorio.";
-            const numero = Number(valor);
-            if (Number.isNaN(numero)) return "Ingresa un número válido.";
-            if (numero < 0) return "El precio no puede ser negativo.";
-            return "";
-        },
-        stock: function (valor) {
-            if (valor === "") return "El stock es obligatorio.";
-            const numero = Number(valor);
-            if (!Number.isInteger(numero)) return "El stock debe ser un número entero.";
-            if (numero < 0) return "El stock no puede ser negativo.";
-            return "";
-        },
-        stockCritico: function (valor) {
-            if (valor === "") return "";
-            const numero = Number(valor);
-            if (!Number.isInteger(numero)) return "Debe ser un número entero.";
-            if (numero < 0) return "No puede ser negativo.";
-            return "";
-        },
-        descripcion: function (valor) {
-            if (valor.length > 500) return "Máximo 500 caracteres.";
-            return "";
-        }
-    };
-
-    /* --------------------------------------------------------------
-       Mostrar / limpiar errores por campo
-       -------------------------------------------------------------- */
-    function validarCampo(nombreCampo) {
-        const input = campos[nombreCampo];
-        const mensaje = validadores[nombreCampo](input.value);
-        const spanError = document.getElementById("error-" + nombreCampo);
-
-        if (mensaje) {
-            input.classList.add("campo--error");
-            spanError.textContent = mensaje;
-        } else {
-            input.classList.remove("campo--error");
-            spanError.textContent = "";
-        }
-
-        return mensaje === "";
-    }
-
-    Object.keys(campos).forEach(function (nombreCampo) {
-        const input = campos[nombreCampo];
-        input.addEventListener("input", function () { validarCampo(nombreCampo); });
-        input.addEventListener("blur", function () { validarCampo(nombreCampo); });
-    });
-
-    /* --------------------------------------------------------------
-       Envío del formulario
-       -------------------------------------------------------------- */
     form.addEventListener("submit", function (evento) {
         evento.preventDefault();
 
-        const nombresCampos = Object.keys(campos);
-        const resultados = nombresCampos.map(validarCampo);
-        const esValido = resultados.every(Boolean);
+        limpiarErrores();
+
+        const datos = {
+            codigo: campoCodigo.value.trim(),
+            categoria: campoCategoria.value,
+            nombre: campoNombre.value.trim(),
+            precio: campoPrecio.value,
+            stock: campoStock.value,
+            stockCritico: campoStockCritico.value,
+            descripcion: campoDescripcion.value.trim()
+        };
+
+        const esValido = validarFormulario(datos);
 
         if (!esValido) {
-            const primerCampoInvalido = nombresCampos[resultados.indexOf(false)];
-            campos[primerCampoInvalido].focus();
             return;
         }
 
-        const producto = {
-            codigo: campos.codigo.value.trim(),
-            nombre: campos.nombre.value.trim(),
-            categoria: campos.categoria.value,
-            precio: Number(campos.precio.value),
-            stock: Number(campos.stock.value),
-            stockCritico: campos.stockCritico.value === "" ? null : Number(campos.stockCritico.value),
-            descripcion: campos.descripcion.value.trim(),
+        guardarProducto({
+            codigo: datos.codigo,
+            categoria: datos.categoria,
+            nombre: datos.nombre,
+            precio: Number(datos.precio),
+            stock: Number(datos.stock),
+            stockCritico: datos.stockCritico === "" ? 0 : Number(datos.stockCritico),
+            descripcion: datos.descripcion,
             imagen: null
-        };
-
-        const productosGuardados = JSON.parse(localStorage.getItem(CLAVE_LOCALSTORAGE) || "[]");
-        productosGuardados.push(producto);
-        localStorage.setItem(CLAVE_LOCALSTORAGE, JSON.stringify(productosGuardados));
-
-        mostrarToast();
-        form.reset();
-        nombresCampos.forEach(function (nombreCampo) {
-            document.getElementById("error-" + nombreCampo).textContent = "";
-            campos[nombreCampo].classList.remove("campo--error");
         });
-        campos.codigo.focus();
+
+        form.reset();
+        mostrarToast();
     });
 
+    /**
+     * Valida cada campo del formulario y muestra el mensaje de error
+     * correspondiente. Devuelve true si todo el formulario es válido.
+     */
+    function validarFormulario(datos) {
+        let esValido = true;
+
+        // Código: obligatorio, mínimo 3 caracteres, único
+        if (datos.codigo === "") {
+            mostrarError("codigo", "El código es obligatorio.");
+            esValido = false;
+        } else if (datos.codigo.length < 3) {
+            mostrarError("codigo", "El código debe tener al menos 3 caracteres.");
+            esValido = false;
+        } else if (existeCodigo(datos.codigo)) {
+            mostrarError("codigo", "Ya existe un producto con ese código.");
+            esValido = false;
+        }
+
+        // Categoría: obligatoria
+        if (datos.categoria === "") {
+            mostrarError("categoria", "Debes seleccionar una categoría.");
+            esValido = false;
+        }
+
+        // Nombre: obligatorio
+        if (datos.nombre === "") {
+            mostrarError("nombre", "El nombre es obligatorio.");
+            esValido = false;
+        }
+
+        // Precio: obligatorio, número, mayor o igual a 0
+        if (datos.precio === "") {
+            mostrarError("precio", "El precio es obligatorio.");
+            esValido = false;
+        } else if (isNaN(datos.precio) || Number(datos.precio) < 0) {
+            mostrarError("precio", "Ingresa un precio válido (0 o mayor).");
+            esValido = false;
+        }
+
+        // Stock: obligatorio, número entero, mayor o igual a 0
+        if (datos.stock === "") {
+            mostrarError("stock", "El stock es obligatorio.");
+            esValido = false;
+        } else if (isNaN(datos.stock) || Number(datos.stock) < 0 || !Number.isInteger(Number(datos.stock))) {
+            mostrarError("stock", "Ingresa un número entero (0 o mayor).");
+            esValido = false;
+        }
+
+        // Stock crítico: opcional, pero si se ingresa debe ser un entero válido
+        if (datos.stockCritico !== "" && (isNaN(datos.stockCritico) || Number(datos.stockCritico) < 0 || !Number.isInteger(Number(datos.stockCritico)))) {
+            mostrarError("stockCritico", "Ingresa un número entero (0 o mayor).");
+            esValido = false;
+        }
+
+        return esValido;
+    }
+
+    /**
+     * Verifica si un código ya existe entre los productos base
+     * y los productos guardados por el administrador.
+     */
+    function existeCodigo(codigo) {
+        const enBase = PRODUCTOS.some(function (p) { return p.codigo.toLowerCase() === codigo.toLowerCase(); });
+        const enGuardados = obtenerProductosGuardados().some(function (p) { return p.codigo.toLowerCase() === codigo.toLowerCase(); });
+        return enBase || enGuardados;
+    }
+
+    function mostrarError(idCampo, mensaje) {
+        const spanError = document.getElementById("error-" + idCampo);
+        const input = document.getElementById(idCampo);
+        if (spanError) {
+            spanError.textContent = mensaje;
+        }
+        if (input) {
+            input.classList.add("campo--invalido");
+        }
+    }
+
+    function limpiarErrores() {
+        const errores = form.querySelectorAll(".campo__error");
+        errores.forEach(function (span) { span.textContent = ""; });
+
+        const invalidos = form.querySelectorAll(".campo--invalido");
+        invalidos.forEach(function (input) { input.classList.remove("campo--invalido"); });
+    }
+
     function mostrarToast() {
-        toast.classList.add("visible");
-        window.setTimeout(function () {
-            toast.classList.remove("visible");
-        }, 3000);
+        toast.classList.add("show");
+        setTimeout(function () {
+            toast.classList.remove("show");
+        }, 2500);
     }
 });
+
+/**
+ * Recupera los productos guardados por el administrador desde localStorage.
+ */
+function obtenerProductosGuardados() {
+    try {
+        const data = localStorage.getItem(PRODUCTOS_ADMIN_STORAGE_KEY);
+        return data ? JSON.parse(data) : [];
+    } catch (error) {
+        console.error("No se pudo leer los productos guardados:", error);
+        return [];
+    }
+}
+
+/**
+ * Añade un nuevo producto a la lista guardada en localStorage.
+ */
+function guardarProducto(producto) {
+    const productos = obtenerProductosGuardados();
+    productos.push(producto);
+    try {
+        localStorage.setItem(PRODUCTOS_ADMIN_STORAGE_KEY, JSON.stringify(productos));
+    } catch (error) {
+        console.error("No se pudo guardar el producto:", error);
+    }
+}

@@ -17,29 +17,13 @@
             <div>
                 <div class="admin-sidebar__marca">
                     <img src="../img/img-index/logo1.png" alt="Logo Level-Up Gamer">
-                    
                 </div>
 
                 <nav class="admin-nav" aria-label="Navegación administrativa">
                     <ul>
-                        <li>
-                            <a href="index.html">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
-                                Inicio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="productos.html">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>
-                                Productos
-                            </a>
-                        </li>
-                        <li>
-                            <a href="usuarios.html" class="activo">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1c0-3 3-5 7-5s7 2 7 5v1"/><path d="M16 4a4 4 0 010 8"/><path d="M22 21v-1c0-2.5-2-4.3-5-4.9"/></svg>
-                                Usuarios
-                            </a>
-                        </li>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="usuarios.html" class="activo">Usuarios</a></li>
                     </ul>
                 </nav>
             </div>
@@ -47,18 +31,8 @@
             <div class="admin-sidebar__pie">
                 <nav class="admin-nav" aria-label="Cuenta">
                     <ul>
-                        <li>
-                            <a href="perfil.html">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-                                Perfil
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../login.html">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
-                                Cerrar sesión
-                            </a>
-                        </li>
+                        <li><a href="perfil.html">Perfil</a></li>
+                        <li><a href="../login.html">Cerrar sesión</a></li>
                     </ul>
                 </nav>
             </div>
@@ -81,13 +55,126 @@
                             <th>Nombre completo</th>
                             <th>Correo</th>
                             <th>Tipo de usuario</th>
-                            <th>Comuna / Región</th>
-                            <th>Edad</th>
+                            <th>Región</th>
+                            <th>Comuna</th>
+                            <th>Descuento DUOC</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="cuerpo-tabla-usuarios">
-                        <!-- Filas generadas dinámicamente desde USUARIOS (usuarios.js) -->
+                    <tbody>
+
+                        <tr>
+                            <td>11.111.111-1</td>
+                            <td>Camila Reyes Muñoz</td>
+                            <td>camila.reyes@duoc.cl</td>
+                            <td>Administrador</td>
+                            <td>Metropolitana de Santiago</td>
+                            <td>Providencia</td>
+                            <td>Sí</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="usuario-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>22.222.222-2</td>
+                            <td>Diego Fernández Soto</td>
+                            <td>diego.fernandez@gmail.com</td>
+                            <td>Vendedor</td>
+                            <td>Valparaíso</td>
+                            <td>Viña del Mar</td>
+                            <td>No</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="usuario-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>15.678.234-3</td>
+                            <td>Javiera Muñoz Rojas</td>
+                            <td>javiera.munoz@profesor.duoc.cl</td>
+                            <td>Vendedor</td>
+                            <td>Biobío</td>
+                            <td>Concepción</td>
+                            <td>Sí</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="usuario-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>20.301.456-2</td>
+                            <td>Matías López Contreras</td>
+                            <td>matias.lopez@gmail.com</td>
+                            <td>Cliente</td>
+                            <td>Metropolitana de Santiago</td>
+                            <td>Maipú</td>
+                            <td>No</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="usuario-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>9.876.543-3</td>
+                            <td>Fernanda Torres Vidal</td>
+                            <td>fernanda.torres@duoc.cl</td>
+                            <td>Cliente</td>
+                            <td>Valparaíso</td>
+                            <td>Quilpué</td>
+                            <td>Sí</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="usuario-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>8.765.432-K</td>
+                            <td>Benjamín Castro Araya</td>
+                            <td>benjamin.castro@gmail.com</td>
+                            <td>Cliente</td>
+                            <td>La Araucanía</td>
+                            <td>Temuco</td>
+                            <td>No</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="usuario-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>17.234.567-0</td>
+                            <td>Antonia Fuentes Silva</td>
+                            <td>antonia.fuentes@gmail.com</td>
+                            <td>Cliente</td>
+                            <td>Coquimbo</td>
+                            <td>La Serena</td>
+                            <td>No</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="usuario-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>6.543.210-2</td>
+                            <td>Ignacio Pérez Vega</td>
+                            <td>ignacio.perez@duoc.cl</td>
+                            <td>Vendedor</td>
+                            <td>Los Lagos</td>
+                            <td>Puerto Montt</td>
+                            <td>Sí</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="usuario-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
                     </tbody>
                 </table>
             </section>
@@ -95,7 +182,5 @@
 
     </div>
 
-    <script src="../js/usuarios.js"></script>
-    <script src="../js/lista-usuarios.js"></script>
 </body>
 </html>
