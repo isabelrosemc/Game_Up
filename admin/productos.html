@@ -17,29 +17,13 @@
             <div>
                 <div class="admin-sidebar__marca">
                     <img src="../img/img-index/logo1.png" alt="Logo Level-Up Gamer">
-                    
                 </div>
 
                 <nav class="admin-nav" aria-label="Navegación administrativa">
                     <ul>
-                        <li>
-                            <a href="index.html">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
-                                Inicio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="productos.html" class="activo">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>
-                                Productos
-                            </a>
-                        </li>
-                        <li>
-                            <a href="usuarios.html">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1c0-3 3-5 7-5s7 2 7 5v1"/><path d="M16 4a4 4 0 010 8"/><path d="M22 21v-1c0-2.5-2-4.3-5-4.9"/></svg>
-                                Usuarios
-                            </a>
-                        </li>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="productos.html" class="activo">Productos</a></li>
+                        <li><a href="usuarios.html">Usuarios</a></li>
                     </ul>
                 </nav>
             </div>
@@ -47,18 +31,8 @@
             <div class="admin-sidebar__pie">
                 <nav class="admin-nav" aria-label="Cuenta">
                     <ul>
-                        <li>
-                            <a href="perfil.html">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-                                Perfil
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../login.html">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
-                                Cerrar sesión
-                            </a>
-                        </li>
+                        <li><a href="perfil.html">Perfil</a></li>
+                        <li><a href="../login.html">Cerrar sesión</a></li>
                     </ul>
                 </nav>
             </div>
@@ -87,8 +61,176 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="cuerpo-tabla-productos">
-                        <!-- Filas generadas dinámicamente desde PRODUCTOS (productos.js) -->
+                    <tbody>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/catan.jpg" alt="Catan"></td>
+                            <td>JM001</td>
+                            <td>Catan</td>
+                            <td>Juegos de Mesa</td>
+                            <td>$29.990</td>
+                            <td>25</td>
+                            <td>5</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/carcassonne.jpg" alt="Carcassonne"></td>
+                            <td>JM002</td>
+                            <td>Carcassonne</td>
+                            <td>Juegos de Mesa</td>
+                            <td>$24.990</td>
+                            <td>18</td>
+                            <td>5</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/control-xbox.jpg" alt="Controlador Inalámbrico Xbox Series X"></td>
+                            <td>AC001</td>
+                            <td>Controlador Inalámbrico Xbox Series X</td>
+                            <td>Accesorios</td>
+                            <td>$59.990</td>
+                            <td>40</td>
+                            <td>8</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/auris-hyperx.jpg" alt="Auriculares Gamer HyperX Cloud II"></td>
+                            <td>AC002</td>
+                            <td>Auriculares Gamer HyperX Cloud II</td>
+                            <td>Accesorios</td>
+                            <td>$79.990</td>
+                            <td>30</td>
+                            <td>6</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/play5.jpg" alt="PlayStation 5"></td>
+                            <td>CO001</td>
+                            <td>PlayStation 5</td>
+                            <td>Consolas</td>
+                            <td>$549.990</td>
+                            <td>10</td>
+                            <td>3</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/pc-asus.jpg" alt="PC Gamer ASUS ROG Strix"></td>
+                            <td>CG001</td>
+                            <td>PC Gamer ASUS ROG Strix</td>
+                            <td>Computadores Gamers</td>
+                            <td>$1.299.990</td>
+                            <td>6</td>
+                            <td>2</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/silla.jpg" alt="Silla Gamer Secretlab Titan"></td>
+                            <td>SG001</td>
+                            <td>Silla Gamer Secretlab Titan</td>
+                            <td>Sillas Gamers</td>
+                            <td>$349.990</td>
+                            <td>12</td>
+                            <td>3</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/mouse.jpg" alt="Mouse Gamer Logitech G502 HERO"></td>
+                            <td>MS001</td>
+                            <td>Mouse Gamer Logitech G502 HERO</td>
+                            <td>Mouse</td>
+                            <td>$49.990</td>
+                            <td>35</td>
+                            <td>8</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/mousepad.jpg" alt="Mousepad Razer Goliathus Extended Chroma"></td>
+                            <td>MP001</td>
+                            <td>Mousepad Razer Goliathus Extended Chroma</td>
+                            <td>Mousepad</td>
+                            <td>$29.990</td>
+                            <td>22</td>
+                            <td>5</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/polera.jpg" alt="Polera Gamer Personalizada Level-Up"></td>
+                            <td>PP001</td>
+                            <td>Polera Gamer Personalizada 'Level-Up'</td>
+                            <td>Poleras Personalizadas</td>
+                            <td>$14.990</td>
+                            <td>50</td>
+                            <td>10</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/poleron.jpg" alt="Polerón Gamer Personalizado Level-Up"></td>
+                            <td>PG001</td>
+                            <td>Polerón Gamer Personalizado 'Level-Up'</td>
+                            <td>Polerones Gamers Personalizados</td>
+                            <td>$24.990</td>
+                            <td>28</td>
+                            <td>6</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><img class="tabla-admin__imagen" src="../img/img-productos/mantencion.jpg" alt="Mantención y Limpieza de PC Gamer"></td>
+                            <td>ST001</td>
+                            <td>Mantención y Limpieza de PC Gamer</td>
+                            <td>Servicio Técnico</td>
+                            <td>$19.990</td>
+                            <td>999</td>
+                            <td>0</td>
+                            <td class="tabla-admin__acciones">
+                                <a href="producto-form.html" class="boton">Editar</a>
+                                <a href="#" class="boton boton-peligro">Eliminar</a>
+                            </td>
+                        </tr>
+
                     </tbody>
                 </table>
             </section>
@@ -96,7 +238,5 @@
 
     </div>
 
-    <script src="../js/productos.js"></script>
-    <script src="../js/lista-productos.js"></script>
 </body>
 </html>
