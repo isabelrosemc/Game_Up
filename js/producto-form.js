@@ -112,13 +112,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /**
-     * Verifica si un código ya existe entre los productos base
-     * y los productos guardados por el administrador.
+     * Verifica si un código ya existe entre los productos guardados en localStorage.
      */
     function existeCodigo(codigo) {
-        const enBase = PRODUCTOS.some(function (p) { return p.codigo.toLowerCase() === codigo.toLowerCase(); });
-        const enGuardados = obtenerProductosGuardados().some(function (p) { return p.codigo.toLowerCase() === codigo.toLowerCase(); });
-        return enBase || enGuardados;
+        return obtenerProductosGuardados().some(function (p) { return p.codigo.toLowerCase() === codigo.toLowerCase(); });
     }
 
     function mostrarError(idCampo, mensaje) {

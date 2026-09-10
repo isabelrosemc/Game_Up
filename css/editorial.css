@@ -46,23 +46,14 @@
     order: 1;
 }
 
-.editorial-media .placeholder-img {
+.editorial-media .img-box {
     min-height: 260px;
     border-radius: 6px;
 }
 
-/* Cuando .placeholder-img se usa en una <img> real (fotos de historia, misión/
-   visión, valores o impacto comunitario), object-fit hace que la imagen rellene
-   la caja recortando lo que sobre, sin estirarse ni deformarse. Cubre:
-   - .editorial-media img (historia, misión y visión)
-   - .value-icon img (íconos de valores: comunidad, calidad, innovación)
-   - .banner-card img (impacto comunitario) */
-.editorial-media img.placeholder-img,
-.value-card img.placeholder-img,
-.banner-card img.placeholder-img {
-    object-fit: cover;
-    display: block;
-}
+/* .img-box ya trae object-fit: cover en sus tamaños (img-md, img-lg), por lo
+   que las fotos reales (historia, misión/visión, valores, impacto comunitario)
+   rellenan la caja sin deformarse automáticamente. */
 
 .editorial-content h2 {
     font-size: 1.5rem;
@@ -109,12 +100,13 @@
     text-align: center;
 }
 
-.value-card .value-icon {
+.value-card .img-box {
     width: 48px;
     height: 48px;
     margin: 0 auto 1rem auto;
     min-height: auto;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .value-card h3 {
@@ -177,20 +169,13 @@
     border-color: var(--color-azul);
 }
 
-.team-card .placeholder-img {
+.team-card .img-box {
     width: 96px;
     height: 96px;
     min-height: auto;
     border-radius: 50%;
     margin: 0 auto 1rem auto;
-}
-
-/* Cuando .placeholder-img se usa en una <img> real (foto de un integrante),
-   object-fit hace que la foto rellene el círculo sin deformarse, recortando
-   lo que sobre en vez de estirar la imagen. */
-.team-card img.placeholder-img {
     object-fit: cover;
-    display: block;
 }
 
 .team-card h3 {
@@ -229,7 +214,7 @@
     flex-direction: column;
 }
 
-.article-card .placeholder-img {
+.article-card .img-box {
     min-height: 180px;
 }
 
@@ -467,7 +452,7 @@
     padding: 0;
 }
 
-.persona-foto.doble .placeholder-img {
+.persona-foto.doble .img-box {
     min-height: 160px;
     border-radius: 6px;
 }
@@ -522,8 +507,81 @@
     text-decoration: underline;
 }
 
-.persona-fuente a:hover {
+/* ==========================================================================
+   EVENTOS (grid de tarjetas con fecha destacada)
+   Usado en eventos.html
+   ========================================================================== */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.event-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.event-card:hover {
+    border-color: var(--color-azul);
+}
+
+.event-date {
+    background-color: #101010;
+    text-align: center;
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.event-date .event-day {
+    display: block;
+    font-family: var(--fuente-titulos);
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--color-azul);
+}
+
+.event-date .event-month {
+    font-family: var(--fuente-titulos);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--color-texto-secundario);
+}
+
+.event-body {
+    padding: 1.5rem;
+}
+
+.event-type {
+    display: inline-block;
+    font-family: var(--fuente-titulos);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: var(--color-verde);
+    margin-bottom: 0.7rem;
+}
+
+.event-body h3 {
+    font-size: 1.2rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.8rem;
+}
+
+.event-body p {
+    color: var(--color-texto-secundario);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 
