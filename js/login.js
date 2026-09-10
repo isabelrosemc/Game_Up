@@ -1,3 +1,8 @@
+/* ==========================================================================
+   VALIDACIONES DEL FORMULARIO DE LOGIN
+   Level-Up Gamer
+   ========================================================================== */
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const formulario = document.querySelector(".form-card");
@@ -5,17 +10,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const password = document.getElementById("password");
     const botonMostrar = document.querySelector(".input-toggle-visibility");
 
+    // Mostrar / ocultar contraseña
     botonMostrar.addEventListener("click", function () {
 
         if (password.type === "password") {
             password.type = "text";
-            botonMostrar.textContent = "🙈";
+            
         } else {
             password.type = "password";
-            botonMostrar.textContent = "👁️";
+            
         }
 
     });
+
+    // Muestra u oculta el mensaje de error de un campo puntual
+    function marcarError(input, idError, mensaje) {
+        const spanError = document.getElementById(idError);
+        if (spanError) spanError.textContent = mensaje;
+        input.classList.toggle("campo-invalido", mensaje !== "");
+    }
 
     formulario.addEventListener("submit", function (event) {
 
@@ -23,30 +36,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const correo = email.value.trim();
         const clave = password.value.trim();
+        let esValido = true;
 
+        // Validar correo
         if (correo === "") {
-            alert("Por favor, ingresa tu correo electrónico.");
-            return;
+            marcarError(email, "error-email", "Por favor, ingresa tu correo electrónico.");
+            esValido = false;
+        } else {
+            const formatoCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!formatoCorreo.test(correo)) {
+                marcarError(email, "error-email", "Ingresa un correo electrónico válido.");
+                esValido = false;
+            } else {
+                marcarError(email, "error-email", "");
+            }
         }
 
-        const formatoCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!formatoCorreo.test(correo)) {
-            alert("Ingresa un correo electrónico válido.");
-            return;
-        }
-
+        // Validar contraseña
         if (clave === "") {
-            alert("Por favor, ingresa tu contraseña.");
-            return;
+            marcarError(password, "error-password", "Por favor, ingresa tu contraseña.");
+            esValido = false;
+        } else if (clave.length < 6) {
+            marcarError(password, "error-password", "La contraseña debe tener al menos 6 caracteres.");
+            esValido = false;
+        } else {
+            marcarError(password, "error-password", "");
         }
 
-        if (clave.length < 6) {
-            alert("La contraseña debe tener al menos 6 caracteres.");
-            return;
-        }
+        if (!esValido) return;
 
-        alert("Inicio de sesión realizado correctamente.");
+        // Login válido: guardamos la sesión en LocalStorage
+        const sesion = {
+            correo: correo,
+            clave: clave
+        };
+        localStorage.setItem("levelup_sesion", JSON.stringify(sesion));
+
+        window.location.href = "index.html";
     });
 
 });

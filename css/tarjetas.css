@@ -1,0 +1,182 @@
+/* ==========================================================================
+   SISTEMA DE IMÁGENES REUTILIZABLE + TARJETAS DE CATEGORÍAS Y PRODUCTOS
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. SISTEMA DE IMÁGENES (usar en toda la página: logos, banners, iconos,
+      fotos de producto, avatares, etc.)
+
+   Uso: combinar .img-box con un tamaño (.img-sm / .img-md / .img-lg)
+        y opcionalmente .img-placeholder si aún no hay imagen real.
+
+   Ejemplos:
+     <div class="img-box img-sm"></div>                -> icono/avatar
+     <img class="img-box img-md" src="...">             -> foto de producto
+     <div class="img-box img-lg img-placeholder">IMG</div> -> banner sin imagen
+   -------------------------------------------------------------------------- */
+
+.img-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Tamaños */
+.img-ss {
+    width: 100px;
+    height: 40px;
+}
+
+.img-s {
+    width: 100px;
+    height: 100px;
+}
+
+.img-m {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.img-l {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.img-xl {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.img-xxl {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.img-xxxl {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+/* Variante "sin imagen real": caja punteada con texto placeholder */
+.img-placeholder {
+    background-color: #121212;
+    border: 1px dashed #333333;
+    color: #555555;
+    font-family: var(--fuente-titulos);
+    font-size: 0.75rem;
+    min-height: 200px;
+}
+
+/* --------------------------------------------------------------------------
+   2. GRID DE CATEGORÍAS GAMER (4 Columnas)
+   -------------------------------------------------------------------------- */
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.category-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-radius: 20px;
+    transition: border-color 0.3s ease;
+}
+
+.category-card:hover {
+    border-color: var(--color-azul);
+}
+
+.category-card .img-box {
+    margin: 0 auto 0.8rem auto;
+}
+
+.category-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.category-card p {
+    font-size: 0.75rem;
+    color: var(--color-texto-secundario);
+}
+
+/* --------------------------------------------------------------------------
+   3. GRID DE PRODUCTOS DESTACADOS (3 Columnas)
+   -------------------------------------------------------------------------- */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.product-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.product-card .img-box {
+    margin-bottom: 1rem;
+}
+
+.product-category {
+    font-size: 0.7rem;
+    color: var(--color-texto-secundario);
+    text-transform: uppercase;
+}
+
+.product-title {
+    font-size: 0.95rem;
+    margin: 0.3rem 0;
+}
+
+.product-rating {
+    color: var(--color-verde);
+    font-size: 0.75rem;
+    margin-bottom: 0.8rem;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.product-price {
+    font-family: var(--fuente-titulos);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.btn-add {
+    background-color: var(--color-azul);
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: var(--fuente-titulos);
+    font-size: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-add:hover {
+    background-color: var(--color-verde);
+    color: #000000;
+}

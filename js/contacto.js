@@ -1,61 +1,103 @@
+/* ==========================================================================
+   VALIDACIONES DEL FORMULARIO DE CONTACTO
+   Level-Up Gamer
+   ========================================================================== */
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    const formulario = document.querySelector("form");
+  const form = document.querySelector("form");
+  if (!form) return; // esta página no tiene el formulario de contacto
 
-    formulario.addEventListener("submit", function (event) {
+  const mensajeExito = document.getElementById("form-success");
 
-        event.preventDefault();
+  // Reglas de validación: id del campo -> función que retorna el mensaje de error (o "" si es válido)
+  const reglas = {
+    nombre: function (valor) {
+      if (valor.trim() === "") return "Por favor, ingresa tu nombre.";
+      if (valor.trim().length < 3) return "El nombre debe tener al menos 3 caracteres.";
+      return "";
+    },
+    correo: function (valor) {
+      if (valor.trim() === "") return "Por favor, ingresa tu correo electrónico.";
+      const formatoCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!formatoCorreo.test(valor.trim())) return "Ingresa un correo electrónico válido.";
+      return "";
+    },
+    asunto: function (valor) {
+      if (valor.trim() === "") return "Por favor, ingresa el asunto.";
+      if (valor.trim().length < 5) return "El asunto debe tener al menos 5 caracteres.";
+      return "";
+    },
+    mensaje: function (valor) {
+      if (valor.trim() === "") return "Por favor, escribe tu mensaje.";
+      if (valor.trim().length < 10) return "El mensaje debe tener al menos 10 caracteres.";
+      return "";
+    }
+  };
 
-        const nombre = document.getElementById("nombre").value.trim();
-        const correo = document.getElementById("correo").value.trim();
-        const asunto = document.getElementById("asunto").value.trim();
-        const mensaje = document.getElementById("mensaje").value.trim();
+  // Muestra u oculta el mensaje de error de un campo puntual
+  function marcarCampo(idCampo, error) {
+    const input = document.getElementById(idCampo);
+    const spanError = document.getElementById("error-" + idCampo);
+    if (spanError) spanError.textContent = error;
+    if (input) input.classList.toggle("campo-invalido", error !== "");
+  }
 
-        if (nombre === "") {
-            alert("Por favor, ingresa tu nombre.");
-            return;
-        }
+  // Valida todos los campos con reglas definidas. Retorna true si todo es válido.
+  function validarFormulario() {
+    let esValido = true;
 
-        if (nombre.length < 3) {
-            alert("El nombre debe tener al menos 3 caracteres.");
-            return;
-        }
-
-        if (correo === "") {
-            alert("Por favor, ingresa tu correo electrónico.");
-            return;
-        }
-
-        const formatoCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!formatoCorreo.test(correo)) {
-            alert("Ingresa un correo electrónico válido.");
-            return;
-        }
-
-        if (asunto === "") {
-            alert("Por favor, ingresa el asunto.");
-            return;
-        }
-
-        if (asunto.length < 5) {
-            alert("El asunto debe tener al menos 5 caracteres.");
-            return;
-        }
-
-        if (mensaje === "") {
-            alert("Por favor, escribe tu mensaje.");
-            return;
-        }
-
-        if (mensaje.length < 10) {
-            alert("El mensaje debe tener al menos 10 caracteres.");
-            return;
-        }
-
-        alert("Mensaje enviado correctamente.");
-
-        formulario.reset();
+    Object.keys(reglas).forEach(function (idCampo) {
+      const input = document.getElementById(idCampo);
+      const error = reglas[idCampo](input.value);
+      marcarCampo(idCampo, error);
+      if (error !== "") esValido = false;
     });
+
+    return esValido;
+  }
+
+  // Quita el error de un campo apenas el usuario empieza a corregirlo
+  Object.keys(reglas).forEach(function (idCampo) {
+    const input = document.getElementById(idCampo);
+    if (input) {
+      input.addEventListener("input", function () {
+        marcarCampo(idCampo, reglas[idCampo](input.value));
+      });
+    }
+  });
+
+  form.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    if (mensajeExito) mensajeExito.style.display = "none";
+
+    if (!validarFormulario()) {
+      return;
+    }
+
+    // Formulario válido: guardamos el mensaje en LocalStorage
+    const mensajeContacto = {
+      fecha: new Date().toISOString(),
+      nombre: document.getElementById("nombre").value.trim(),
+      correo: document.getElementById("correo").value.trim(),
+      asunto: document.getElementById("asunto").value.trim(),
+      mensaje: document.getElementById("mensaje").value.trim()
+    };
+
+    // Se guardan todos los mensajes en una lista dentro de LocalStorage
+    const mensajesPrevios = JSON.parse(localStorage.getItem("levelup_mensajes_contacto") || "[]");
+    mensajesPrevios.push(mensajeContacto);
+    localStorage.setItem("levelup_mensajes_contacto", JSON.stringify(mensajesPrevios));
+
+    // Mostramos el mensaje de éxito y limpiamos los campos
+    if (mensajeExito) {
+      mensajeExito.textContent = "Mensaje enviado correctamente. Te responderemos a la brevedad.";
+      mensajeExito.style.display = "block";
+      mensajeExito.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    form.reset();
+  });
 
 });

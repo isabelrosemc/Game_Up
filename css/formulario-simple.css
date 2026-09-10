@@ -1,5 +1,5 @@
 /* ==========================================================================
-   FORMULARIO SIMPLE (LOGIN, REGISTRO, RECUPERAR CONTRASEÑA)
+   FORMULARIO SIMPLE (LOGIN, REGISTRO, RECUPERAR CONTRASEÑA, CONTACTO)
    Reutiliza variables y clases base ya definidas en base.css
    (--color-fondo, --color-tarjeta, --color-borde, --color-azul, --color-verde,
    --color-texto-principal, --color-texto-secundario, --fuente-titulos,
@@ -79,6 +79,83 @@
 
 .form-label-row a {
     font-size: 0.8rem;
+}
+
+/* --- Input de texto simple (sin ícono): usado en nombre, correo, asunto, etc. --- */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"] {
+    width: 100%;
+    background-color: #0d0d0d;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input::placeholder {
+    color: #666666;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-azul);
+}
+
+/* Borde rojo cuando el JS marca el campo como inválido */
+.form-group input.campo-invalido,
+.form-group textarea.campo-invalido,
+.form-group select.campo-invalido {
+    border-color: #ff4d4d;
+}
+
+/* --- Textarea (ej. mensaje de contacto) ---
+   resize: none evita que el usuario lo agrande arrastrando la esquina,
+   así el campo nunca se sale de su contenedor. */
+.form-group textarea {
+    width: 100%;
+    background-color: #0d0d0d;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group textarea::placeholder {
+    color: #666666;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-azul);
+}
+
+/* --- Mensajes de validación por campo --- */
+.error-message {
+    display: block;
+    color: #ff4d4d;
+    font-size: 0.78rem;
+    margin-top: 0.4rem;
+}
+
+/* --- Mensaje de éxito al enviar el formulario --- */
+.success-message {
+    background-color: #052300;
+    border: 1px solid var(--color-verde);
+    color: var(--color-verde);
+    font-size: 0.85rem;
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1.3rem;
 }
 
 /* --- Input con ícono incrustado --- */
@@ -195,6 +272,7 @@
 .form-footer-text a {
     font-weight: 500;
 }
+
 /* --- Select de formularios --- */
 .form-group select {
     width: 100%;

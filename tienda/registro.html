@@ -7,11 +7,10 @@
 
     <title>Registro | Level-Up Gamer</title>
 
-    <!-- Estilos generales del proyecto -->
-    <link rel="stylesheet" href="../css/estilos.css">
-
-    <!-- Estilos para formularios -->
-    <link rel="stylesheet" href="../css/formulario-simple.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/tarjetas.css">
+    <link rel="stylesheet" href="../css/formulario-usuario.css">
 </head>
 
 <body>
@@ -19,15 +18,13 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo">
-                <a href="index.html">
-                    <span class="logo-text">LEVEL-UP GAMER</span>
-                    <span class="logo-subtext">TIENDA GAMER</span>
-                </a>
+                <a href="index.html" ><img class="img-box img-s"  src="../img/img-index/logo.png" alt="Level-Up Gamer Logo"></a>
+                
             </div>
 
             <nav class="main-nav">
                 <ul class="main-nav-list">
-                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="catalogo-productos.html">Catálogo</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="eventos.html">Eventos</a></li>
@@ -62,11 +59,14 @@
 
             </div>
 
-            <form class="form-card" novalidate>
+            <form class="form-card" id="form-usuario" novalidate>
+
+                <!-- Tipo de usuario fijo: quien se registra desde la tienda siempre es Cliente -->
+                <input type="hidden" id="tipoUsuario" name="tipoUsuario" value="Cliente">
 
                 <!-- RUN -->
                 <div class="form-group">
-                    <label for="run">RUN</label>
+                    <label for="run">RUN <span class="obligatorio">*</span></label>
 
                     <div class="input-with-icon">
                         <input
@@ -74,13 +74,17 @@
                             id="run"
                             name="run"
                             placeholder="19011022K"
-                            maxlength="9">
+                            minlength="7"
+                            maxlength="9"
+                            required>
                     </div>
+                    <span class="campo__ayuda">Sin puntos ni guion. Entre 7 y 9 caracteres.</span>
+                    <span class="campo__error" id="error-run"></span>
                 </div>
 
                 <!-- NOMBRE -->
                 <div class="form-group">
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre">Nombre <span class="obligatorio">*</span></label>
 
                     <div class="input-with-icon">
                         <input
@@ -88,13 +92,15 @@
                             id="nombre"
                             name="nombre"
                             placeholder="Ingresa tu nombre"
-                            maxlength="50">
+                            maxlength="50"
+                            required>
                     </div>
+                    <span class="campo__error" id="error-nombre"></span>
                 </div>
 
                 <!-- APELLIDOS -->
                 <div class="form-group">
-                    <label for="apellidos">Apellidos</label>
+                    <label for="apellidos">Apellidos <span class="obligatorio">*</span></label>
 
                     <div class="input-with-icon">
                         <input
@@ -102,13 +108,15 @@
                             id="apellidos"
                             name="apellidos"
                             placeholder="Ingresa tus apellidos"
-                            maxlength="100">
+                            maxlength="100"
+                            required>
                     </div>
+                    <span class="campo__error" id="error-apellidos"></span>
                 </div>
 
                 <!-- CORREO -->
                 <div class="form-group">
-                    <label for="correo">Correo electrónico</label>
+                    <label for="correo">Correo electrónico <span class="obligatorio">*</span></label>
 
                     <div class="input-with-icon">
                         <input
@@ -116,43 +124,85 @@
                             id="correo"
                             name="correo"
                             placeholder="correo@duoc.cl"
-                            maxlength="100">
+                            maxlength="100"
+                            required>
                     </div>
+                    <span class="campo__ayuda">Solo @duoc.cl, @profesor.duoc.cl o @gmail.com.</span>
+                    <span class="campo__error" id="error-correo"></span>
+                </div>
+
+                <!-- CONTRASEÑA -->
+                <div class="form-group">
+                    <label for="contrasena">Contraseña <span class="obligatorio">*</span></label>
+
+                    <div class="input-with-icon">
+                        <input
+                            type="password"
+                            id="contrasena"
+                            name="contrasena"
+                            placeholder="Crea una contraseña"
+                            minlength="4"
+                            maxlength="10"
+                            required>
+                    </div>
+                    <span class="campo__ayuda">Entre 4 y 10 caracteres.</span>
+                    <span class="campo__error" id="error-contrasena"></span>
                 </div>
 
                 <!-- FECHA DE NACIMIENTO -->
                 <div class="form-group">
-                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                    <label for="fechaNacimiento">Fecha de nacimiento <span class="obligatorio">*</span></label>
 
                     <div class="input-with-icon">
                         <input
                             type="date"
                             id="fechaNacimiento"
-                            name="fechaNacimiento">
+                            name="fechaNacimiento"
+                            required>
                     </div>
+                    <span class="campo__ayuda">Debes ser mayor de 18 años.</span>
+                    <span class="campo__error" id="error-fechaNacimiento"></span>
                 </div>
 
                 <!-- REGIÓN -->
                 <div class="form-group">
-                    <label for="region">Región</label>
+                    <label for="region">Región <span class="obligatorio">*</span></label>
 
-                    <select id="region" name="region">
-                        <option value="">Seleccione una región</option>
+                    <select id="region" name="region" required>
+                        <option value="" selected disabled>Seleccione una región</option>
+                        <option value="Arica y Parinacota">Arica y Parinacota</option>
+                        <option value="Tarapacá">Tarapacá</option>
+                        <option value="Antofagasta">Antofagasta</option>
+                        <option value="Atacama">Atacama</option>
+                        <option value="Coquimbo">Coquimbo</option>
+                        <option value="Valparaíso">Valparaíso</option>
+                        <option value="Metropolitana de Santiago">Metropolitana de Santiago</option>
+                        <option value="Libertador General Bernardo O'Higgins">Libertador General Bernardo O'Higgins</option>
+                        <option value="Maule">Maule</option>
+                        <option value="Ñuble">Ñuble</option>
+                        <option value="Biobío">Biobío</option>
+                        <option value="La Araucanía">La Araucanía</option>
+                        <option value="Los Ríos">Los Ríos</option>
+                        <option value="Los Lagos">Los Lagos</option>
+                        <option value="Aysén del General Carlos Ibáñez del Campo">Aysén del General Carlos Ibáñez del Campo</option>
+                        <option value="Magallanes y de la Antártica Chilena">Magallanes y de la Antártica Chilena</option>
                     </select>
+                    <span class="campo__error" id="error-region"></span>
                 </div>
 
                 <!-- COMUNA -->
                 <div class="form-group">
-                    <label for="comuna">Comuna</label>
+                    <label for="comuna">Comuna <span class="obligatorio">*</span></label>
 
-                    <select id="comuna" name="comuna" disabled>
-                        <option value="">Seleccione una comuna</option>
+                    <select id="comuna" name="comuna" required disabled>
+                        <option value="" selected disabled>Selecciona tu región primero</option>
                     </select>
+                    <span class="campo__error" id="error-comuna"></span>
                 </div>
 
                 <!-- DIRECCIÓN -->
                 <div class="form-group">
-                    <label for="direccion">Dirección</label>
+                    <label for="direccion">Dirección <span class="obligatorio">*</span></label>
 
                     <div class="input-with-icon">
                         <input
@@ -160,8 +210,10 @@
                             id="direccion"
                             name="direccion"
                             placeholder="Ingresa tu dirección"
-                            maxlength="300">
+                            maxlength="300"
+                            required>
                     </div>
+                    <span class="campo__error" id="error-direccion"></span>
                 </div>
 
                 <button type="submit" class="btn-form-primary">
@@ -242,7 +294,11 @@
         </div>
     </footer>
 
-    <script src="../js/registro.js"></script>
+    <div class="toast" id="toast-exito" role="status" aria-live="polite">
+        Cuenta creada con éxito
+    </div>
+
+    <script src="../js/usuario-form.js"></script>
 
 </body>
 

@@ -6,6 +6,7 @@
     <title>Level-Up Gamer - Iniciar Sesión</title>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/tarjetas.css">
     <link rel="stylesheet" href="../css/formulario-simple.css">
 </head>
 <body>
@@ -14,15 +15,13 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo">
-                <a href="index.html">
-                    <span class="logo-text">LEVEL-UP GAMER</span>
-                    <span class="logo-subtext">TIENDA GAMER</span>
-                </a>
+                <a href="index.html" ><img class="img-box img-s"  src="../img/img-index/logo.png" alt="Level-Up Gamer Logo"></a>
+                
             </div>
 
             <nav class="main-nav">
                 <ul class="main-nav-list">
-                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="catalogo-productos.html">Catálogo</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="eventos.html">Eventos</a></li>
@@ -33,7 +32,7 @@
 
             <div class="header-actions">
                 <a href="carrito.html" class="cart-icon">🛒</a>
-                <a href="login.html" class="active" class="user-icon">👤</a>
+                <a href="login.html" class="user-icon">👤</a>
                 <div class="points-badge">0 PTS - Mi Cuenta</div>
             </div>
         </div>
@@ -53,9 +52,9 @@
             <div class="form-group">
                 <label for="email">Correo Electrónico</label>
                 <div class="input-with-icon">
-                    <span class="input-icon">✉️</span>
                     <input type="email" id="email" name="email" placeholder="matias.gamer@duoc.cl o admin@levelupgamer.cl" required>
                 </div>
+                <span id="error-email" class="error-message"></span>
             </div>
 
             <div class="form-group">
@@ -64,10 +63,10 @@
                     <a href="recuperar-password.html">¿Olvidaste tu contraseña?</a>
                 </div>
                 <div class="input-with-icon">
-                    <span class="input-icon">🔒</span>
                     <input type="password" id="password" name="password" placeholder="••••••••••••" required>
-                    <button type="button" class="input-toggle-visibility" aria-label="Mostrar contraseña">👁️</button>
+                    <button type="button" class="input-toggle-visibility" aria-label="Mostrar contraseña"></button>
                 </div>
+                <span id="error-password" class="error-message"></span>
             </div>
 
             <div class="form-checkbox-row">

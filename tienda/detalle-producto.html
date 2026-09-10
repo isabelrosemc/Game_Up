@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto | Level-Up Gamer</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/tarjetas.css">
+    <link rel="stylesheet" href="../css/detalle-producto.css">
+</head>
+<body>
+
+    <!-- CABECERA Y MENU DE NAVEGACION PRINCIPAL -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" ><img class="img-box img-s"  src="../img/img-index/logo.png" alt="Level-Up Gamer Logo"></a>
+                
+            </div>
+
+            <nav class="main-nav">
+                <ul class="main-nav-list">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="catalogo-productos.html">Catálogo</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="carrito.html" class="cart-icon">🛒</a>
+                <a href="login.html" class="user-icon">👤</a>
+                <div class="points-badge">0 PTS - Mi Cuenta</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+    <main class="main-container">
+
+        <!-- Breadcrumb: muestra la ruta de navegación hasta este producto -->
+        <nav class="breadcrumb" aria-label="Ruta de navegación">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-separador">&gt;</span>
+            <a href="catalogo-productos.html">Accesorios</a>
+            <span class="breadcrumb-separador">&gt;</span>
+            <span class="breadcrumb-actual">Teclado Mecánico RGB Pro-X 60%</span>
+        </nav>
+
+        <!-- Detalle del producto: imagen a la izquierda, información a la derecha -->
+        <section class="detalle-producto">
+
+            <div class="detalle-producto__galeria">
+                <div class="img-box img-placeholder detalle-producto__imagen-principal">IMG</div>
+
+                <div class="detalle-producto__miniaturas">
+                    <div class="img-box img-placeholder detalle-producto__miniatura activa">IMG</div>
+                    <div class="img-box img-placeholder detalle-producto__miniatura">IMG</div>
+                    <div class="img-box img-placeholder detalle-producto__miniatura">IMG</div>
+                </div>
+            </div>
+
+            <div class="detalle-producto__info">
+                <span class="section-tag">ACCESORIOS / HyperX</span>
+                <div class="detalle-producto__encabezado">
+                    <h1 class="detalle-producto__titulo">Teclado Mecánico RGB Pro-X 60%</h1>
+                    <span class="detalle-producto__precio">$64.990</span>
+                </div>
+
+                <p class="detalle-producto__descripcion">
+                    Teclado mecánico compacto de formato 60%, pensado para gamers que buscan
+                    precisión y velocidad. Incluye retroiluminación RGB personalizable, switches
+                    de respuesta rápida y una construcción resistente para sesiones de juego
+                    prolongadas.
+                </p>
+
+                <div class="detalle-producto__cantidad">
+                    <label for="cantidad">Cantidad</label>
+                    <select id="cantidad" name="cantidad">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn-add detalle-producto__boton-agregar">Añadir al carrito</button>
+            </div>
+
+        </section>
+
+        <!-- Productos relacionados -->
+        <section class="relacionados">
+            <h2 class="relacionados__titulo">Productos relacionados</h2>
+
+            <div class="relacionados__grid">
+                <article class="product-card">
+                    <div class="img-box img-md img-placeholder">IMG</div>
+                    <span class="product-category">Mouse</span>
+                    <h3 class="product-title">Mouse Gamer Ultralight 25K DPI</h3>
+                    <div class="product-footer">
+                        <span class="product-price">$49.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-box img-md img-placeholder">IMG</div>
+                    <span class="product-category">Accesorios</span>
+                    <h3 class="product-title">Audífonos Gaming 7.1 Surround</h3>
+                    <div class="product-footer">
+                        <span class="product-price">$99.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-box img-md img-placeholder">IMG</div>
+                    <span class="product-category">Mousepad</span>
+                    <h3 class="product-title">Mousepad Razer Goliathus Extended</h3>
+                    <div class="product-footer">
+                        <span class="product-price">$29.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-box img-md img-placeholder">IMG</div>
+                    <span class="product-category">Sillas Gamers</span>
+                    <h3 class="product-title">Silla Gamer Secretlab Titan</h3>
+                    <div class="product-footer">
+                        <span class="product-price">$349.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="img-box img-md img-placeholder">IMG</div>
+                    <span class="product-category">Consolas</span>
+                    <h3 class="product-title">PlayStation 5</h3>
+                    <div class="product-footer">
+                        <span class="product-price">$549.990</span>
+                        <a href="detalle-producto.html" class="btn-add">Ver más</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <!-- Columna 1: Info Marca -->
+            <div class="footer-col">
+                <div class="logo">
+                    <span class="logo-text">LEVEL-UP GAMER</span>
+                    <span class="logo-subtext">TIENDA GAMER</span>
+                </div>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-top: 0.8rem;">
+                    La plataforma definitiva para el gamer competitivo y casual. Equipamiento de alto rendimiento, torneos comunitarios y apoyo a causas sociales a través del gaming.
+                </p>
+                <div class="social-tags">
+                    <span class="social-tag">TWITCH</span>
+                    <span class="social-tag">DISCORD</span>
+                    <span class="social-tag">YOUTUBE</span>
+                    <span class="social-tag">INSTAGRAM</span>
+                    <span class="social-tag">TIKTOK</span>
+                </div>
+            </div>
+
+            <!-- Columna 2: Enlaces Rápidos -->
+            <div class="footer-col">
+                <h4>ENLACES RÁPIDOS</h4>
+                <ul>
+                    <li><a href="catalogo-productos.html">Catálogo de Productos</a></li>
+                    <li><a href="blog.html">Blog y Guías Gamer</a></li>
+                    <li><a href="eventos.html">Eventos y Torneos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Contacto -->
+            <div class="footer-col">
+                <h4>CONTACTO</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                     Av. Providencia 1234, Oficina 601, Santiago, Chile
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                     +56 9 8765 4321 (Atención Gamer)
+                </p>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                     contacto@levelupgamer.cl
+                </p>
+            </div>
+
+            <!-- Columna 4: Programa de Puntos -->
+            <div class="footer-col">
+                <h4>PUNTOS LEVEL-UP</h4>
+                <p style="color: var(--color-texto-secundario); font-size: 0.8rem;">
+                    Acumula <strong>Puntos LevelUp</strong> con cada compra, registro a torneos y participación en la causa solidaria.
+                </p>
+                <div class="points-info-box">
+                    Recompensa actual: <span>100 CLP = 1 PTS</span><br>
+                    Canjea por descuentos directos en tienda o donaciones.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
