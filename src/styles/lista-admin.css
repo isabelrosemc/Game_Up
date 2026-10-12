@@ -80,3 +80,8 @@
     border-color: #ff4d4d;
     color: #000000;
 }
+
+.stock-critico {
+  color: #ff5252;
+  font-weight: 700;
+}
