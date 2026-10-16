@@ -17,6 +17,8 @@ import Login from './pages/tienda/Login'
 import AdminLayout from './components/admin/AdminLayout'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminProductos from './pages/admin/AdminProductos'
+import AdminUsuarios from './pages/admin/AdminUsuarios'
+import AdminUsuarioForm from './pages/admin/AdminUsuarioForm'
 
 function EnConstruccion() {
   return (
@@ -49,17 +51,22 @@ export default function App() {
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminDashboard />} />
 
+
         <Route path="productos">
           <Route index element={<AdminProductos />} />
           <Route path="nuevo" element={<EnConstruccion />} />
           <Route path="editar/:codigo" element={<EnConstruccion />} />
         </Route>
 
-        <Route path="usuarios" element={<EnConstruccion />} />
+        <Route path="usuarios">
+          <Route index element={<AdminUsuarios />} />
+          <Route path="nuevo" element={<AdminUsuarioForm />} />
+          <Route path="editar/:run" element={<AdminUsuarioForm />} />
+        </Route>
+
+        {/* Cualquier otra URL */}
+        <Route path="*" element={<EnConstruccion />} />
       </Route>
-      
-      {/* Cualquier otra URL */}
-      <Route path="*" element={<EnConstruccion />} />
     </Routes>
   )
 }
