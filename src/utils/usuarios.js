@@ -1,19 +1,27 @@
+
 import { usuariosIniciales } from '../data/usuarios'
 
 const CLAVE_USUARIOS = 'levelupgamer_usuarios'
 
-// Devuelve la lista de usuarios. La primera vez guarda los usuarios de ejemplo.
-// localStorage hace de "base de datos".
+// Obtiene los usuarios guardados.
+// Si es la primera vez, carga los usuarios de ejemplo.
 export function obtenerUsuarios() {
   const guardado = localStorage.getItem(CLAVE_USUARIOS)
+
   if (guardado === null) {
-    localStorage.setItem(CLAVE_USUARIOS, JSON.stringify(usuariosIniciales))
+    guardarUsuarios(usuariosIniciales)
     return usuariosIniciales
   }
+
   try {
     const lista = JSON.parse(guardado)
     return Array.isArray(lista) ? lista : usuariosIniciales
   } catch {
     return usuariosIniciales
   }
+}
+
+// Guarda la lista completa de usuarios.
+export function guardarUsuarios(lista) {
+  localStorage.setItem(CLAVE_USUARIOS, JSON.stringify(lista))
 }
