@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useCarrito } from '../context/CarritoContext'
-import { formatearPrecio } from '../utils/formato'
+import { useCarrito } from '../../context/CarritoContext'
+import { formatearPrecio } from '../../utils/formato'
 
 export default function Carrito() {
   const { carrito, cambiarCantidad, quitar, cantidadTotal, subtotal } = useCarrito()

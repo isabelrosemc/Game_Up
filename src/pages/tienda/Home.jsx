@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import ProductCard from '../components/ProductCard'
-import ImpactBanner from '../components/ImpactBanner'
-import { productosIniciales } from '../data/productos'
+import ProductCard from '../../components/ProductCard'
+import ImpactBanner from '../../components/ImpactBanner'
+import { productosIniciales } from '../../data/productos'
 
 // Tarjetas de categoría. `categoria` es el nombre exacto que usa el catálogo para filtrar.
 const categoriasHome = [

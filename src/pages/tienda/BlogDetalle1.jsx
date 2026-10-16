@@ -1,5 +1,5 @@
-import PageHeader from '../components/PageHeader'
-import EditorialBlock from '../components/EditorialBlock'
+import PageHeader from '../../components/PageHeader'
+import EditorialBlock from '../../components/EditorialBlock'
 
 const ranking = [
   { juego: 'Fortnite', participacion: '24,88%' },
