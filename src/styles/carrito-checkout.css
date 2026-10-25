@@ -628,3 +628,11 @@
         gap: 1.2rem;
     }
 }
+
+/* Texto pequeño dentro de las tarjetas de opción (entrega y pago) */
+.metodo-pago-opcion label small {
+    display: block;
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.7rem;
+    color: var(--color-texto-secundario);
+}
