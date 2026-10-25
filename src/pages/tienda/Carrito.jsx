@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom'
-import { useCarrito } from '../context/CarritoContext'
-import { formatearPrecio } from '../utils/formato'
-import ResumenPedido from '../components/ResumenPedido'
-import { useAuth } from '../context/AuthContext'
-import { calcularDescuento } from '../utils/precios'
+import { Link } from 'react-router-dom';
+import { useCarrito } from '../../context/CarritoContext';
+import { formatearPrecio } from '../../utils/formato';
+import ResumenPedido from '../../components/ResumenPedido';
+import { useAuth } from '../../context/AuthContext';
+import { calcularDescuento } from '../../utils/precios';
 
 export default function Carrito() {
   const { carrito, cambiarCantidad, quitar, cantidadTotal, subtotal } = useCarrito()
