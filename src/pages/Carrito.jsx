@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useCarrito } from '../context/CarritoContext'
 import { formatearPrecio } from '../utils/formato'
+import ResumenPedido from '../components/ResumenPedido'
+import { useAuth } from '../context/AuthContext'
+import { calcularDescuento } from '../utils/precios'
 
 export default function Carrito() {
   const { carrito, cambiarCantidad, quitar, cantidadTotal, subtotal } = useCarrito()
+  const { usuario } = useAuth()                                          
+  const descuento = calcularDescuento(subtotal, usuario?.correo)
 
   return (
     <main className="main-container">
@@ -73,23 +78,9 @@ export default function Carrito() {
 
         {/* Resumen */}
         <aside className="resumen-panel" aria-label="Resumen de compra">
-          <h2>Resumen del pedido</h2>
+                   <h2>Resumen del pedido</h2>
 
-          <div className="resumen-linea">
-            <span>Subtotal ({cantidadTotal} {cantidadTotal === 1 ? 'producto' : 'productos'})</span>
-            <span>{formatearPrecio(subtotal)}</span>
-          </div>
-          <div className="resumen-linea">
-            <span>Envío</span>
-            <span>Calculado en el pago</span>
-          </div>
-
-          <hr className="resumen-divisor" />
-
-          <div className="resumen-total">
-            <span>Total</span>
-            <span className="monto-total">{formatearPrecio(subtotal)}</span>
-          </div>
+          <ResumenPedido cantidad={cantidadTotal} subtotal={subtotal} descuento={descuento} envio={null} />
 
           {carrito.length > 0 && (
             <Link to="/checkout" className="btn-primario btn-pagar">Ir a pagar</Link>

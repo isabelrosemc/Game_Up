@@ -311,3 +311,38 @@
         font-size: 1.6rem;
     }
 }
+
+/* --- Campos obligatorios, textos de ayuda y aviso de éxito (Registro y formularios del admin) --- */
+.obligatorio {
+    color: var(--color-verde);
+}
+
+.campo__ayuda {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    color: var(--color-texto-secundario);
+}
+
+.aviso {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-verde);
+    color: var(--color-texto-principal);
+    padding: 0.9rem 1.3rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transform: translateY(1rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 200;
+}
+
+.aviso.show {
+    transform: translateY(0);
+    opacity: 1;
+}
