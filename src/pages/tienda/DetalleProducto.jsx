@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import ProductCard from '../components/ProductCard'
-import { productosIniciales } from '../data/productos'
-import { formatearPrecio } from '../utils/formato'
+import ProductCard from '../../components/ProductCard'
+import { productosIniciales } from '../../data/productos'
+import { formatearPrecio } from '../../utils/formato'
 
 const MAX_CANTIDAD = 5
 

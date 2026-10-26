@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import ProductCard from '../components/ProductCard'
-import CatalogToolbar from '../components/CatalogToolbar'
-import { productosIniciales } from '../data/productos'
+import ProductCard from '../../components/ProductCard'
+import CatalogToolbar from '../../components/CatalogToolbar'
+import { productosIniciales } from '../../data/productos'
 
 export default function Catalogo() {
   // Arreglo con los productos

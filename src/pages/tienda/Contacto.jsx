@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import FormField from '../components/FormField'
+import FormField from '../../components/FormField'
 
 const CLAVE_MENSAJES = 'levelup_mensajes_contacto'
 const VALORES_INICIALES = { nombre: '', correo: '', asunto: '', mensaje: '' }

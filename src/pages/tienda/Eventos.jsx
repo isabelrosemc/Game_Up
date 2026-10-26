@@ -1,4 +1,4 @@
-import PageHeader from '../components/PageHeader'
+import PageHeader from '../../components/PageHeader'
 
 const eventos = [
   { id: 1, dia: '18', mes: 'SEP', tipo: 'TORNEO', titulo: 'Torneo de Valorant',
