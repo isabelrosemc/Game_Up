@@ -1,6 +1,6 @@
-import PageHeader from '../components/PageHeader'
-import EditorialBlock from '../components/EditorialBlock'
-import ImpactBanner from '../components/ImpactBanner'
+import PageHeader from '../../components/PageHeader'
+import EditorialBlock from '../../components/EditorialBlock'
+import ImpactBanner from '../../components/ImpactBanner'
 
 const valores = [
   { img: 'comunidad.png', titulo: 'Comunidad Gamer', texto: 'Impulsamos el talento de los jugadores locales y crecemos junto a nuestra comunidad.' },

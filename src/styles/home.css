@@ -31,7 +31,8 @@
     margin-bottom: 1.5rem;
 }
 
-.btn-primary {
+.hero-section .btn-primary,
+.impact-banner .btn-primary {
     display: inline-block;
     background-color: var(--color-azul);
     color: #ffffff;
@@ -44,7 +45,8 @@
     font-weight: 700;
 }
 
-.btn-primary:hover {
+.hero-section .btn-primary:hover,
+.impact-banner .btn-primary:hover {
     background-color: #0066cc;
     color: #FFFFFF;
 }

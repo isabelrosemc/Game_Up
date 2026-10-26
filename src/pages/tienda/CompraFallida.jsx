@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import PasosCompra from '../components/PasosCompra'
+import PasosCompra from '../../components/PasosCompra'
 
 export default function CompraFallida() {
   const location = useLocation()

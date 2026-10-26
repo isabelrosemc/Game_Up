@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import ProductCard from '../components/ProductCard'
-import { productosIniciales } from '../data/productos'
-import { formatearPrecio } from '../utils/formato'
+import ProductCard from '../../components/ProductCard'
+import { obtenerProductos } from '../../utils/productos'
+import { useCarrito } from '../../context/CarritoContext'
+import { formatearPrecio } from '../../utils/formato'
 
 const MAX_CANTIDAD = 5
 
@@ -10,42 +11,15 @@ export default function DetalleProducto() {
   // Código que viene en la URL: /productos/:codigo
   const { codigo } = useParams()
 
-  const [producto, setProducto] = useState(null)
-  const [relacionados, setRelacionados] = useState([])
-  const [cargando, setCargando] = useState(true)
+  const { agregar } = useCarrito()
   const [cantidad, setCantidad] = useState(1)
-
-  // Función para cargar el producto y los relacionados
-  const cargarProducto = async () => {
-    const todos = productosIniciales
-    // EVALUACIÓN 3: reemplazar por las llamadas al backend
-    // const todos = (await axios.get('URL_DEL_BACKEND/productos')).data
-    // (o pedir solo el producto: await axios.get(`URL_DEL_BACKEND/productos/${codigo}`))
-    const actual = todos.find((p) => p.codigo === codigo) ?? null
-
-    // Relacionados: primero los de la misma categoría, luego el resto (máximo 5)
-    const otros = todos.filter((p) => p.codigo !== codigo)
-    const mismaCategoria = otros.filter((p) => actual && p.categoria === actual.categoria)
-    const demas = otros.filter((p) => !actual || p.categoria !== actual.categoria)
-
-    setProducto(actual)
-    setRelacionados([...mismaCategoria, ...demas].slice(0, 5))
-    setCantidad(1)
-    setCargando(false)
-  }
-
-  // Se ejecuta al abrir la página y cada vez que cambia el código de la URL
-  useEffect(() => {
-    cargarProducto()
-  }, [codigo])
-
-  if (cargando) {
-    return (
-      <main className="main-container">
-        <p>Cargando producto...</p>
-      </main>
-    )
-  }
+  const todos = obtenerProductos()
+  const producto = todos.find((item) => item.codigo === codigo)
+  const otros = todos.filter((item) => item.codigo !== codigo)
+  const relacionados = [
+    ...otros.filter((item) => producto && item.categoria === producto.categoria),
+    ...otros.filter((item) => !producto || item.categoria !== producto.categoria),
+  ].slice(0, 5)
 
   if (!producto) {
     return (
@@ -119,6 +93,7 @@ export default function DetalleProducto() {
             type="button"
             className="btn-add detalle-producto__boton-agregar"
             disabled={producto.stock === 0}
+            onClick={() => agregar(producto, cantidad)}
           >
             {producto.stock > 0 ? 'Añadir al carrito' : 'Sin stock'}
           </button>

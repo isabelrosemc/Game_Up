@@ -1,5 +1,5 @@
-import PageHeader from '../components/PageHeader'
-import EditorialBlock from '../components/EditorialBlock'
+import PageHeader from '../../components/PageHeader'
+import EditorialBlock from '../../components/EditorialBlock'
 
 // Elemento de la lista de exponentes. Lo que es distinto en cada persona entra como `children`.
 function Exponente({ foto, alt, nombre, rol, fuentes = [], children }) {

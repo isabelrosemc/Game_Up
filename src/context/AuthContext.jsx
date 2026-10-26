@@ -23,6 +23,8 @@ export function AuthProvider({ children }) {
   const iniciarSesion = (datosUsuario, recordar = true) => {
     const sesion = { ...datosUsuario }
     delete sesion.contrasena // la contraseña nunca se guarda en la sesión
+    localStorage.removeItem(CLAVE_SESION)
+    sessionStorage.removeItem(CLAVE_SESION)
     const almacen = recordar ? localStorage : sessionStorage
     almacen.setItem(CLAVE_SESION, JSON.stringify(sesion))
     setUsuario(sesion)

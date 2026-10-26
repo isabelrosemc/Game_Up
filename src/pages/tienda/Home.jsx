@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import ProductCard from '../components/ProductCard'
-import ImpactBanner from '../components/ImpactBanner'
-import { productosIniciales } from '../data/productos'
+import ProductCard from '../../components/ProductCard'
+import ImpactBanner from '../../components/ImpactBanner'
+import { obtenerProductos } from '../../utils/productos'
 
 // Tarjetas de categoría. `categoria` es el nombre exacto que usa el catálogo para filtrar.
 const categoriasHome = [
@@ -17,23 +16,8 @@ const categoriasHome = [
 ]
 
 export default function Home() {
-  // Arreglo con los productos destacados
-  const [destacados, setDestacados] = useState([])
-
-  // Función para cargar los productos destacados
-  const cargarDestacados = async () => {
-    const data = productosIniciales
-    // EVALUACIÓN 3: reemplazar la línea anterior por la llamada al backend
-    // const data = (await axios.get('URL_DEL_BACKEND/productos')).data
-
-    // Destacados = los primeros 3 productos con la máxima valoración
-    setDestacados(data.filter((producto) => producto.rating === 5).slice(0, 3))
-  }
-
-  // Llamar a la función cuando se carga la página
-  useEffect(() => {
-    cargarDestacados()
-  }, [])
+  // Destacados actuales (incluye los cambios realizados en administración).
+  const destacados = obtenerProductos().filter((producto) => producto.rating === 5).slice(0, 3)
 
   return (
     <main className="main-container">

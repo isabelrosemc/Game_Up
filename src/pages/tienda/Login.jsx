@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
-import { obtenerUsuarios } from '../utils/usuarios'
+import { useAuth } from '../../context/AuthContext'
+import { obtenerUsuarios } from '../../utils/usuarios'
 
 export default function Login() {
   const navegar = useNavigate()
