@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import PasosCompra from '../components/PasosCompra'
-import ResumenPedido from '../components/ResumenPedido'
-import { formatearPrecio } from '../utils/formato'
-import { obtenerUltimoPedido } from '../utils/pedidos'
+import PasosCompra from '../../components/PasosCompra'
+import ResumenPedido from '../../components/ResumenPedido'
+import { formatearPrecio } from '../../utils/formato'
+import { obtenerUltimoPedido } from '../../utils/pedidos'
 
 export default function CompraExitosa() {
   const pedido = obtenerUltimoPedido()

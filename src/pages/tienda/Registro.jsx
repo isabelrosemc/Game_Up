@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import FormField from '../components/FormField'
-import RegionComuna from '../components/RegionComuna'
-import Aviso from '../components/Aviso'
-import { guardarUsuarios, obtenerUsuarios } from '../utils/usuarios'
+import FormField from '../../components/FormField'
+import RegionComuna from '../../components/RegionComuna'
+import Aviso from '../../components/Aviso'
+import { guardarUsuarios, obtenerUsuarios } from '../../utils/usuarios'
+import { normalizarRun, calcularEdad } from '../../utils/validacionesUsuario'
+import { COMUNAS_POR_REGION } from '../../data/regiones'
 
 const VALORES_INICIALES = {
   run: '',
@@ -20,12 +22,16 @@ const VALORES_INICIALES = {
 export default function Registro() {
   const [valores, setValores] = useState(VALORES_INICIALES)
   const [mensaje, setMensaje] = useState('')
+  const [error, setError] = useState('')
 
   // Actualiza un campo del formulario (formulario controlado)
   const cambiarCampo = (campo, valor) => {
     setValores((previos) => ({ ...previos, [campo]: valor }))
   }
-  const manejarCambio = (evento) => cambiarCampo(evento.target.name, evento.target.value)
+  const manejarCambio = (evento) => {
+    cambiarCampo(evento.target.name, evento.target.value)
+    setError('')
+  }
 
   // Función que guarda el usuario nuevo. Hoy usa localStorage (datos simulados).
   const guardarUsuario = async (usuario) => {
@@ -36,12 +42,40 @@ export default function Registro() {
 
   const manejarEnvio = async (evento) => {
     evento.preventDefault()
+    const usuarios = obtenerUsuarios()
+    const run = normalizarRun(valores.run)
+    const correo = valores.correo.trim().toLowerCase()
+
+    if (!/^[0-9]{7,8}[0-9K]$/.test(run)) {
+      setError('El RUN debe tener 8 o 9 caracteres, sin puntos ni guion.')
+      return
+    }
+    if (usuarios.some((u) => normalizarRun(u.run) === run)) {
+      setError('Ese RUN ya está registrado.')
+      return
+    }
+    if (usuarios.some((u) => u.correo?.toLowerCase() === correo)) {
+      setError('Ese correo ya está registrado.')
+      return
+    }
+    if (!['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'].some((dominio) => correo.endsWith(dominio))) {
+      setError('Ingresa un correo válido de Duoc o Gmail.')
+      return
+    }
+    if (calcularEdad(valores.fechaNacimiento) < 18) {
+      setError('Debes tener al menos 18 años para registrarte.')
+      return
+    }
+    if (!COMUNAS_POR_REGION[valores.region]?.includes(valores.comuna)) {
+      setError('Selecciona una región y una comuna válidas.')
+      return
+    }
     await guardarUsuario({
-      run: valores.run.trim().toUpperCase(),
+      run,
       tipoUsuario: 'Cliente', // quien se registra desde la tienda siempre es Cliente
       nombre: valores.nombre.trim(),
       apellidos: valores.apellidos.trim(),
-      correo: valores.correo.trim().toLowerCase(),
+      correo,
       contrasena: valores.contrasena,
       fechaNacimiento: valores.fechaNacimiento,
       region: valores.region,
@@ -50,6 +84,7 @@ export default function Registro() {
     })
     setValores(VALORES_INICIALES)
     setMensaje('Cuenta creada con éxito')
+    setError('')
   }
 
   return (
@@ -61,14 +96,15 @@ export default function Registro() {
       </div>
 
       <form className="form-card" onSubmit={manejarEnvio}>
+        {error && <p role="alert" className="error-message">{error}</p>}
         <FormField
           id="run"
           label="RUN"
           obligatorio
-          ayuda="Sin puntos ni guion. Entre 7 y 9 caracteres."
+          ayuda="Sin puntos ni guion. Entre 8 y 9 caracteres."
           type="text"
           placeholder="19011022K"
-          minLength={7}
+          minLength={8}
           maxLength={9}
           value={valores.run}
           onChange={manejarCambio}

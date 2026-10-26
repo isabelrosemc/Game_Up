@@ -64,7 +64,7 @@
     background-color: #101010;
 }
 
-.admin-nav a.activo {
+.admin-nav a.active {
     color: var(--color-azul);
     background-color: rgba(30, 144, 255, 0.12);
     border-left: 3px solid var(--color-azul);

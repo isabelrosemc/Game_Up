@@ -1,9 +1,14 @@
 import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import { CarritoProvider } from './context/CarritoContext'
 import App from './App'
 
-describe('App', () => {
-  it('muestra el título principal', () => {
-    render(<App />)
-    expect(screen.getByRole('heading', { name: /level-up gamer/i })).toBeInTheDocument()
-  })
+it('muestra el catálogo desde la ruta de productos', () => {
+  render(
+    <MemoryRouter initialEntries={['/productos']}>
+      <AuthProvider><CarritoProvider><App /></CarritoProvider></AuthProvider>
+    </MemoryRouter>
+  )
+  expect(screen.getByRole('heading', { name: 'Productos' })).toBeInTheDocument()
 })

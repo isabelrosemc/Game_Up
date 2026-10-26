@@ -16,7 +16,7 @@ export default function Navbar() {
   // Estado: ¿está abierto el menú en pantallas pequeñas?
   const [abierto, setAbierto] = useState(false)
   const { cantidadTotal } = useCarrito()
-  const { usuario, cerrarSesion } = useAuth()
+  const { usuario, esAdmin, cerrarSesion } = useAuth()
   const navegar = useNavigate()
   const cerrarMenu = () => setAbierto(false)
   const salir = () => {
@@ -71,6 +71,7 @@ export default function Navbar() {
             {usuario ? (
               <>
                 <span className="user-name">Hola, {usuario.nombre}</span>
+                {esAdmin && <Link to="/admin" onClick={cerrarMenu}>Administración</Link>}
                 <button type="button" className="btn-add" onClick={salir}>Salir</button>
               </>
             ) : (

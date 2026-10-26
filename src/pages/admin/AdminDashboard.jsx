@@ -1,32 +1,15 @@
-import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // Importación exacta según tu línea 4 de productos.js:
-import { productosIniciales } from '../../data/productos';
+import { obtenerProductos } from '../../utils/productos';
 import { obtenerUsuarios } from '../../utils/usuarios';
 
 export default function AdminDashboard() {
-  const [productos, setProductos] = useState([]);
-  const [usuarios, setUsuarios] = useState([]);
-
-  useEffect(() => {
-    // 1. Cargar productos desde el mock oficial
-    if (Array.isArray(productosIniciales)) {
-      setProductos(productosIniciales);
-    }
-
-    // 2. Cargar usuarios interactivos desde localStorage (vía utils)
-    try {
-      if (typeof obtenerUsuarios === 'function') {
-        setUsuarios(obtenerUsuarios());
-      }
-    } catch (err) {
-      console.error('Error al cargar usuarios:', err);
-    }
-  }, []);
+  const productos = obtenerProductos()
+  const usuarios = obtenerUsuarios()
 
   // Regla de negocio oficial: productos en o por debajo de su stock crítico
   const productosEnAlerta = productos.filter(
-    (p) => Number(p.stock) <= Number(p.stockCritico)
+    (p) => Number(p.stockCritico) > 0 && Number(p.stock) <= Number(p.stockCritico)
   );
 
   return (

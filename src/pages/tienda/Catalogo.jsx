@@ -1,46 +1,37 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import ProductCard from '../../components/ProductCard'
 import CatalogToolbar from '../../components/CatalogToolbar'
-import { productosIniciales } from '../../data/productos'
+import { obtenerProductos } from '../../utils/productos'
 
 export default function Catalogo() {
-  // Arreglo con los productos
-  const [productos, setProductos] = useState([])
-  // Valores de la barra de búsqueda (el filtrado se agrega en la segunda pasada)
   const [busqueda, setBusqueda] = useState('')
-  const [categoria, setCategoria] = useState('')
+  const [parametros, setParametros] = useSearchParams()
+  const categoria = parametros.get('categoria') || ''
 
-  // Función para cargar los productos
-  const cargarProductos = async () => {
-    const data = productosIniciales
-    // EVALUACIÓN 3: reemplazar la línea anterior por la llamada al backend
-    // const data = (await axios.get('URL_DEL_BACKEND/productos')).data
-    setProductos(data)
-  }
-
-  // Llamar a la función cuando se carga la página
-  useEffect(() => {
-    cargarProductos()
-  }, [])
+  const productos = obtenerProductos().filter((producto) => {
+    const coincideNombre = producto.nombre.toLowerCase().includes(busqueda.trim().toLowerCase())
+    const coincideCategoria = !categoria || producto.categoria === categoria
+    return coincideNombre && coincideCategoria
+  })
 
   return (
     <main className="main-container">
       <section aria-labelledby="titulo-catalogo">
         <span className="section-tag">TIENDA / CATÁLOGO</span>
         <h1 id="titulo-catalogo" className="main-section-title">Productos</h1>
-
         <CatalogToolbar
           busqueda={busqueda}
           categoria={categoria}
           onBusqueda={setBusqueda}
-          onCategoria={setCategoria}
+          onCategoria={(valor) => setParametros(valor ? { categoria: valor } : {})}
         />
-
         <div className="catalog-grid">
           {productos.map((producto) => (
             <ProductCard key={producto.codigo} producto={producto} />
           ))}
         </div>
+        {productos.length === 0 && <p>No se encontraron productos con estos filtros.</p>}
       </section>
     </main>
   )

@@ -1,12 +1,25 @@
 import { NavLink, Outlet, Link } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
 
 import '../../styles/panel-admin.css'
 import '../../styles/lista-admin.css'
 import '../../styles/producto-usuario.css'
 
 export default function AdminLayout() {
+  const { esAdmin, cerrarSesion } = useAuth()
+
+  if (!esAdmin) {
+    return (
+      <main className="main-container">
+        <h1>Acceso reservado a administradores</h1>
+        <p>Inicia sesión con una cuenta de administrador para entrar al panel.</p>
+        <Link to="/login">Iniciar sesión</Link>
+      </main>
+    )
+  }
+
   return (
-    <div className="admin-layout">
+    <div className="admin-layout" data-bs-theme="dark">
       <aside className="admin-sidebar">
         <div className="admin-sidebar__marca">
           <Link to="/admin" aria-label="Inicio del panel de administración">
@@ -38,8 +51,8 @@ export default function AdminLayout() {
         </nav>
 
         <div className="admin-sidebar__pie">
-          <Link to="/admin/perfil">Perfil</Link>
-          <Link to="/login">Cerrar sesión</Link>
+          <Link to="/">Volver a la tienda</Link>
+          <Link to="/login" onClick={cerrarSesion}>Cerrar sesión</Link>
         </div>
       </aside>
 
