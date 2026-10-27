@@ -236,11 +236,43 @@
         flex-direction: row;
     }
 
+    .admin-sidebar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .admin-sidebar__marca img {
+        height: 50px;
+    }
+
+    .admin-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+
     .admin-sidebar__pie {
-        display: none;
+        display: flex;
+        gap: 1rem;
+        padding: 0.5rem;
+        border-top: none;
     }
 
     .admin-contenido {
         padding: 1.25rem;
     }
+
+    .admin-topbar {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-sidebar {
+        flex-direction: column;
+    }
+    .admin-contenido { padding: 1rem; }
 }

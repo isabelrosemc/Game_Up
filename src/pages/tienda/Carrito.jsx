@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCarrito } from '../../context/CarritoContext';
 import { formatearPrecio } from '../../utils/formato';
@@ -6,9 +7,11 @@ import { useAuth } from '../../context/AuthContext';
 import { calcularDescuento } from '../../utils/precios';
 
 export default function Carrito() {
-  const { carrito, cambiarCantidad, quitar, cantidadTotal, subtotal } = useCarrito()
+  const { carrito, cambiarCantidad, quitar, sincronizar, cantidadTotal, subtotal } = useCarrito()
   const { usuario } = useAuth()                                          
   const descuento = calcularDescuento(subtotal, usuario?.correo)
+
+  useEffect(() => { sincronizar() }, [sincronizar]) // Revisa stock y precios al entrar al carrito
 
   return (
     <main className="main-container">

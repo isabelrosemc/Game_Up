@@ -6,6 +6,7 @@ import { useCarrito } from '../context/CarritoContext'
 const ENLACES = [
   { to: '/', texto: 'Home', end: true },
   { to: '/productos', texto: 'Catálogo' },
+  { to: '/ofertas', texto: 'Ofertas' },
   { to: '/blog', texto: 'Blog' },
   { to: '/eventos', texto: 'Eventos' },
   { to: '/nosotros', texto: 'Nosotros' },

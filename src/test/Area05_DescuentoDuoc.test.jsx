@@ -1,28 +1,14 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import ResumenPedido from '../components/ResumenPedido';
+import { calcularDescuento, calcularTotal } from '../utils/precios'
 
-describe('Área 5: Regla de Negocio - Descuento Duoc 20%', () => {
-  it('5.1 Debería aplicar y mostrar el descuento del 20% en el resumen', () => {
-    const { container } = render(
-      <BrowserRouter>
-        <ResumenPedido subtotal={100000} descuento={20000} total={80000} />
-      </BrowserRouter>
-    );
+describe('Área 5: Descuento Duoc del 20 %', () => {
+  it('5.1 Descuenta el 20 % del subtotal al usar correo Duoc', () => {
+    const descuento = calcularDescuento(100000, 'alumno@duoc.cl')
+    expect(descuento).toBe(20000)
+    expect(calcularTotal(100000, descuento, 3990)).toBe(83990)
+  })
 
-    expect(screen.getByText(/descuento duoc \(20%\)/i)).toBeInTheDocument();
-    expect(container.querySelector('.monto-total')).toHaveTextContent('$80.000');
-  });
-
-  it('5.2 Debería mostrar el monto total sin descuento reflejado', () => {
-    const { container } = render(
-      <BrowserRouter>
-        <ResumenPedido subtotal={100000} descuento={0} total={100000} />
-      </BrowserRouter>
-    );
-
-    expect(screen.queryByText(/descuento duoc \(20%\)/i)).toBeNull();
-    expect(container.querySelector('.monto-total')).toHaveTextContent('$100.000');
-  });
-});
+  it('5.2 No aplica el descuento con correo Gmail', () => {
+    expect(calcularDescuento(100000, 'cliente@gmail.com')).toBe(0)
+    expect(calcularTotal(100000, 0, 3990)).toBe(103990)
+  })
+})

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import ProductCard from '../../components/ProductCard'
-import { obtenerProductos } from '../../utils/productos'
+import { obtenerProductos, precioConOferta } from '../../utils/productos'
 import { useCarrito } from '../../context/CarritoContext'
 import { formatearPrecio } from '../../utils/formato'
 
@@ -63,7 +63,15 @@ export default function DetalleProducto() {
           <span className="section-tag">{producto.categoria.toUpperCase()} / {producto.codigo}</span>
           <div className="detalle-producto__encabezado">
             <h1 className="detalle-producto__titulo">{producto.nombre}</h1>
-            <span className="detalle-producto__precio">{formatearPrecio(producto.precio)}</span>
+            <div>
+              {Number(producto.descuentoOferta) > 0 && (
+                <>
+                  <span className="etiqueta-oferta">-{producto.descuentoOferta}% OFERTA</span>
+                  <span className="precio-anterior">{formatearPrecio(producto.precio)}</span>
+                </>
+              )}
+              <span className="detalle-producto__precio">{formatearPrecio(precioConOferta(producto))}</span>
+            </div>
           </div>
 
           {producto.descripcion && (

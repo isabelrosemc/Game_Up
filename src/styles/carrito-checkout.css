@@ -636,3 +636,14 @@
     font-size: 0.7rem;
     color: var(--color-texto-secundario);
 }
+/* En teléfonos estrechos las opciones de pago y entrega se apilan. */
+@media (max-width: 480px) {
+    .metodos-pago-opciones {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-card,
+    .resumen-panel {
+        min-width: 0;
+    }
+}
