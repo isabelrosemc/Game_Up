@@ -1,0 +1,87 @@
+/* ==========================================================================
+   LISTA-ADMIN.CSS
+   Estilos para las tablas de listado del panel administrativo
+   (productos.html y usuarios.html)
+   Depende de base.css y panel-admin.css (variables, .boton)
+   ========================================================================== */
+
+/* Acciones junto al título de la página (ej: botón "+ Nuevo producto") */
+.lista-admin__topbar-acciones {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Contenedor de la tabla: permite scroll horizontal en pantallas chicas */
+.lista-admin__contenedor {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 0.5rem;
+    overflow-x: auto;
+}
+
+/* Tabla de listado */
+.tabla-admin {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.tabla-admin th,
+.tabla-admin td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-borde);
+    white-space: nowrap;
+}
+
+.tabla-admin th {
+    color: var(--color-texto-secundario);
+    font-family: var(--fuente-titulos);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tabla-admin tbody tr:hover {
+    background-color: #101010;
+}
+
+.tabla-admin tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Miniatura de imagen dentro de la tabla */
+.tabla-admin__imagen {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: #121212;
+    border: 1px solid var(--color-borde);
+    display: block;
+}
+
+/* Columna de acciones: botones en línea */
+.tabla-admin__acciones {
+    display: flex;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+/* Botón de acción destructiva (Eliminar), usando el mismo patrón que .boton */
+.boton-peligro {
+    border-color: #ff4d4d;
+    color: #ff4d4d;
+}
+
+.boton-peligro:hover {
+    background-color: #ff4d4d;
+    border-color: #ff4d4d;
+    color: #000000;
+}
+
+.stock-critico {
+  color: #ff5252;
+  font-weight: 700;
+}

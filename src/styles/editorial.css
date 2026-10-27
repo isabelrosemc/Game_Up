@@ -1,0 +1,638 @@
+/* --- Cabecera interna de página (usada en Nosotros, Blog, Contacto, etc.) --- */
+.page-header {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 3rem auto;
+    padding-top: 1rem;
+}
+
+.page-header .section-tag {
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2.1rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    color: var(--color-texto-secundario);
+    font-size: 0.95rem;
+}
+
+/* --- Bloque editorial genérico: imagen + texto en fila, alternable --- */
+/* Usado en Nosotros (historia, misión/visión). Para tarjetas de noticias/blog
+   ver más abajo ".news-card", pensada específicamente para ese listado. */
+.editorial-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Variante con la imagen a la derecha (por defecto ya la tenemos a la izquierda
+   en el DOM); esta clase invierte el orden visual */
+.editorial-block.reverse .editorial-media {
+    order: 2;
+}
+
+.editorial-block.reverse .editorial-content {
+    order: 1;
+}
+
+.editorial-media .img-box {
+    min-height: 260px;
+    border-radius: 6px;
+}
+
+/* .img-box ya trae object-fit: cover en sus tamaños (img-md, img-lg), por lo
+   que las fotos reales (historia, misión/visión, valores, impacto comunitario)
+   rellenan la caja sin deformarse automáticamente. */
+
+.editorial-content h2 {
+    font-size: 1.5rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.9rem;
+}
+
+.editorial-content h3 {
+    font-size: 1.1rem;
+    color: var(--color-azul);
+    margin: 1.2rem 0 0.5rem 0;
+}
+
+.editorial-content p {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+}
+
+.editorial-content ul {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    padding-left: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.editorial-content ul li {
+    margin-bottom: 0.4rem;
+}
+
+/* --- Valores / Misión / Visión: tarjetas pequeñas en grid --- */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+}
+
+.value-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.value-card .img-box {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem auto;
+    min-height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.value-card h3 {
+    font-size: 1rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.6rem;
+}
+
+.value-card p {
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+}
+
+/* --- Estadísticas / cifras destacadas --- */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+    margin: 2.5rem 0;
+    padding: 2rem 1rem;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+}
+
+.stat-item .stat-number {
+    display: block;
+    font-family: var(--fuente-titulos);
+    font-size: 1.8rem;
+    color: var(--color-verde);
+    margin-bottom: 0.3rem;
+}
+
+.stat-item .stat-label {
+    color: var(--color-texto-secundario);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Equipo / Desarrolladores (grid de tarjetas de persona) --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0 2.5rem 0;
+}
+
+.team-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.team-card:hover {
+    border-color: var(--color-azul);
+}
+
+.team-card .img-box {
+    width: 96px;
+    height: 96px;
+    min-height: auto;
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+    object-fit: cover;
+}
+
+.team-card h3 {
+    font-size: 0.95rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.2rem;
+}
+
+.team-card .team-role {
+    display: block;
+    color: var(--color-azul);
+    font-size: 0.75rem;
+    font-family: var(--fuente-titulos);
+    margin-bottom: 0.7rem;
+}
+
+.team-card p {
+    color: var(--color-texto-secundario);
+    font-size: 0.8rem;
+}
+
+/* --- Grid de artículos / noticias (portadas compactas, 2 o más por fila) --- */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.article-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card .img-box {
+    min-height: 180px;
+}
+
+.article-card .article-body {
+    padding: 1.2rem;
+}
+
+.article-card .article-tag {
+    color: var(--color-verde);
+    font-size: 0.7rem;
+    font-family: var(--fuente-titulos);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.article-card h3 {
+    font-size: 1.05rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.6rem;
+}
+
+.article-card p {
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+
+/* ==========================================================================
+   ESTILOS DE BLOG Y NOTICIAS (EDITORIAL)
+   (Caso Curioso #1, Caso Curioso #2)
+   ========================================================================== */
+
+/* Contenedor del título central "NOTICIAS IMPORTANTES" */
+.blog-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.blog-header h1 {
+    font-size: 1.8rem;
+    color: var(--color-texto-principal);
+    letter-spacing: 2px;
+}
+
+/* Tarjeta horizontal de Noticia / Caso Curioso */
+.news-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.news-content h2 {
+    font-size: 1.8rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 1rem;
+}
+
+.news-content p {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Botón de la noticia */
+.btn-news {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--color-texto-principal);
+    border: 1px solid var(--color-texto-principal);
+    padding: 0.6rem 1.5rem;
+    font-family: var(--fuente-titulos);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-news:hover {
+    background-color: var(--color-azul);
+    border-color: var(--color-azul);
+    color: #FFFFFF;
+}
+
+/* Imagen contenedor lateral */
+.news-media {
+    height: 100%;
+    min-height: 220px;
+}
+
+
+/* ==========================================================================
+   RANKING (listas ordenadas tipo "Top", usadas en detalle de blog)
+   ========================================================================== */
+.ranking-list {
+    counter-reset: ranking;
+    list-style: none;
+    margin: 1.5rem 0 2rem 0;
+    padding: 0;
+}
+
+.ranking-list li {
+    counter-increment: ranking;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    color: var(--color-texto-principal);
+}
+
+.ranking-list li::before {
+    content: counter(ranking);
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: var(--color-azul);
+    color: #ffffff;
+    font-family: var(--fuente-titulos);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ranking-list li:nth-child(1)::before {
+    background-color: var(--color-verde);
+    color: #000000;
+}
+
+.ranking-list li .porcentaje {
+    margin-left: auto;
+    color: var(--color-texto-secundario);
+    font-size: 0.8rem;
+    font-family: var(--fuente-titulos);
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   MAPA EMBEBIDO (cómo llegar)
+   ========================================================================== */
+.map-frame {
+    min-height: 260px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--color-borde);
+}
+
+.map-frame iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    display: block;
+}
+
+.direccion-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+}
+
+.direccion-info strong {
+    color: var(--color-texto-principal);
+}
+
+/* ==========================================================================
+   VIDEO EMBEBIDO (mismo tratamiento visual que el mapa)
+   ========================================================================== */
+.video-frame {
+    min-height: 260px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--color-borde);
+    background-color: #000000;
+}
+
+.video-frame iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    display: block;
+}
+
+/* ==========================================================================
+   LISTA DE PERSONAS (exponentes, equipo, etc.) — lista desordenada
+   con imagen al lado de una breve descripción
+   ========================================================================== */
+.personas-list {
+    list-style: none;
+    margin: 1.5rem 0 2rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.persona-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.persona-foto {
+    min-height: 160px;
+    border-radius: 6px;
+}
+
+.persona-foto.doble {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+    min-height: 160px;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.persona-foto.doble .img-box {
+    min-height: 160px;
+    border-radius: 6px;
+}
+
+.persona-info h3 {
+    font-size: 1.05rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.3rem;
+}
+
+.persona-info .persona-rol {
+    display: block;
+    color: var(--color-azul);
+    font-size: 0.75rem;
+    font-family: var(--fuente-titulos);
+    margin-bottom: 0.6rem;
+}
+
+.persona-info p {
+    color: var(--color-texto-secundario);
+    font-size: 0.88rem;
+    margin-bottom: 0.6rem;
+}
+
+.persona-info h4 {
+    font-family: var(--fuente-titulos);
+    font-size: 0.8rem;
+    color: var(--color-texto-principal);
+    margin: 0.8rem 0 0.4rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.persona-info ul {
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+    padding-left: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.persona-info ul li {
+    margin-bottom: 0.3rem;
+}
+
+.persona-fuente {
+    font-size: 0.72rem;
+    color: #777777;
+}
+
+.persona-fuente a {
+    color: #777777;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   EVENTOS (grid de tarjetas con fecha destacada)
+   Usado en eventos.html
+   ========================================================================== */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.event-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.event-card:hover {
+    border-color: var(--color-azul);
+}
+
+.event-date {
+    background-color: #101010;
+    text-align: center;
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.event-date .event-day {
+    display: block;
+    font-family: var(--fuente-titulos);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-azul);
+}
+
+.event-date .event-month {
+    font-family: var(--fuente-titulos);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--color-texto-secundario);
+}
+
+.event-body {
+    padding: 1.5rem;
+}
+
+.event-type {
+    display: inline-block;
+    font-family: var(--fuente-titulos);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: var(--color-verde);
+    margin-bottom: 0.7rem;
+}
+
+.event-body h3 {
+    font-size: 1.2rem;
+    color: var(--color-texto-principal);
+    margin-bottom: 0.8rem;
+}
+
+.event-body p {
+    color: var(--color-texto-secundario);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================================================================
+   RESPONSIVE (Nosotros + Blog/Noticias unificado)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .editorial-block {
+        grid-template-columns: 1fr;
+    }
+
+    .editorial-block.reverse .editorial-media,
+    .editorial-block.reverse .editorial-content {
+        order: initial;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .article-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-card {
+        grid-template-columns: 1fr;
+    }
+
+    .news-media {
+        min-height: 180px;
+        order: -1;
+    }
+
+    .map-frame {
+        min-height: 220px;
+    }
+
+    .video-frame {
+        min-height: 220px;
+    }
+
+    .persona-item {
+        grid-template-columns: 1fr;
+    }
+
+    .persona-foto,
+    .persona-foto.doble {
+        min-height: 140px;
+    }
+}

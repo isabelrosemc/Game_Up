@@ -1,0 +1,98 @@
+/* ==========================================================================
+   VISTA CATÁLOGO DE PRODUCTOS
+   Estilos propios de tienda/catalogo-productos.html
+   ========================================================================== */
+
+/* Barra de búsqueda y filtro por categoría */
+.catalog-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.search-group {
+    flex: 1 1 260px;
+}
+
+.search-group input[type="search"] {
+    width: 100%;
+    background-color: #050505;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 4px;
+}
+
+.search-group input[type="search"]:focus {
+    outline: none;
+    border-color: var(--color-azul);
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    font-size: 0.75rem;
+    color: var(--color-texto-secundario);
+    font-family: var(--fuente-titulos);
+    white-space: nowrap;
+}
+
+.filter-group select {
+    background-color: #050505;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.85rem;
+    padding: 0.55rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: var(--color-azul);
+}
+
+/* Grid del catálogo: 4 columnas en escritorio, igual que el mockup (Figura 8) */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Responsivo */
+@media (max-width: 992px) {
+    .catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .catalog-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog-grid {
+        grid-template-columns: 1fr;
+    }
+}

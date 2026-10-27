@@ -1,0 +1,180 @@
+/* ==========================================================================
+   FORMULARIOS SIMPLES DE LA TIENDA
+   Usado por registro.html y login.html
+   Depende de base.css (variables) y header-footer.css
+   ========================================================================== */
+
+.auth-section {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 1rem 0 3rem 0;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-tag {
+    display: inline-block;
+    color: var(--color-verde);
+    font-size: 0.7rem;
+    font-family: var(--fuente-titulos);
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+}
+
+.auth-header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.auth-header p {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------
+   TARJETA DE FORMULARIO
+   -------------------------------------------------------------------- */
+.form-card {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: var(--color-texto-secundario);
+}
+
+.form-group .obligatorio {
+    color: var(--color-verde);
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    background-color: #050505;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto-principal);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.9rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 5px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-azul);
+}
+
+.form-group select:disabled {
+    color: var(--color-texto-secundario);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Estado inválido: se agrega con JavaScript (usuario-form.js) al fallar la validación */
+.campo--invalido {
+    border-color: #ff4d4d !important;
+}
+
+.campo__ayuda {
+    font-size: 0.75rem;
+    color: var(--color-texto-secundario);
+}
+
+.campo__error {
+    font-size: 0.75rem;
+    color: #ff4d4d;
+    min-height: 1em;
+}
+
+/* --------------------------------------------------------------------
+   TOAST DE CONFIRMACIÓN (usado por usuario-form.js)
+   -------------------------------------------------------------------- */
+.toast {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-verde);
+    color: var(--color-texto-principal);
+    padding: 0.9rem 1.3rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transform: translateY(1rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 200;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* --------------------------------------------------------------------
+   BOTÓN Y PIE DEL FORMULARIO
+   -------------------------------------------------------------------- */
+.btn-form-primary {
+    background-color: var(--color-azul);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    font-family: var(--fuente-titulos);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-form-primary:hover {
+    background-color: var(--color-verde);
+    color: #000000;
+}
+
+.form-divider {
+    border: none;
+    border-top: 1px solid var(--color-borde);
+    margin: 0.25rem 0;
+}
+
+.form-footer-text {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-texto-secundario);
+}
+
+/* --------------------------------------------------------------------
+   RESPONSIVO
+   -------------------------------------------------------------------- */
+@media (max-width: 600px) {
+    .auth-section {
+        padding: 1rem 1rem 3rem 1rem;
+    }
+
+    .form-card {
+        padding: 1.25rem;
+    }
+}
