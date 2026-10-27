@@ -1,4 +1,4 @@
-# 🎮 LEVEL-UP GAMER — Tienda Online Frontend (Evaluación Parcial N° 2)
+# LEVEL-UP GAMER — Tienda Online Frontend (Evaluación Parcial N° 2)
 
 Bienvenido/a al repositorio oficial del proyecto **Level-Up Gamer**, una aplicación web de comercio electrónico moderna, rápida e interactiva desarrollada con **React**, **Vite** y **Bootstrap**.
 
@@ -6,11 +6,11 @@ Este proyecto corresponde a la **Evaluación Parcial N° 2** de la asignatura **
 
 ---
 
-## 📌 1. ¿De qué trata este proyecto?
+## 1. ¿De qué trata este proyecto?
 
 **Level-Up Gamer** es una plataforma de tienda online pensada para la comunidad gamer y de tecnología. Permite explorar productos, filtrar por categorías, gestionar un carrito de compras y administrar inventario y usuarios.
 
-### 🎯 Objetivos de la Evaluación 2 cumplidos:
+### Objetivos de la Evaluación 2 cumplidos:
 * **Migración a React:** Transformación de la maqueta base inicial (HTML/CSS/JS) a una arquitectura modular basada en componentes reutilizables de React.
 * **Manejo de Estado y Propiedades (State & Props):** Gestión reactiva de datos locales mediante hooks (`useState`, `useEffect`, contextos) para el carrito de compras, catálogo de productos y sesión de usuarios.
 * **Diseño Responsivo con Bootstrap:** Adaptabilidad visual completa para computadores, tablets y teléfonos celulares.
@@ -23,7 +23,7 @@ Este proyecto corresponde a la **Evaluación Parcial N° 2** de la asignatura **
 
 ---
 
-## 🛠️ 2. Programas que necesitas tener instalados (Requisitos previos)
+##  2. Programas que necesitas tener instalados (Requisitos previos)
 
 Si no tienes experiencia previa instalando software de desarrollo, no te preocupes. Sigue estos 3 pasos antes de abrir el proyecto:
 
@@ -43,7 +43,7 @@ Si no tienes experiencia previa instalando software de desarrollo, no te preocup
 
 ---
 
-## 🚀 3. Guía paso a paso para ejecutar el proyecto en tu computador
+## 3. Guía paso a paso para ejecutar el proyecto en tu computador
 
 Sigue estas instrucciones al pie de la letra para ver la tienda funcionando en tu pantalla:
 
@@ -55,14 +55,12 @@ Sigue estas instrucciones al pie de la letra para ver la tienda funcionando en t
    ```
 3. Descarga el código del repositorio ejecutando el siguiente comando:
    ```bash
-   git clone <URL_DE_TU_REPOSITORIO_GITHUB>
+   git clone https://github.com/isabelrosemc/Game_Up.git
    ```
-   *(Reemplaza `<URL_DE_TU_REPOSITORIO_GITHUB>` por el enlace HTTPS público de tu repositorio GitHub).*
-
 ### 2. Abrir el proyecto en Visual Studio Code
 1. Entra a la carpeta del proyecto recién descargada:
    ```bash
-   cd <NOMBRE_DE_LA_CARPETA_DEL_PROYECTO>
+   cd game_up
    ```
 2. Ábrela directamente en Visual Studio Code con el comando:
    ```bash
@@ -106,7 +104,7 @@ Para que React y las librerías funcionen, el proyecto necesita descargar sus m�
 
 ---
 
-## 🧪 4. ¿Cómo ejecutar las pruebas unitarias (Testing)?
+## 4. ¿Cómo ejecutar las pruebas unitarias (Testing)?
 
 La Evaluación Parcial N° 2 exige validar la calidad del código mediante pruebas automatizadas que revisan el comportamiento de los componentes y la lógica de negocio.
 
@@ -120,7 +118,7 @@ Para ejecutar la batería de pruebas:
 
 ---
 
-## 🔑 5. Usuarios y Datos de Prueba Iniciales (Mock Data)
+## 5. Usuarios y Datos de Prueba Iniciales (Mock Data)
 
 La aplicación precarga automáticamente datos en el almacenamiento local (`localStorage`) para que puedas probar todas las funciones sin necesidad de registrarte desde cero:
 
@@ -134,7 +132,7 @@ La aplicación precarga automáticamente datos en el almacenamiento local (`loca
 
 ---
 
-## 📁 6. Estructura general de las carpetas
+## 6. Estructura general de las carpetas
 
 * **`public/`**: Imágenes de productos, banners institucionales y recursos multimedia estáticos.
 * **`src/components/`**: Elementos visuales reutilizables (Barras de navegación, tarjetas de productos, modales, alertas y botones).
@@ -146,6 +144,5 @@ La aplicación precarga automáticamente datos en el almacenamiento local (`loca
 
 ---
 
-## 👥 7. Autores y Entrega
 * **Asignatura:** Desarrollo Fullstack II (DSY1104) — Duoc UC
 * **Evaluación:** Evaluación Parcial N° 2 (30% de la ponderación semestral)
