@@ -226,3 +226,23 @@ a.category-card {
         grid-template-columns: 1fr;
     }
 }
+/* Ofertas y acceso directo al carrito en las tarjetas */
+.etiqueta-oferta {
+    display: inline-block;
+    margin: 0.4rem 0 0.2rem;
+    padding: 0.2rem 0.45rem;
+    background: var(--color-verde);
+    color: #101010;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+.precio-anterior {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario);
+    text-decoration: line-through;
+}
+.acciones-producto { display: grid; gap: 0.4rem; margin-top: 0.5rem; }
+.acciones-producto .btn-agregar { margin-top: 0; text-align: center; }
+.acciones-producto .btn-add:disabled { opacity: 0.45; cursor: not-allowed; }

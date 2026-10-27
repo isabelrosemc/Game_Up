@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { obtenerProductos, guardarProductos } from '../../utils/productos'
+import { obtenerProductos, guardarProductos, precioConOferta } from '../../utils/productos'
 import { formatearPrecio } from '../../utils/formato'
 
 export default function AdminProductos() {
@@ -32,7 +32,7 @@ export default function AdminProductos() {
               <tr key={producto.codigo}>
                 <td><img src={producto.imagen} alt={producto.nombre} className="tabla-admin__imagen" /></td>
                 <td>{producto.codigo}</td><td>{producto.nombre}</td>
-                <td>{producto.categoria}</td><td>{formatearPrecio(producto.precio)}</td>
+                <td>{producto.categoria}</td><td>{formatearPrecio(precioConOferta(producto))}{Number(producto.descuentoOferta) > 0 && ` (-${producto.descuentoOferta}%)`}</td>
                 <td>{producto.stock}</td><td>{producto.stockCritico}</td>
                 <td className="tabla-admin__acciones">
                   <Link className="boton" to={`/admin/productos/editar/${producto.codigo}`}>Editar</Link>

@@ -5,7 +5,7 @@ import FormField from '../../components/FormField'
 import AdminPageHeader from '../../components/admin/AdminPageHeader'
 import { obtenerUsuarios, guardarUsuarios } from '../../utils/usuarios'
 import { COMUNAS_POR_REGION } from '../../data/regiones'
-import { normalizarRun, calcularEdad } from '../../utils/validacionesUsuario'
+import { normalizarRun, calcularEdad, runValido } from '../../utils/validacionesUsuario'
 
 const VALORES_INICIALES = {
   run: '',
@@ -71,8 +71,8 @@ export default function AdminUsuarioForm() {
     const correo = formulario.correo.trim().toLowerCase()
     const regiones = Object.keys(COMUNAS_POR_REGION)
 
-    if (!runNormalizado || !/^[0-9]{7,8}[0-9K]$/.test(runNormalizado)) {
-      nuevosErrores.run = 'Ingresa un RUN de 8 o 9 caracteres, sin puntos ni guion.'
+    if (!runValido(runNormalizado)) {
+      nuevosErrores.run = 'Ingresa un RUN válido, incluido su dígito verificador.'
     }
 
     const usuarios = obtenerUsuarios()

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import FormField from '../../components/FormField'
 import RegionComuna from '../../components/RegionComuna'
@@ -8,8 +8,10 @@ import { useAuth } from '../../context/AuthContext'
 import { useCarrito } from '../../context/CarritoContext'
 import { opcionesEntrega } from '../../data/entregas'
 import { formatearPrecio } from '../../utils/formato'
-import { guardarPedido, procesarPago } from '../../utils/pedidos'
-import { calcularDescuento, calcularTotal } from '../../utils/precios'
+import { confirmarPedido, procesarPago } from '../../utils/pedidos'
+import { calcularDescuento } from '../../utils/precios'
+import { revisarCompra } from '../../utils/productos'
+import { validarDatosCheckout, validarTarjeta } from '../../utils/validacionesCheckout'
 
 const METODOS_PAGO = [
   { id: 'webpay', icono: '💳', nombre: 'Webpay' },
@@ -20,7 +22,7 @@ const METODOS_PAGO = [
 export default function Checkout() {
   const navegar = useNavigate()
   const { usuario } = useAuth()
-  const { carrito, subtotal, cantidadTotal, vaciar } = useCarrito()
+  const { carrito, subtotal, cantidadTotal, vaciar, sincronizar } = useCarrito()
 
   // Si hay un usuario con sesión, sus datos aparecen ya escritos en el formulario
   const [valores, setValores] = useState({
@@ -37,6 +39,9 @@ export default function Checkout() {
   const [tarjeta, setTarjeta] = useState({ numero: '', vencimiento: '', cvv: '' })
   const [acepta, setAcepta] = useState(false)
   const [procesando, setProcesando] = useState(false)
+  const [error, setError] = useState('')
+
+  useEffect(() => { sincronizar() }, [sincronizar]) // Comprueba las existencias y precios al abrir Checkout
 
   const cambiarCampo = (campo, valor) => setValores((previos) => ({ ...previos, [campo]: valor }))
   const manejarCambio = (evento) => cambiarCampo(evento.target.name, evento.target.value)
@@ -47,51 +52,81 @@ export default function Checkout() {
 
   // Cálculos del resumen
   const opcionEntrega = opcionesEntrega.find((opcion) => opcion.id === entrega)
-  const descuento = calcularDescuento(subtotal, usuario?.correo)
-  const total = calcularTotal(subtotal, descuento, opcionEntrega.costo)
+  // Se usa el correo validado del formulario, el mismo que quedará en el pedido.
+  const descuento = calcularDescuento(subtotal, valores.correo)
 
   const manejarEnvio = async (evento) => {
     evento.preventDefault()
-    setProcesando(true)
+    if (procesando) return
+    setError('')
 
-    const pedido = {
-      id: `LU-${Date.now()}`,
-      fecha: new Date().toISOString(),
-      cliente: {
-        nombre: valores.nombre.trim(),
-        apellidos: valores.apellidos.trim(),
-        correo: valores.correo.trim().toLowerCase(),
-        telefono: valores.telefono.trim(),
-        region: valores.region,
-        comuna: valores.comuna,
-        direccion: valores.direccion.trim(),
-      },
-      entrega: { nombre: opcionEntrega.nombre, costo: opcionEntrega.costo },
-      metodoPago,
-      productos: carrito.map((item) => ({
-        codigo: item.codigo,
-        nombre: item.nombre,
-        precio: item.precio,
-        cantidad: item.cantidad,
-      })),
-      subtotal,
-      descuento,
-      envio: opcionEntrega.costo,
-      total,
+    const errorDatos = validarDatosCheckout(valores)
+    if (errorDatos) { setError(errorDatos); return }
+    if (metodoPago === 'tarjeta') {
+      const errorTarjeta = validarTarjeta(tarjeta)
+      if (errorTarjeta) { setError(errorTarjeta); return }
     }
+    if (!acepta) { setError('Debes aceptar los términos y condiciones.'); return }
 
-    // La pasarela simulada responde si el pago fue aceptado o rechazado
-    const resultado = await procesarPago({ metodoPago, tarjeta: metodoPago === 'tarjeta' ? tarjeta : null })
-
-    if (!resultado.exito) {
-      setProcesando(false)
-      navegar('/compra/fallida', { state: { motivo: resultado.motivo } })
+    const revision = revisarCompra(carrito)
+    if (revision.error) {
+      setError(`${revision.error} Revisa tu carrito antes de pagar.`)
+      sincronizar()
+      return
+    }
+    if (revision.subtotal !== subtotal) {
+      setError('Los precios cambiaron. Revisa el resumen antes de volver a pagar.')
+      sincronizar()
       return
     }
 
-    await guardarPedido(pedido)
-    navegar('/compra/exitosa')
-    vaciar() // el carrito se vacía una vez pagado
+    setProcesando(true)
+
+    try {
+      // La pasarela es simulada; la tarjeta nunca se guarda en el pedido.
+      const resultado = await procesarPago({ metodoPago, tarjeta: metodoPago === 'tarjeta' ? tarjeta : null })
+      if (!resultado.exito) {
+        navegar('/compra/fallida', { state: { motivo: resultado.motivo } })
+        return
+      }
+
+      // Una última revisión evita vender unidades que se hayan agotado durante el pago.
+      const revisionFinal = revisarCompra(carrito)
+      if (revisionFinal.error || revisionFinal.subtotal !== revision.subtotal) {
+        setError(revisionFinal.error || 'Cambió el precio de un producto. Revisa el carrito.')
+        sincronizar()
+        return
+      }
+
+      const resultadoPedido = await confirmarPedido(carrito, {
+        id: `LU-${Date.now()}`,
+        fecha: new Date().toISOString(),
+        cliente: {
+          nombre: valores.nombre.trim(),
+          apellidos: valores.apellidos.trim(),
+          correo: valores.correo.trim().toLowerCase(),
+          telefono: valores.telefono.trim(),
+          region: valores.region,
+          comuna: valores.comuna,
+          direccion: valores.direccion.trim(),
+        },
+        entrega: { nombre: opcionEntrega.nombre, costo: opcionEntrega.costo },
+        metodoPago,
+        envio: opcionEntrega.costo,
+      })
+
+      if (resultadoPedido.error) {
+        setError(resultadoPedido.error)
+        sincronizar()
+        return
+      }
+      vaciar()
+      navegar('/compra/exitosa')
+    } catch {
+      setError('No pudimos guardar el pedido. Intenta nuevamente.')
+    } finally {
+      setProcesando(false)
+    }
   }
 
   if (carrito.length === 0) {
@@ -125,6 +160,7 @@ export default function Checkout() {
       <div className="carrito-layout">
         <section aria-label="Datos de envío y pago">
           <form id="checkout-form" className="checkout-secciones" onSubmit={manejarEnvio}>
+            {error && <p role="alert" className="form-mensaje error">{error}</p>}
             {/* 1. Datos del cliente y dirección */}
             <div className="checkout-card">
               <h2><span className="numero-seccion">1</span> Datos de envío</h2>

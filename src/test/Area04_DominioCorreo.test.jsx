@@ -1,32 +1,14 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import Registro from '../pages/tienda/Registro';
+import { correoPermitido } from '../utils/validacionesCheckout'
 
-describe('Área 4: Validación de Dominios de Correo', () => {
-  it('4.1 Debería aceptar correos con dominios permitidos (@duoc.cl o @gmail.com)', () => {
-    render(
-      <BrowserRouter>
-        <Registro />
-      </BrowserRouter>
-    );
-    const emailInput = screen.getByPlaceholderText(/correo/i);
-    fireEvent.change(emailInput, { target: { value: 'alumno@duoc.cl' } });
-    fireEvent.blur(emailInput);
+describe('Área 4: Dominios de correo autorizados', () => {
+  it('4.1 Acepta correos de Duoc y Gmail', () => {
+    expect(correoPermitido('alumno@duoc.cl')).toBe(true)
+    expect(correoPermitido('docente@profesor.duoc.cl')).toBe(true)
+    expect(correoPermitido('cliente@gmail.com')).toBe(true)
+  })
 
-    expect(screen.queryByText(/correo no permitido/i)).toBeNull();
-  });
-
-  it('4.2 Debería verificar el campo de correo ante dominios no autorizados', () => {
-    render(
-      <BrowserRouter>
-        <Registro />
-      </BrowserRouter>
-    );
-    const emailInput = screen.getByPlaceholderText(/correo/i);
-    fireEvent.change(emailInput, { target: { value: 'usuario@hotmail.com' } });
-    fireEvent.blur(emailInput);
-
-    expect(emailInput.value).toBe('usuario@hotmail.com');
-  });
-});
+  it('4.2 Rechaza dominios no permitidos o direcciones mal formadas', () => {
+    expect(correoPermitido('cliente@hotmail.com')).toBe(false)
+    expect(correoPermitido('cliente@gmail.com.ejemplo.cl')).toBe(false)
+  })
+})

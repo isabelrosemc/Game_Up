@@ -4,7 +4,7 @@ import FormField from '../../components/FormField'
 import RegionComuna from '../../components/RegionComuna'
 import Aviso from '../../components/Aviso'
 import { guardarUsuarios, obtenerUsuarios } from '../../utils/usuarios'
-import { normalizarRun, calcularEdad } from '../../utils/validacionesUsuario'
+import { normalizarRun, calcularEdad, runValido } from '../../utils/validacionesUsuario'
 import { COMUNAS_POR_REGION } from '../../data/regiones'
 
 const VALORES_INICIALES = {
@@ -46,8 +46,8 @@ export default function Registro() {
     const run = normalizarRun(valores.run)
     const correo = valores.correo.trim().toLowerCase()
 
-    if (!/^[0-9]{7,8}[0-9K]$/.test(run)) {
-      setError('El RUN debe tener 8 o 9 caracteres, sin puntos ni guion.')
+    if (!runValido(run)) {
+      setError('Ingresa un RUN válido, incluido su dígito verificador.')
       return
     }
     if (usuarios.some((u) => normalizarRun(u.run) === run)) {

@@ -1,34 +1,12 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import Registro from '../pages/tienda/Registro';
+import { normalizarRun, runValido } from '../utils/validacionesUsuario'
 
-describe('Área 3: Validación de Mayoría de Edad (≥ 18 años)', () => {
-  it('3.1 Debería permitir el ingreso de fecha para un mayor de 18 años', () => {
-    const { container } = render(
-      <BrowserRouter>
-        <Registro />
-      </BrowserRouter>
-    );
-    const fechaInput = container.querySelector('input[type="date"]');
-    if (fechaInput) {
-      fireEvent.change(fechaInput, { target: { value: '2000-01-01' } });
-      fireEvent.blur(fechaInput);
-    }
-    expect(screen.queryByText(/debe ser mayor de 18 años/i)).toBeNull();
-  });
+describe('Área 2: Validación de RUN', () => {
+  it('2.1 Acepta un RUN cuyo dígito verificador es correcto', () => {
+    expect(normalizarRun('12.345.678-5')).toBe('123456785')
+    expect(runValido('12.345.678-5')).toBe(true)
+  })
 
-  it('3.2 Debería mostrar alerta o error si la fecha corresponde a un menor de 18 años', () => {
-    const { container } = render(
-      <BrowserRouter>
-        <Registro />
-      </BrowserRouter>
-    );
-    const fechaInput = container.querySelector('input[type="date"]');
-    if (fechaInput) {
-      fireEvent.change(fechaInput, { target: { value: '2015-05-15' } });
-      fireEvent.blur(fechaInput);
-    }
-    expect(container).toBeDefined();
-  });
-});
+  it('2.2 Rechaza un dígito verificador incorrecto', () => {
+    expect(runValido('12.345.678-4')).toBe(false)
+  })
+})

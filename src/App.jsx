@@ -8,6 +8,7 @@ import BlogDetalle1 from './pages/tienda/BlogDetalle1'
 import BlogDetalle2 from './pages/tienda/BlogDetalle2'
 import Contacto from './pages/tienda/Contacto'
 import Catalogo from './pages/tienda/Catalogo'
+import Ofertas from './pages/tienda/Ofertas'
 import DetalleProducto from './pages/tienda/DetalleProducto'
 import Carrito from './pages/tienda/Carrito'
 import Login from './pages/tienda/Login'
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="blog/2" element={<BlogDetalle2 />} />
         <Route path="contacto" element={<Contacto />} />
         <Route path="productos" element={<Catalogo />} />
+        <Route path="ofertas" element={<Ofertas />} />
         <Route path="productos/:codigo" element={<DetalleProducto />} />
         <Route path="carrito" element={<Carrito />} />
         <Route path="checkout" element={<Checkout />} />

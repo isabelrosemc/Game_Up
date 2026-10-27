@@ -1,3 +1,6 @@
+import { descontarStock, guardarProductos, obtenerProductos } from './productos'
+import { calcularDescuento, calcularTotal } from './precios'
+
 const CLAVE_PEDIDOS = 'levelup_pedidos'
 const CLAVE_ULTIMO_PEDIDO = 'levelup_ultimo_pedido'
 
@@ -26,8 +29,46 @@ export async function guardarPedido(pedido) {
   } catch {
     pedidos = []
   }
-  localStorage.setItem(CLAVE_PEDIDOS, JSON.stringify([...pedidos, pedido]))
-  localStorage.setItem(CLAVE_ULTIMO_PEDIDO, JSON.stringify(pedido))
+  const pedidosAntes = localStorage.getItem(CLAVE_PEDIDOS)
+  const ultimoAntes = localStorage.getItem(CLAVE_ULTIMO_PEDIDO)
+  try {
+    localStorage.setItem(CLAVE_PEDIDOS, JSON.stringify([...pedidos, pedido]))
+    localStorage.setItem(CLAVE_ULTIMO_PEDIDO, JSON.stringify(pedido))
+  } catch (error) {
+    // Si falla la segunda escritura, evitamos dejar el pedido a medias.
+    if (pedidosAntes === null) localStorage.removeItem(CLAVE_PEDIDOS)
+    else localStorage.setItem(CLAVE_PEDIDOS, pedidosAntes)
+    if (ultimoAntes === null) localStorage.removeItem(CLAVE_ULTIMO_PEDIDO)
+    else localStorage.setItem(CLAVE_ULTIMO_PEDIDO, ultimoAntes)
+    throw error
+  }
+}
+
+// Confirma stock y pedido juntos. Si falla guardar el pedido, devuelve el stock.
+// Es una simulación con localStorage; un backend real necesitaría una transacción.
+export async function confirmarPedido(carrito, datosPedido) {
+  const inventarioAnterior = obtenerProductos()
+  let compra
+  try {
+    compra = descontarStock(carrito)
+    if (compra.error) return { error: compra.error }
+
+    const descuento = calcularDescuento(compra.subtotal, datosPedido.cliente.correo)
+    const pedido = {
+      ...datosPedido,
+      productos: compra.productos,
+      subtotal: compra.subtotal,
+      descuento,
+      total: calcularTotal(compra.subtotal, descuento, datosPedido.envio),
+    }
+    await guardarPedido(pedido)
+    return { pedido }
+  } catch {
+    if (compra && !compra.error) {
+      try { guardarProductos(inventarioAnterior) } catch { /* almacenamiento bloqueado */ }
+    }
+    return { error: 'No pudimos guardar el pedido. No se confirmó la compra.' }
+  }
 }
 
 // Último pedido realizado (o null si no hay)

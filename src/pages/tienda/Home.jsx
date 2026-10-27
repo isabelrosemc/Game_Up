@@ -79,7 +79,7 @@ export default function Home() {
         <span className="section-tag">SELECCIÓN ESPECIAL</span>
         <div className="section-header-flex">
           <h2 className="main-section-title">PRODUCTOS DESTACADOS</h2>
-          <Link to="/productos" className="view-all-link">Ver catálogo completo →</Link>
+          <Link to="/ofertas" className="view-all-link">Ver ofertas →</Link>
         </div>
 
         <div className="products-grid">

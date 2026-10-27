@@ -5,7 +5,7 @@ import { obtenerProductos, guardarProductos } from '../../utils/productos'
 
 const VACIO = {
   codigo: '', nombre: '', categoria: '', precio: '', stock: '',
-  stockCritico: '', rating: 5, imagen: '', descripcion: '',
+  stockCritico: '', descuentoOferta: 0, rating: 5, imagen: '', descripcion: '',
 }
 
 export default function AdminProductoForm() {
@@ -33,6 +33,7 @@ export default function AdminProductoForm() {
       stock: Number(valores.stock),
       stockCritico: Number(valores.stockCritico),
       rating: Number(valores.rating),
+      descuentoOferta: Number(valores.descuentoOferta),
       imagen: valores.imagen.trim(),
     }
 
@@ -43,6 +44,10 @@ export default function AdminProductoForm() {
     if (!Number.isFinite(nuevo.precio) || nuevo.precio <= 0 || !Number.isInteger(nuevo.stock) || nuevo.stock < 0 ||
         !Number.isInteger(nuevo.stockCritico) || nuevo.stockCritico < 0) {
       setError('Precio debe ser mayor a cero y los stocks deben ser números enteros no negativos.')
+      return
+    }
+    if (!Number.isInteger(nuevo.descuentoOferta) || nuevo.descuentoOferta < 0 || nuevo.descuentoOferta > 90) {
+      setError('La oferta debe ser un porcentaje entre 0 y 90. Usa 0 si no tiene oferta.')
       return
     }
     if (productos.some((item) => item.codigo === nuevo.codigo && !editando)) {
@@ -94,6 +99,12 @@ export default function AdminProductoForm() {
           <label className="form-label" htmlFor="stockCritico">Stock crítico</label>
           <input className="form-control" type="number" min="0" step="1" id="stockCritico" name="stockCritico"
             value={valores.stockCritico} onChange={cambiar} required />
+        </div>
+        <div className="col-md-4">
+          <label className="form-label" htmlFor="descuentoOferta">Oferta (%)</label>
+          <input className="form-control" type="number" min="0" max="90" step="1"
+            id="descuentoOferta" name="descuentoOferta" value={valores.descuentoOferta ?? 0}
+            onChange={cambiar} required />
         </div>
         <div className="col-md-4">
           <label className="form-label" htmlFor="rating">Valoración</label>

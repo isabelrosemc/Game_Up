@@ -1,36 +1,25 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import { CarritoProvider } from '../context/CarritoContext';
-import { AuthProvider } from '../context/AuthContext';
+import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
+import { AuthProvider } from '../context/AuthContext'
+import AdminLayout from '../components/admin/AdminLayout'
 
-describe('Área 10: Control de Accesos y Roles', () => {
-  it('10.1 Debería mostrar la barra de navegación correctamente para Administrador', () => {
-    const admin = { nombreCompleto: 'Camila Reyes', tipoUsuario: 'Administrador' };
-    render(
-      <BrowserRouter>
-        <AuthProvider>
-          <CarritoProvider>
-            <Navbar usuario={admin} />
-          </CarritoProvider>
-        </AuthProvider>
-      </BrowserRouter>
-    );
-    expect(screen.getByRole('navigation')).toBeInTheDocument();
-  });
+function montarPanel(tipoUsuario) {
+  localStorage.setItem('levelup_sesion', JSON.stringify({ tipoUsuario, nombre: 'Usuario de prueba' }))
+  render(<MemoryRouter><AuthProvider><AdminLayout /></AuthProvider></MemoryRouter>)
+}
 
-  it('10.2 Debería renderizar la navegación para usuario Cliente', () => {
-    const cliente = { nombreCompleto: 'Matías López', tipoUsuario: 'Cliente' };
-    render(
-      <BrowserRouter>
-        <AuthProvider>
-          <CarritoProvider>
-            <Navbar usuario={cliente} />
-          </CarritoProvider>
-        </AuthProvider>
-      </BrowserRouter>
-    );
-    expect(screen.getByRole('navigation')).toBeInTheDocument();
-  });
-});
+describe('Área 10: Acceso según rol', () => {
+  beforeEach(() => localStorage.clear())
+
+  it('10.1 Permite ver el menú administrativo a un administrador', () => {
+    montarPanel('Administrador')
+    expect(screen.getByRole('link', { name: 'Productos' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Usuarios' })).toBeInTheDocument()
+  })
+
+  it('10.2 Impide acceder a un cliente', () => {
+    montarPanel('Cliente')
+    expect(screen.getByText(/acceso reservado a administradores/i)).toBeInTheDocument()
+    expect(screen.queryByRole('link', { name: 'Productos' })).not.toBeInTheDocument()
+  })
+})
